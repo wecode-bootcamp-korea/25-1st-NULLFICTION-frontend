@@ -1,0 +1,59 @@
+.navContainer {
+  display: flex;
+  margin: 20px 45px;
+
+  .navBox {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    height: 95px;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .navLogo {
+    width: 140px;
+    height: 74px;
+  }
+
+  .topUl {
+    position: fixed;
+    display: flex;
+    right: 45px;
+  }
+
+  .topLi {
+    list-style-type: none;
+    margin-left: 40px;
+    font-size: 18px;
+  }
+
+  .topLink {
+    color: black;
+  }
+
+  .menu {
+    position: absolute;
+    display: flex;
+    align-items: flex-end;
+    width: 200px;
+    height: 300px;
+    // border: 1px solid lightgray;
+  }
+
+  .searchBox {
+    width: 100%;
+    border-bottom: 1px solid black;
+  }
+
+  .search {
+    width: 100%;
+    font-size: 100%;
+    border: none;
+  }
+
+  .search::placeholder {
+    color: black;
+    font-size: 20px;
+  }
+}
