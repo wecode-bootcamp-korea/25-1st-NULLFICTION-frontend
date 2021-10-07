@@ -1,0 +1,13 @@
+.scrollSection {
+  .rogoScrollBox {
+    display: flex;
+    justify-content: center;
+  }
+
+  .rogoScroll {
+    object-fit: cover;
+    margin-top: -60px;
+    width: 400px;
+    height: 400px;
+  }
+}

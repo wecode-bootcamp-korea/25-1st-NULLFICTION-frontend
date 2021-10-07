@@ -1,0 +1,107 @@
+.imgSection {
+  img {
+    object-fit: cover;
+  }
+
+  .mainImgPBox {
+    display: flex;
+    justify-content: space-around;
+    position: relative;
+  }
+
+  .mainImgCBox {
+    margin: 135px 0;
+  }
+
+  .imgTextBox {
+    position: absolute;
+    text-align: center;
+    top: 300px;
+    left: 90px;
+    opacity: 0;
+    letter-spacing: 1px;
+    line-height: 1.5;
+    color: gray;
+  }
+  // .mainImgCBox .imgTextBox {
+  //   &:hover {
+  //     opacity: 1;
+  //   }
+  // }
+  .mainImgCBox img,
+  .imgTextBox {
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+
+  .smallImg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .leftImg {
+    width: 100%;
+  }
+
+  .rightImg {
+    margin-left: 500px;
+  }
+
+  // img
+
+  .test {
+    margin-left: 0;
+  }
+
+  .soapTop {
+    width: 700px;
+    height: 800px;
+    margin-top: -130px;
+  }
+
+  .womanTop {
+    width: 289px;
+    height: 366px;
+    margin-bottom: 30px;
+  }
+
+  .sampleTop {
+    margin-top: -100px;
+    margin-bottom: 80px;
+    margin-right: -100px;
+    height: 685px;
+    width: 580px;
+  }
+
+  .bathRoom {
+    height: 890px;
+    width: 688px;
+    margin-bottom: -120px;
+  }
+
+  .sampleBottom {
+    height: 840px;
+    width: 715px;
+  }
+
+  .cream {
+    height: 330px;
+    width: 290px;
+    // position: absolute;
+    // right: auto;
+  }
+
+  .womanBottom {
+    height: 900px;
+    width: 730px;
+    margin-top: -100px;
+  }
+
+  .twotone {
+    margin-top: -50px;
+    height: 610px;
+    width: 570px;
+  }
+}
