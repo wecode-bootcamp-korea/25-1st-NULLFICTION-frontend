@@ -33,7 +33,11 @@ class ProductImage extends Component {
             className="fas fa-chevron-left arrow"
             onClick={() => this.onClick('left')}
           ></i>
-          <img src={productImageUrl[curImageIdx]}></img>
+          <div className="imageContainor">
+            <img src={productImageUrl[curImageIdx]} />
+            <img src={productImageUrl[curImageIdx]} />
+            <img src={productImageUrl[curImageIdx]} />
+          </div>
           <i
             className="fas fa-chevron-right arrow"
             onClick={() => this.onClick('right')}

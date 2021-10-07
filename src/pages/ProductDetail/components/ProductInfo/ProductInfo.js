@@ -11,6 +11,7 @@ class ProductInfo extends Component {
       <div className="productInfo">
         <ProductDescription />
         <ProductCategory />
+        <ProductSelect />
       </div>
     );
   }

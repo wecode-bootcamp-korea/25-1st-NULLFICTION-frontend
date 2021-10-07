@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import ProductImage from './components/ProductImage/ProductImage';
 import ProductInfo from './components/ProductInfo/ProductInfo';
-import ProductSelect from './components/ProductInfo/ProductSelect/ProductSelect';
 import './ProductDetail.scss';
 
 class ProductDetail extends Component {
@@ -39,7 +38,6 @@ class ProductDetail extends Component {
             </div>
             <div className="rightWrapper">
               <ProductInfo />
-              <ProductSelect />
             </div>
           </div>
         </main>

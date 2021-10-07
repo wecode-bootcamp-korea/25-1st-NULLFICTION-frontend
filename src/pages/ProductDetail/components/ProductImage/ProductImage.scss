@@ -4,12 +4,18 @@
     justify-content: center;
     align-items: center;
 
-    img {
-      margin: 0 20px 30px 20px;
+    .imageContainor {
+      display: flex;
+      margin: 0 10px;
       width: 500px;
-      height: 500px;
-    }
+      overflow: hidden;
 
+      img {
+        //margin: 30px 20px 30px 20px;
+        width: 500px;
+        height: 500px;
+      }
+    }
     .arrow {
       opacity: 0.5;
       cursor: pointer;
