@@ -1,9 +1,8 @@
 .contents {
   padding: 240px 50px 50px 50px;
 
-  .conbox {
-    margin: 0px 122px;
-    padding: 30px 65px 0px 65px;
+  .contentBox {
+    margin: 0px 223px;
 
     .productTitle {
       margin-bottom: 40px;
@@ -34,47 +33,41 @@
         text-align: right;
       }
 
-      .productListOn {
-        height: fit-content;
-        transition: all 0.8s;
-        opacity: 1;
-
+      .productList {
         li {
           margin-bottom: 3px;
           font-size: 14px;
         }
+
+        &.on {
+          height: fit-content;
+          transition: all 0.8s;
+          opacity: 1;
+        }
+
+        &.off {
+          height: 0px;
+          transition: all 0.1s;
+          opacity: 0;
+        }
       }
 
-      .productListOff {
-        height: 0px;
-        transition: all 0.1s;
-        opacity: 0;
-
+      .scentsList {
         li {
           margin-bottom: 3px;
           font-size: 14px;
         }
-      }
 
-      .scentsListOn {
-        height: fit-content;
-        transition: all 0.8s;
-        opacity: 1;
-
-        li {
-          margin-bottom: 3px;
-          font-size: 14px;
+        &.on {
+          height: fit-content;
+          transition: all 0.8s;
+          opacity: 1;
         }
-      }
 
-      .scentsListOff {
-        height: 0px;
-        transition: all 0.1s;
-        opacity: 0;
-
-        li {
-          margin-bottom: 3px;
-          font-size: 14px;
+        &.off {
+          height: 0px;
+          transition: all 0.05s;
+          opacity: 0;
         }
       }
     }
@@ -83,7 +76,6 @@
       display: inline-block;
       margin: 0;
       padding: 25px;
-      width: 455px;
 
       img {
         margin-bottom: 10px;
@@ -109,6 +101,7 @@
           margin: 20px 0 10px 0;
           display: flex;
           justify-content: space-between;
+          width: 400px;
 
           .mensuration {
             font-size: 12px;
@@ -126,6 +119,7 @@
         .productDescription {
           margin: 5px 0;
           padding: 5px 0;
+          width: 400px;
           min-height: 100px;
           border-top: 1px solid black;
           font-size: 14px;

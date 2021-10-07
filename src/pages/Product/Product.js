@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import PRODUCT_LIST from './productList';
+import SCENTS_LIST from './scentsList';
 import './Product.scss';
 
 class Product extends Component {
@@ -23,10 +25,10 @@ class Product extends Component {
   };
 
   render() {
-    console.log(this.state);
+    const { isProductListOn, isScentsListOn } = this.state;
     return (
       <div className="contents">
-        <div className="conbox">
+        <div className="contentBox">
           <h1 className="productTitle">PERFUME</h1>
           <span className="filter">
             <div className="selectProductList">
@@ -38,18 +40,12 @@ class Product extends Component {
               </button>
               <ul
                 className={
-                  this.state.isProductListOn
-                    ? 'productListOn'
-                    : 'productListOff'
+                  isProductListOn ? 'productList on' : 'productList off'
                 }
               >
-                <li className="option">GIFTS</li>
-                <li className="option">PERFUME</li>
-                <li className="option">BODY CARE</li>
-                <li className="option">HAND CARE</li>
-                <li className="option">LIP CARE</li>
-                <li className="option">SETS</li>
-                <li className="option">ACC</li>
+                {PRODUCT_LIST.map(product => {
+                  return <li className="option">{product.name}</li>;
+                })}
               </ul>
             </div>
             <div className="selectScentsList">
@@ -60,15 +56,11 @@ class Product extends Component {
                 Scents +
               </button>
               <ul
-                className={
-                  this.state.isScentsListOn ? 'scentsListOn' : 'scentsListOff'
-                }
+                className={isScentsListOn ? 'scentsList on' : 'scentsList off'}
               >
-                <li className="option">SANTAL CREAM</li>
-                <li className="option">GENTLE NIGHT</li>
-                <li className="option">GAIAC FLOWER</li>
-                <li className="option">FORGET ME NOT</li>
-                <li className="option">IN THE SHOWER</li>
+                {SCENTS_LIST.map(scent => {
+                  return <li className="option">{scent.name}</li>;
+                })}
               </ul>
             </div>
           </span>
