@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import PRODUCT_LIST from './productList';
 import SCENTS_LIST from './scentsList';
 import './Product.scss';
@@ -43,8 +44,12 @@ class Product extends Component {
                   isProductListOn ? 'productList on' : 'productList off'
                 }
               >
-                {PRODUCT_LIST.map(product => {
-                  return <li className="option">{product.name}</li>;
+                {PRODUCT_LIST.map((product, idx) => {
+                  return (
+                    <li key={idx} className="option">
+                      {product.name}
+                    </li>
+                  );
                 })}
               </ul>
             </div>
@@ -58,8 +63,12 @@ class Product extends Component {
               <ul
                 className={isScentsListOn ? 'scentsList on' : 'scentsList off'}
               >
-                {SCENTS_LIST.map(scent => {
-                  return <li className="option">{scent.name}</li>;
+                {SCENTS_LIST.map((scent, idx) => {
+                  return (
+                    <li key={idx} className="option">
+                      {scent.name}
+                    </li>
+                  );
                 })}
               </ul>
             </div>
@@ -68,12 +77,12 @@ class Product extends Component {
             <li className="eachProduct">
               <img src="./images/product/product.jpg" alt="productImage" />
               <div className="thumbnailInfo">
-                <a href="http://localhost:3000//product/detail">
+                <Link to="/product/detail">
                   <h3>
                     <div>DISCOVERY EDP SET</div>
                     <div>Perfume</div>
                   </h3>
-                </a>
+                </Link>
                 <div className="productInfo">
                   <span className="mensuration">
                     <span className="productVolumeKr">100</span>ml &nbsp;/&nbsp;{' '}
@@ -90,9 +99,7 @@ class Product extends Component {
                   세정감을 주고, 강력한 보습력의 히알루론산과 다섯 가지 종류의
                   식물성 바디 컨디셔닝 성분이 피부를 촉촉하게 보호합니다.
                 </p>
-                <button type="button" className="addButton">
-                  Add to Cart
-                </button>
+                <button className="addButton">Add to Cart</button>
               </div>
             </li>
           </ul>
