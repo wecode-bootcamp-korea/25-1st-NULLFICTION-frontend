@@ -13,7 +13,7 @@ class Input extends Component {
           type={type}
           placeholder={placeholder}
           onChange={getInputValue}
-          onKeyPress={handleButton}
+          // onKeyPress={handleButton}
         />
       </div>
     );

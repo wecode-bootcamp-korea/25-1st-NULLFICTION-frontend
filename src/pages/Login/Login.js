@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Input from './Input/Input';
 import Button from './Button/Button';
-import SignUp from './SignUp/SignUp';
 import Outer from './SignUp/Outer';
 import './Login.scss';
 
@@ -12,7 +11,6 @@ class Login extends Component {
     this.state = {
       id: '',
       pw: '',
-      isButtonOn: false,
     };
   }
 
@@ -23,15 +21,9 @@ class Login extends Component {
     });
   };
 
-  handleButton = e => {
-    const { id, pw } = this.state;
-    (id.length < 4 || id.length > 12) && pw.length > 5
-      ? this.setState({ isButtonOn: true })
-      : this.setState({ isButtonOn: false });
-  };
-
   render() {
-    const { isButtonOn } = this.state;
+    const { isButtonOn, id, pw } = this.state;
+    const isValid = !(id.length < 4 || id.length > 12) && pw.length > 5;
 
     return (
       <main className="Login">
@@ -44,7 +36,6 @@ class Login extends Component {
               type="text"
               label="ID"
               getInputValue={this.getInputValue}
-              handleButton={this.handleButton}
             />
             <Input
               name="pw"
@@ -52,15 +43,18 @@ class Login extends Component {
               type="password"
               label="Password"
               getInputValue={this.getInputValue}
-              handleButton={this.handleButton}
             />
-            <Button name="Login" isButtonOn={isButtonOn} />
+            <Button name="Login" isValid={isValid} />
             <Link to="/">
               <p>Forgotten ID or Password</p>
             </Link>
           </form>
           <form className="join-inner">
-            <SignUp name="Sign Up" label="아직 회원이 아니세요?" />
+            <Button
+              name="Sign Up"
+              label="아직 회원이 아니세요?"
+              color="signUpColor"
+            />
             <Outer
               label="간편 로그인"
               image="../images/Login/kakao.png"

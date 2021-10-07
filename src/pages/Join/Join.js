@@ -8,29 +8,29 @@ class Join extends Component {
         <div className="container">
           <h1>Sign Up</h1>
           <ul className="join-inner">
-            <li>
+            <li className="id">
               <label>ID</label>
               <input type="text" name="id" />
               <span>아이디를 입력해 주세요.</span>
             </li>
-            <li>
+
+            <li class="password">
               <label>Password</label>
               <input type="password" name="id" maxlength="16" />
               <span>
                 (영문 대소문자/숫자/특수문자 중 2가지 이상 조합, 8자~16자)
               </span>
             </li>
-            <li>
+            <li className="password-check">
               <label>Password Check</label>
               <input type="password" name="id" maxlength="16" />
               <span></span>
             </li>
-            <li>
+            <li className="name">
               <label>Name</label>
               <input type="text" name="id" />
               <span></span>
             </li>
-
             <li className="mobile">
               <label>Mobile</label>
               <select className="mobile1">
@@ -44,7 +44,6 @@ class Join extends Component {
               <input type="text" maxlength="4"></input>
               <span></span>
             </li>
-
             <li>
               <label>E-mail</label>
               <input type="text" name="id" />

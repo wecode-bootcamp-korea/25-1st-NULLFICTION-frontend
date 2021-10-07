@@ -27,9 +27,6 @@
     }
 
     .join-inner {
-      /* ---------------------------------------------*/
-      /* ---------------------------------------------*/
-      /* ---------------------------------------------*/
       li {
         list-style: none;
 
@@ -40,6 +37,7 @@
         input {
           width: 100%;
           height: 37px;
+          border: 1px solid black;
         }
         span {
           margin-top: 10px;
@@ -47,7 +45,7 @@
       }
       .mobile {
         select {
-          height: 37px;
+          height: 41px;
           box-sizing: border-box;
           padding: 7px;
           @include fontSize(13px);
