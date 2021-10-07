@@ -76,7 +76,7 @@ class Product extends Component {
             <li className="eachProduct">
               <img src="./images/product/product.jpg" alt="productImage" />
               <div className="thumbnailInfo">
-                <a href="">
+                <a href="http://localhost:3000//product/detail">
                   <h3>
                     <div>DISCOVERY EDP SET</div>
                     <div>Perfume</div>
