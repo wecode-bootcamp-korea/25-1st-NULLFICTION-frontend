@@ -34,9 +34,9 @@ class ProductImage extends Component {
             onClick={() => this.onClick('left')}
           ></i>
           <div className="imageContainor">
-            <img src={productImageUrl[curImageIdx]} />
-            <img src={productImageUrl[curImageIdx]} />
-            <img src={productImageUrl[curImageIdx]} />
+            <img src={productImageUrl[curImageIdx]} alt="temp1" />
+            <img src={productImageUrl[curImageIdx]} alt="temp2" />
+            <img src={productImageUrl[curImageIdx]} alt="temp3" />
           </div>
           <i
             className="fas fa-chevron-right arrow"
@@ -46,7 +46,7 @@ class ProductImage extends Component {
         {/* 데이터 작업 후 알맞은 key 변경 필요 */}
         <div className="list">
           {productImageUrl.map(image => {
-            return <img src={image} key={image}></img>;
+            return <img src={image} key={image} alt={image}></img>;
           })}
         </div>
       </section>
