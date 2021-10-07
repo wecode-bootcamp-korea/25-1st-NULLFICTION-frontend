@@ -1,0 +1,30 @@
+@mixin margin($margin) {
+  margin: $margin;
+}
+
+@mixin fontSize($size) {
+  font-size: $size;
+}
+
+.another-join {
+  cursor: pointer;
+  label {
+    display: block;
+    margin: 10px 0;
+    @include fontSize(12px);
+    font-family: 'Arial, Helvetica, sans-serif';
+  }
+
+  .outerApi {
+    height: 52px;
+    line-height: 25px;
+    text-align: center;
+    @include margin(10px 0px);
+    padding: 10px;
+    border: 1px solid black;
+
+    img {
+      width: 30px;
+    }
+  }
+}
