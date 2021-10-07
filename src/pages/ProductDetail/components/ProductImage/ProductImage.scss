@@ -1,0 +1,33 @@
+.productImages {
+  .slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      margin: 0 20px 30px 20px;
+      width: 500px;
+      height: 500px;
+    }
+
+    .arrow {
+      opacity: 0.5;
+      cursor: pointer;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+
+  .list {
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 70px;
+
+    img {
+      width: 100px;
+      height: 100px;
+    }
+  }
+}

@@ -1,0 +1,40 @@
+.productDetail {
+  main {
+    margin: 200px;
+
+    .path {
+      text-align: center;
+      margin: 50px 0;
+    }
+
+    .wrapper {
+      display: flex;
+
+      .leftWrapper {
+        margin-right: 70px;
+
+        .etc {
+          display: flex;
+          flex-direction: column;
+          text-align: center;
+
+          span {
+            font-size: 16px;
+
+            &:not(:last-child) {
+              margin-bottom: 5px;
+            }
+
+            &:first-child {
+              font-weight: bold;
+            }
+
+            &:not(:first-child) {
+              opacity: 0.5;
+            }
+          }
+        }
+      }
+    }
+  }
+}
