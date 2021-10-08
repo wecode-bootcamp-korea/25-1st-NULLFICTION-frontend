@@ -37,9 +37,9 @@
   .menu {
     position: absolute;
     display: flex;
+    align-items: flex-end;
     width: 200px;
     height: 300px;
-    align-items: flex-end;
   }
 
   .searchBox {
