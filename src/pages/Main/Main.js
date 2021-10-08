@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import Nav from '../../components/Nav/Nav';
 import Img from './Img';
 import Scroll from './Scroll';
