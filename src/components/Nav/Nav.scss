@@ -2,17 +2,20 @@
   display: flex;
   margin: 20px 45px;
 
+  img {
+    object-fit: cover;
+  }
+
   .navBox {
     display: flex;
     position: relative;
     justify-content: center;
-    height: 95px;
     width: 100%;
     margin-bottom: 10px;
   }
 
   .navLogo {
-    width: 140px;
+    width: 150px;
     height: 74px;
   }
 
@@ -23,7 +26,6 @@
   }
 
   .topLi {
-    list-style-type: none;
     margin-left: 40px;
     font-size: 18px;
   }
@@ -35,10 +37,9 @@
   .menu {
     position: absolute;
     display: flex;
-    align-items: flex-end;
     width: 200px;
     height: 300px;
-    // border: 1px solid lightgray;
+    align-items: flex-end;
   }
 
   .searchBox {
@@ -48,12 +49,11 @@
 
   .search {
     width: 100%;
-    font-size: 100%;
     border: none;
-  }
 
-  .search::placeholder {
-    color: black;
-    font-size: 20px;
+    &::placeholder {
+      color: black;
+      font-size: 18px;
+    }
   }
 }
