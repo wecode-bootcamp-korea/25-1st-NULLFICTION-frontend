@@ -9,99 +9,143 @@
     position: relative;
   }
 
-  .mainImgCBox {
+  .textBox {
     margin: 135px 0;
-  }
 
-  .imgTextBox {
-    position: absolute;
-    text-align: center;
-    top: 300px;
-    left: 90px;
-    opacity: 0;
-    letter-spacing: 1px;
-    line-height: 1.5;
-    color: gray;
-  }
-  // .mainImgCBox .imgTextBox {
-  //   &:hover {
-  //     opacity: 1;
-  //   }
-  // }
-  .mainImgCBox img,
-  .imgTextBox {
-    &:hover {
-      opacity: 0.9;
+    img:hover {
+      opacity: 0.7;
+    }
+
+    img:hover ~ .leftTextBox {
+      display: block;
+      opacity: 1;
+    }
+
+    img:hover ~ .rightTextBox {
+      display: block;
+      opacity: 1;
+    }
+
+    img:hover ~ .shortTextBox {
+      display: block;
+      opacity: 1;
     }
   }
 
-  .smallImg {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  .leftTextBox,
+  .rightTextBox {
+    position: absolute;
+    text-align: center;
+    opacity: 0;
+    letter-spacing: 1px;
+    line-height: 1.5;
+    color: rgb(177, 175, 175);
+
+    &:hover {
+      display: block;
+      opacity: 1;
+    }
   }
 
-  .leftImg {
-    width: 100%;
+  .leftTextBox {
+    top: 350px;
+    left: 90px;
   }
 
-  .rightImg {
-    margin-left: 500px;
+  .rightTextBox {
+    top: 340px;
+    right: 200px;
   }
 
-  // img
-
-  .test {
-    margin-left: 0;
+  .shortTextBox {
+    position: absolute;
+    text-align: center;
+    opacity: 0;
+    letter-spacing: 1px;
+    line-height: 1.5;
+    top: 660px;
+    left: 270px;
+    color: rgb(27, 61, 30);
   }
 
-  .soapTop {
-    width: 700px;
-    height: 800px;
-    margin-top: -130px;
+  .ImgEmptyBox {
+    width: 50%;
   }
 
-  .womanTop {
-    width: 289px;
-    height: 366px;
-    margin-bottom: 30px;
+  .soapTopBox {
+    width: 52%;
+    margin-top: 0;
+
+    .soapTop {
+      width: 100%;
+    }
   }
 
-  .sampleTop {
-    margin-top: -100px;
-    margin-bottom: 80px;
-    margin-right: -100px;
-    height: 685px;
-    width: 580px;
+  .womanTopBox {
+    width: 20%;
+    margin-top: 200px;
+
+    .womanTop {
+      width: 100%;
+    }
   }
 
-  .bathRoom {
-    height: 890px;
-    width: 688px;
-    margin-bottom: -120px;
+  .sampleTopBox {
+    margin-top: 0;
+    width: 40%;
+
+    .sampleTop {
+      width: 100%;
+    }
   }
 
-  .sampleBottom {
-    height: 840px;
-    width: 715px;
+  .bathRoomBox {
+    width: 50%;
+
+    .bathRoom {
+      width: 100%;
+    }
   }
 
-  .cream {
-    height: 330px;
-    width: 290px;
-    // position: absolute;
-    // right: auto;
+  .sampleBottomBox {
+    width: 52%;
+    margin-top: 50px;
+
+    .sampleBottom {
+      width: 100%;
+    }
   }
 
-  .womanBottom {
-    height: 900px;
-    width: 730px;
-    margin-top: -100px;
+  .creamBox {
+    position: absolute;
+    left: 10%;
+    width: 50%;
+
+    // display: block;
+    .cream {
+      width: 50%;
+    }
   }
 
-  .twotone {
-    margin-top: -50px;
-    height: 610px;
-    width: 570px;
+  .womanBottomBox {
+    width: 50%;
+    margin-top: 0;
+    position: absolute;
+    right: 0;
+
+    .womanBottom {
+      width: 100%;
+    }
+  }
+
+  .twotoneBox {
+    width: 40%;
+    position: absolute;
+    left: 0;
+    top: 1000px;
+
+    .twotone {
+      width: 100%;
+    }
   }
 }
