@@ -1,8 +1,7 @@
-import React, { Component, useRef } from 'react';
+import React, { Component } from 'react';
 import './Scroll.scss';
 import { Link } from 'react-router-dom';
 import { ScrollRotate } from 'react-scroll-rotate';
-import { func } from 'prop-types';
 
 class Scroll extends Component {
   scrollRotate = () => {
