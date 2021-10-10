@@ -1,26 +1,35 @@
 import React, { Component, useRef } from 'react';
 import './Scroll.scss';
 import { Link } from 'react-router-dom';
+import { ScrollRotate } from 'react-scroll-rotate';
+import { func } from 'prop-types';
 
 class Scroll extends Component {
-  // function RogoEvent () {
-  //   const scroll = useRef(null);
-
-  // function handleScroll() {
-  //   window.addEventListener('scroll', () => {
-  //     const value = window.scrollY;
-  //     scroll.current.style.middle = value + 'px';
-  //   })
-
-  //   }
-  // }
-
+  scrollRotate = () => {
+    console.log('ing...');
+    const image = document.querySelector('.rogoScroll');
+    image.style.transform = 'rotate(' + window.pageYOffset / 2 + 'deg)';
+  };
+  componentDidMount = () => {
+    window.addEventListener('onscroll', ScrollRotate);
+  };
   render() {
+    console.log('render...');
+    // window.onscroll = function () {
+    //   ScrollRotate();
+    // };
+
     return (
       <section className="scrollSection">
         <div className="rogoScrollBox">
           <Link to="/">
-            <img alt="rogoScroll" src="/images/LogoScroll.png" />
+            <img
+              // ref={ scroll }
+              onScroll={ScrollRotate}
+              alt="rogoScroll"
+              src="/images/LogoScroll.png"
+              className="rogoScroll"
+            />
           </Link>
         </div>
       </section>

@@ -1,15 +1,8 @@
 import React, { Component } from 'react';
-import './Img.scss';
 import { Link } from 'react-router-dom';
+import './ImgList.scss';
 
-class Img extends Component {
-  // constructor() {
-  //   super();
-  //   this.state({
-
-  //   });
-  // }
-
+class ImgList extends Component {
   render() {
     return (
       <section className="imgSection">
@@ -133,4 +126,4 @@ class Img extends Component {
   }
 }
 
-export default Img;
+export default ImgList;

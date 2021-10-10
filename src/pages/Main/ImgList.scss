@@ -2,13 +2,13 @@
   img {
     object-fit: cover;
   }
-
+  //최상위 부모 div
   .mainImgPBox {
     display: flex;
     justify-content: space-around;
     position: relative;
   }
-
+  // text div감싸고 있는 div
   .textBox {
     margin: 135px 0;
 
@@ -32,6 +32,7 @@
     }
   }
 
+  //text div
   .leftTextBox,
   .rightTextBox {
     position: absolute;
@@ -48,26 +49,27 @@
   }
 
   .leftTextBox {
-    top: 350px;
-    left: 90px;
+    top: 600px;
+    left: 140px;
   }
 
   .rightTextBox {
     top: 340px;
-    right: 200px;
+    right: 250px;
   }
 
+  //상품 제목만 있는 text div
   .shortTextBox {
     position: absolute;
     text-align: center;
     opacity: 0;
     letter-spacing: 1px;
     line-height: 1.5;
-    top: 660px;
-    left: 270px;
+    top: 700px;
+    left: 320px;
     color: rgb(27, 61, 30);
   }
-
+  //빈 div
   .ImgEmptyBox {
     width: 50%;
   }
