@@ -1,0 +1,33 @@
+.productCategory {
+  margin-bottom: 50px;
+
+  .category {
+    overflow: hidden;
+    margin: 15px 0;
+    padding: 15px 0;
+    max-height: 30px;
+    border-top: 1px solid black;
+    transition: max-height 0.5s ease-out;
+    font-size: 15px;
+    cursor: pointer;
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .context {
+      margin-top: 30px;
+
+      *:not(:last-child) {
+        padding-bottom: 20px;
+      }
+    }
+
+    // 동적으로 max-heigth를 설정한다면 훨씬 매끄러울 것.
+    &.focus {
+      max-height: 100vh;
+      transition: max-height 0.9s ease-out;
+    }
+  }
+}
