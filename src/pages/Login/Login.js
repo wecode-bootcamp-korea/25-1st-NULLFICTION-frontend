@@ -57,7 +57,6 @@ export default class Login extends Component {
   };
 
   render() {
-    const { id, pw } = this.state;
     return (
       <main className="Login">
         <div className="container">
