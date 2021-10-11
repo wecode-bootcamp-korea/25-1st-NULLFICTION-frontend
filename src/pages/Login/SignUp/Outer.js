@@ -6,7 +6,7 @@ class Outer extends Component {
   render() {
     const { label, eventLabel, image } = this.props;
     return (
-      <div className="another-join">
+      <div className="other-join">
         <label>{label}</label>
         <div className="outerApi">
           <img src={image} alt="kakaoImage" />

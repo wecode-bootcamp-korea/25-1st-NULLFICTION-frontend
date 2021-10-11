@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import '../Input/Input.scss';
 
-class Input extends Component {
+export default class Input extends Component {
   render() {
-    const { name, label, type, placeholder, handleButton, getInputValue } =
+    const { name, label, type, placeholder, handleButton, handleInput } =
       this.props;
     return (
       <div className="input-inner">
@@ -12,11 +12,9 @@ class Input extends Component {
           name={name}
           type={type}
           placeholder={placeholder}
-          onChange={getInputValue}
-          // onKeyPress={handleButton}
+          onChange={handleInput}
         />
       </div>
     );
   }
 }
-export default Input;
