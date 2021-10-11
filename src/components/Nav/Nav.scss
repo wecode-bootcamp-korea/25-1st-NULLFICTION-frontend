@@ -34,35 +34,12 @@
     color: black;
   }
 
+  //menu
   .menuBox {
     position: absolute;
-
+    position: fixed;
     width: 200px;
     height: 300px;
-  }
-
-  .searchBox {
-    width: 100%;
-    border-bottom: 1px solid black;
-  }
-
-  .search {
-    width: 100%;
-    border: none;
-    margin-top: 5px;
-
-    &::placeholder {
-      color: black;
-      font-size: 18px;
-    }
-  }
-
-  input:focus::placeholder {
-    color: transparent;
-  }
-
-  //menu
-  .menu {
     a {
       color: black;
       line-height: 1.5;
@@ -76,6 +53,26 @@
     ul {
       margin-left: 13px;
       // transition: ease 2s;
+    }
+  }
+
+  .searchBox {
+    width: 100%;
+    border-bottom: 1px solid black;
+
+    .search {
+      width: 100%;
+      margin-top: 5px;
+      border: none;
+
+      &::placeholder {
+        color: black;
+        font-size: 18px;
+      }
+    }
+
+    input:focus::placeholder {
+      color: transparent;
     }
   }
 }
