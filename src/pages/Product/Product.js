@@ -15,7 +15,7 @@ class Product extends Component {
   }
 
   componentDidMount() {
-    fetch('http://10.58.7.37:8000/products', {})
+    fetch('http://192.168.1.229:8000/products', {})
       .then(res => res.json())
       .then(data => {
         console.log(data);

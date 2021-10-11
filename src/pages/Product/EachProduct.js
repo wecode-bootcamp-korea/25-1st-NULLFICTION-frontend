@@ -18,13 +18,28 @@ class EachProduct extends Component {
 
   render() {
     const { isPopupOn } = this.state;
-    const { image, name, collection, size_ml, size_oz, price, description } =
-      this.props;
+    const {
+      id,
+      image,
+      name,
+      collection,
+      size_ml,
+      size_oz,
+      price,
+      description,
+    } = this.props;
     return (
       <li className="eachProduct">
         <img src={image} alt="productImage" />
         <div className="thumbnailInfo">
-          <Link to="/product/detail">
+          <Link
+            to={{
+              pathname: '/product/detail',
+              state: {
+                id,
+              },
+            }}
+          >
             <h3>
               <div>{name}</div>
               <div>{collection}</div>
