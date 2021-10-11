@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Input from '../Input/Input';
 import '../BirthDay/BirthDay.scss';
 
 class BirthDay extends Component {

@@ -88,7 +88,7 @@ class Join extends Component {
 
   render() {
     console.log(this.state);
-    const { year, month, date, numOne, numTwo, numThree } = this.state;
+    const { year, month, date } = this.state;
     return (
       <main className="Join">
         <div className="container">
@@ -124,7 +124,6 @@ class Join extends Component {
               maxLength="6"
               handleInput={this.handleInput}
             />
-
             <Mobile
               name="num"
               label="Mobile"
@@ -139,7 +138,6 @@ class Join extends Component {
               ]}
               handleMobileInput={this.handleMobileInput}
             />
-
             <Input
               name="email"
               type="email"
