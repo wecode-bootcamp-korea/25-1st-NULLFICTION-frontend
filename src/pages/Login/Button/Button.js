@@ -4,22 +4,11 @@ import '../Button/Button.scss';
 
 class Button extends Component {
   render() {
-    const {
-      name,
-      label,
-      color,
-      handleButton,
-      findUserID,
-      goToMain,
-      goToSignUp,
-    } = this.props;
+    const { name, label, signUpColor, findUserID, goToMain } = this.props;
     return (
       <div className="btn">
         <label>{label}</label>
-        <button
-          className={color + (handleButton ? ' buttonOn' : ' buttonOff')}
-          onClick={(goToMain, goToSignUp)}
-        >
+        <button className={signUpColor} onClick={goToMain}>
           {name}
         </button>
         <Link to="#">

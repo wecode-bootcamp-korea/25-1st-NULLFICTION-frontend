@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import Input from './Input/Input';
 import Button from './Button/Button';
 import Outer from './SignUp/Outer';
+import { LOGIN_API } from '../Login/config.js';
 import './Login.scss';
 
 export default class Login extends Component {
@@ -26,10 +28,10 @@ export default class Login extends Component {
       (id.length < 4 || id.length > 12) &&
       (pw.length < 8 || pw.length >= 12)
     ) {
-      fetch('http://10.58.7.78:8000/users/signin', {
+      fetch(`${LOGIN_API}`, {
         method: 'POST',
         body: JSON.stringify({
-          user_id: id,
+          username: id,
           password: pw,
         }),
       })
@@ -56,10 +58,6 @@ export default class Login extends Component {
 
   render() {
     const { id, pw } = this.state;
-    const handleButton = !(
-      (id.length < 8 || id.length >= 12) &&
-      (pw.length < 8 || pw.length >= 12)
-    );
     return (
       <main className="Login">
         <div className="container">
@@ -82,26 +80,28 @@ export default class Login extends Component {
             <Button
               name="Login"
               findUserID="Forgotten ID or Password"
-              handleButton={handleButton}
               goToMain={this.goToMain}
             />
           </form>
           <form className="join-inner">
-            <Button
-              name="Sign Up"
-              label="아직 회원이 아니세요?"
-              color="signUpColor"
-              goToSignUp={this.goToSignUp}
-            />
+            <Link className="goTosignUp" to="/member/join">
+              <Button
+                name="Sign Up"
+                label="아직 회원이 아니세요?"
+                signUpColor="signUpColor"
+              />
+            </Link>
             <Outer
               label="간편 로그인"
               image="../images/Login/kakao.png"
-              alt="kakaoImage"
+              alt="Kakaotalk"
+              title="Kakaotalk"
             />
             <Outer
               eventLabel="회원가입 시 3,000원 쿠폰 지급 및 무료 선물 포장 제공"
               image="../images/Login/naver.png"
-              alt="naverImage"
+              alt="Naver"
+              title="Naver"
             />
           </form>
         </div>

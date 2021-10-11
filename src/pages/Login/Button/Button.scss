@@ -11,19 +11,17 @@
     line-height: 50px;
     text-align: center;
     font-size: 16px;
-
+    color: black;
+    background-color: white;
     border: 1px solid black;
     cursor: pointer;
     font-family: 'Arial, Helvetica, sans-serif';
     transition: all 0.3s ease;
-  }
-  .buttonOn {
-    color: white;
-    background-color: black;
-  }
-  .buttonOff {
-    color: black;
-    background-color: white;
+
+    &:hover {
+      background-color: black;
+      color: white;
+    }
   }
   .signUpColor {
     color: white;
