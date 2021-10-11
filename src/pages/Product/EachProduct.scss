@@ -1,6 +1,5 @@
 .eachProduct {
   display: inline-block;
-  margin: 0;
   padding: 25px;
 
   img {
@@ -18,7 +17,7 @@
       outline: none;
       color: black;
 
-      div {
+      .productName {
         margin-bottom: 5px;
       }
     }
@@ -27,7 +26,6 @@
       margin: 20px 0 10px 0;
       display: flex;
       justify-content: space-between;
-      width: 400px;
 
       .mensuration {
         font-size: 12px;
@@ -76,7 +74,6 @@
     }
 
     .popupWrapperOn {
-      display: block;
       position: fixed;
       top: 0;
       left: 0;
@@ -115,10 +112,9 @@
         }
 
         .popupContent {
-          width: 600px;
-
           .popupContentElement {
             padding: 20px 25px 14px;
+            width: 600px;
 
             h2 {
               padding-bottom: 20px;
@@ -134,7 +130,7 @@
                 height: 80px;
               }
 
-              div {
+              .popupProductContent {
                 display: inline-block;
                 position: relative;
                 top: -70px;
@@ -151,13 +147,11 @@
               }
             }
 
-            .totalProducts {
-              .popupOptionDescription {
-                padding: 2px 9px 50px;
-                border-bottom: 1px solid rgb(154, 155, 160);
-                color: red;
-                font-size: 13px;
-              }
+            .popupOptionDescription {
+              padding: 2px 9px 50px;
+              border-bottom: 1px solid rgb(154, 155, 160);
+              color: red;
+              font-size: 13px;
             }
           }
         }

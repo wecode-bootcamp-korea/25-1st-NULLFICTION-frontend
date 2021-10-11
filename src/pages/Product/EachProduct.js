@@ -41,7 +41,7 @@ class EachProduct extends Component {
             }}
           >
             <h3>
-              <div>{name}</div>
+              <div className="productName">{name}</div>
               <div>{collection}</div>
             </h3>
           </Link>
@@ -57,13 +57,13 @@ class EachProduct extends Component {
           </div>
           <p className="productDescription">{description}</p>
           <input type="checkbox" id="popup" onClick={this.togglePopup}></input>
-          <label for="popup" id="buttonForPopup">
+          <label htmlFor="popup" id="buttonForPopup">
             Add to Cart
           </label>
           <div className={isPopupOn ? 'popupWrapperOn' : 'popupWrapperOff'}>
             <div className="popupBackground">
               <div className="popupHeader">옵션 선택</div>
-              <label for="popup" id="buttonForClose">
+              <label htmlFor="popup" id="buttonForClose">
                 ✕
               </label>
               <div className="popupContent">
@@ -74,7 +74,7 @@ class EachProduct extends Component {
                       src="./images/product/product.jpg"
                       alt="productImage"
                     />
-                    <div>
+                    <div className="popupProductContent">
                       <span>엽서</span>
                       <select>
                         Select
@@ -100,7 +100,7 @@ class EachProduct extends Component {
                 </div>
               </div>
             </div>
-            <label for="popup" id="backgroundClickClose"></label>
+            <label htmlFor="popup" id="backgroundClickClose"></label>
           </div>
         </div>
       </li>

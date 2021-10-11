@@ -18,7 +18,6 @@ class Product extends Component {
     fetch('http://192.168.1.229:8000/products', {})
       .then(res => res.json())
       .then(data => {
-        console.log(data);
         this.setState({
           productList: data.result,
         });
