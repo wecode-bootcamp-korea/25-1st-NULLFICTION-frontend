@@ -3,11 +3,16 @@ import '../CheckBox/CheckBox.scss';
 
 class CheckBox extends Component {
   render() {
-    const { label, handleChange } = this.props;
+    const { idx, label, handleClickChange } = this.props;
     return (
       <p className="check">
         <label>{label}</label>
-        <input type="checkbox" onClick={handleChange}></input>
+        <input
+          name={`check${idx}`}
+          type="checkbox"
+          onClick={handleClickChange}
+          value={true}
+        ></input>
         <span>동의함</span>
       </p>
     );

@@ -4,19 +4,38 @@ import '../Mobile/Mobile.scss';
 
 class Mobile extends Component {
   render() {
+    const { idx, label, name, options, handleInput, handleMobileInput } =
+      this.props;
     return (
       <li className="mobile">
-        <label>Mobile</label>
+        <label>{label}</label>
         <div className="mobile-input-inner">
-          <select className="mobileNum">
-            <option>010</option>
-            <option>011</option>
-            <option>016</option>
-            <option>017</option>
-            <option>018</option>
+          <select
+            className="mobileNum"
+            name="num1"
+            onChange={handleMobileInput}
+          >
+            {options.map(el => {
+              return (
+                <option key={el.id} value={el.value}>
+                  {el.option}
+                </option>
+              );
+            })}
           </select>
-          <input type="text" maxLength="4"></input>
-          <input type="text" maxLength="4"></input>
+          <input
+            name="num2"
+            type="text"
+            maxLength="4"
+            onChange={handleMobileInput}
+          ></input>
+
+          <input
+            name="num3"
+            type="text"
+            maxLength="4"
+            onChange={handleMobileInput}
+          ></input>
         </div>
         <span></span>
       </li>

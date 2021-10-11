@@ -16,13 +16,11 @@ class Join extends Component {
       year: '',
       month: '',
       date: '',
-      numOne: '',
-      numTwo: '',
-      numThree: '',
       id: '',
       pw: '',
       pwCheck: '',
-      check: false,
+      mobile: { num1: '', num2: '', num3: '' },
+      checkList: { check1: false, check2: false, check3: false },
     };
   }
 
@@ -33,42 +31,55 @@ class Join extends Component {
     });
   };
 
-  handleChange = () => {
-    const { check } = this.state;
+  handleClickChange = e => {
+    const { checkList } = this.state;
+    const { name } = e.target;
     this.setState({
-      check: !check,
+      checkList: {
+        ...checkList,
+        [name]: !checkList[name],
+      },
+    });
+  };
+
+  handleMobileInput = e => {
+    const { mobile } = this.state;
+    const { name, value } = e.target;
+    this.setState({
+      mobile: {
+        ...mobile,
+        [name]: value,
+      },
     });
   };
 
   signUp = () => {
     const {
-      id,
-      pw,
+      id: username,
+      pw: password,
       name,
       email,
       mobile,
       year,
       month,
       date,
-      numOne,
-      numTwo,
-      numThree,
     } = this.state;
-    fetch('http://10.58.7.78:8000/users/signup', {
+    fetch('http://192.168.1.147:8000/users/signup', {
       method: 'POST',
       body: JSON.stringify({
-        user_id: id,
-        password: pw,
-        name: name,
-        email: email,
-        birthday: year + '-' + month + '-' + date,
-        mobile: numOne + '-' + numTwo + '-' + numThree,
+        username,
+        password,
+        name,
+        email,
+        birthday: `${year}-${month}-${date}`,
+        mobile: `${mobile.num1}${mobile.num2}${mobile.num3}`,
       }),
     })
       .then(response => response.json())
       .then(response => {
         if (response.message === 'SUCCESS') {
-          this.props.history.push('/login');
+          alert('회원가입 축하드립니다.');
+          this.props.goToLogin('login');
         } else {
           alert('이미 가입된 이메일 입니다.');
         }
@@ -114,33 +125,21 @@ class Join extends Component {
               handleInput={this.handleInput}
             />
 
-            <li className="mobile">
-              <label>Mobile</label>
-              <div className="mobile-input-inner">
-                <select className="mobileNum" name="numOne">
-                  <option>010</option>
-                  <option>011</option>
-                  <option>016</option>
-                  <option>017</option>
-                  <option>018</option>
-                </select>
-                <input
-                  name="numTwo"
-                  type="tel"
-                  maxLength="4"
-                  value={numTwo}
-                  onChange={this.handleInput}
-                ></input>
-                <input
-                  name="numThree"
-                  type="tel"
-                  maxLength="4"
-                  value={numThree}
-                  onChange={this.handleInput}
-                ></input>
-              </div>
-              <span></span>
-            </li>
+            <Mobile
+              name="num"
+              label="Mobile"
+              options={[
+                { id: '0', option: '선택' },
+                { id: '1', option: '010' },
+                { id: '2', option: '011' },
+                { id: '3', option: '016' },
+                { id: '4', option: '017' },
+                { id: '5', option: '018' },
+                { id: '6', option: '019' },
+              ]}
+              handleMobileInput={this.handleMobileInput}
+            />
+
             <Input
               name="email"
               type="email"
@@ -155,7 +154,6 @@ class Join extends Component {
                 type="text"
                 placeholder="YYYY"
                 maxLength="4"
-                value={year}
                 onChange={this.handleInput}
               />
               <input
@@ -163,7 +161,6 @@ class Join extends Component {
                 type="text"
                 placeholder="MM"
                 maxLength="2"
-                value={month}
                 onChange={this.handleInput}
               />
               <input
@@ -171,23 +168,21 @@ class Join extends Component {
                 type="text"
                 placeholder="DD"
                 maxLength="2"
-                value={date}
                 onChange={this.handleInput}
               />
             </li>
           </ul>
           <div className="register-agreement">
             {UESR_INFO.map(data => {
-              const { id, name, label, text, check } = data;
+              const { id, name, label, text } = data;
               return (
                 <Agreement
                   key={id}
-                  id={id}
+                  idx={id}
                   name={name}
                   label={label}
                   text={text}
-                  check={check}
-                  handleChange={this.handleChange}
+                  handleClickChange={this.handleClickChange}
                 />
               );
             })}

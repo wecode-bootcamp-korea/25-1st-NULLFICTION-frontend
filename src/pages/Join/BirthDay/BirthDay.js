@@ -3,13 +3,6 @@ import Input from '../Input/Input';
 import '../BirthDay/BirthDay.scss';
 
 class BirthDay extends Component {
-  // componentDidMount() {
-  //   const { value } = this.state;
-  //   this.setState({
-  //     birthDayBox: value,
-  //   });
-  // }
-
   render() {
     const { label, maxlangth, getInputValue } = this.props;
     return (

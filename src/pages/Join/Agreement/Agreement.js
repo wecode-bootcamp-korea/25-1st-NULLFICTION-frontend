@@ -5,7 +5,8 @@ import '../Agreement/Agreement.scss';
 
 class Agreement extends Component {
   render() {
-    const { name, label, text, handleChange } = this.props;
+    const { idx, name, label, text, handleClickChange } = this.props;
+
     return (
       <div className="Agreement">
         <div className="agreement-title">
@@ -13,7 +14,11 @@ class Agreement extends Component {
           <span className="read">READ</span>
         </div>
         <Check text={text} />
-        <CheckBox label={label} handleChange={handleChange} />
+        <CheckBox
+          idx={idx}
+          label={label}
+          handleClickChange={handleClickChange}
+        />
       </div>
     );
   }
