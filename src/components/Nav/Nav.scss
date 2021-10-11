@@ -16,7 +16,7 @@
 
   .navLogo {
     width: 150px;
-    height: 74px;
+    height: 80px;
   }
 
   .topUl {
@@ -34,10 +34,9 @@
     color: black;
   }
 
-  .menu {
+  .menuBox {
     position: absolute;
-    display: flex;
-    align-items: flex-end;
+
     width: 200px;
     height: 300px;
   }
@@ -50,10 +49,33 @@
   .search {
     width: 100%;
     border: none;
+    margin-top: 5px;
 
     &::placeholder {
       color: black;
       font-size: 18px;
+    }
+  }
+
+  input:focus::placeholder {
+    color: transparent;
+  }
+
+  //menu
+  .menu {
+    a {
+      color: black;
+      line-height: 1.5;
+      font-size: 18px;
+      letter-spacing: normal;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+    ul {
+      margin-left: 13px;
+      // transition: ease 2s;
     }
   }
 }
