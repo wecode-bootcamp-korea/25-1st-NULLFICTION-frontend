@@ -7,8 +7,8 @@
     padding: 15px 0;
     max-height: 30px;
     border-top: 1px solid black;
-    font-size: 15px;
     transition: max-height 0.5s ease-out;
+    font-size: 15px;
     cursor: pointer;
 
     .header {
@@ -16,14 +16,18 @@
       justify-content: space-between;
     }
 
-    // 동적으로 max-heigth를 설정한다면 훨씬 매끄러울 것.
-    &.on {
-      max-height: 100vh;
-      transition: max-height 0.9s ease-out;
-    }
-
     .context {
       margin-top: 30px;
+
+      *:not(:last-child) {
+        padding-bottom: 20px;
+      }
+    }
+
+    // 동적으로 max-heigth를 설정한다면 훨씬 매끄러울 것.
+    &.focus {
+      max-height: 100vh;
+      transition: max-height 0.9s ease-out;
     }
   }
 }

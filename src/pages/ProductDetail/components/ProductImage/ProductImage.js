@@ -1,52 +1,147 @@
 import React, { Component } from 'react';
 import './ProductImage.scss';
 
+const IMAGE_WIDTH = 550;
+const MIN_GAP = IMAGE_WIDTH * 0.1; // 1/10 만큼 이동하면 다음 이미지로
+
 class ProductImage extends Component {
   constructor() {
     super();
     this.state = {
-      curImageIdx: 0,
+      focusIdx: 0,
     };
+    // 드래그 관련 Ref
+    this.isDragRef = React.createRef();
+    this.isDragRef.current = false;
+    this.dragPosRef = React.createRef();
+    this.dragPosRef.current = {
+      originPosX: 0,
+      startPosX: 0,
+    };
+    this.imgContainerRef = React.createRef();
   }
 
-  /* idx의 맨 앞,끝에 왔을 때 어떤 방식으로  할지.. 함수를 두개? 아니면 조건을 하나에 다?*/
-  onClick = dir => {
-    let { curImageIdx } = this.state;
+  dragStart = e => {
+    e.preventDefault();
+    if (this.isDragRef.current === false) {
+      const { offsetX: endPosX } = e.nativeEvent;
+      this.isDragRef.current = true;
+      this.dragPosRef.current.prevPosX = endPosX;
+    }
+  };
 
-    dir === 'left'
-      ? this.setState({
-          curImageIdx: --curImageIdx,
-        })
-      : this.setState({
-          curImageIdx: ++curImageIdx,
-        });
+  dragMove = e => {
+    this.isDragRef.current && this.changeImagePos(e);
+  };
+
+  dragEnd = (e, maxPos) => {
+    if (this.isDragRef.current) {
+      const { originPosX, prevPosX } = this.dragPosRef.current;
+      const { offsetX: endPosX } = e.nativeEvent;
+      const gap = endPosX - prevPosX;
+      this.isDragRef.current = false;
+
+      if (
+        (gap <= -MIN_GAP && originPosX !== -(maxPos - IMAGE_WIDTH)) ||
+        (MIN_GAP <= gap && originPosX !== 0)
+      ) {
+        gap > 0
+          ? this.changeImagePos(e, IMAGE_WIDTH)
+          : this.changeImagePos(e, -IMAGE_WIDTH);
+      } else {
+        this.resetImagePos(originPosX);
+      }
+    }
+    this.changeFocusIdx();
+  };
+
+  focusOut = () => {
+    const { originPosX } = this.dragPosRef.current;
+    this.isDragRef.current = false;
+    this.resetImagePos(originPosX);
+  };
+
+  changeImagePos = (e, val = 0) => {
+    const { prevPosX } = this.dragPosRef.current;
+    const { offsetX: nextPosX } = e.nativeEvent;
+
+    this.dragPosRef.current.originPosX =
+      this.dragPosRef.current.originPosX + val;
+    this.imgContainerRef.current.style.transform = val
+      ? `translateX(${this.dragPosRef.current.originPosX}px)`
+      : `translateX(${
+          this.dragPosRef.current.originPosX + (nextPosX - prevPosX)
+        }px)`;
+  };
+
+  resetImagePos = originPosX =>
+    (this.imgContainerRef.current.style.transform = `translateX(${originPosX}px)`);
+
+  changeFocusIdx = () =>
+    this.setState({
+      focusIdx: -this.dragPosRef.current.originPosX / IMAGE_WIDTH,
+    });
+
+  imageListClick = idx => {
+    this.dragPosRef.current.originPosX = -(IMAGE_WIDTH * idx);
+    this.imgContainerRef.current.style.transform = `translateX(${this.dragPosRef.current.originPosX}px)`;
+    this.changeFocusIdx();
   };
 
   render() {
-    const { curImageIdx } = this.state;
-    const { productImageUrl } = this.props;
+    const { imageList } = this.props;
+    const maxPos = IMAGE_WIDTH * imageList.length;
 
     return (
       <section className="productImages">
         <div className="slide">
           <i
             className="fas fa-chevron-left arrow"
-            onClick={() => this.onClick('left')}
+            onClick={e => {
+              this.dragPosRef.current.originPosX &&
+                this.changeImagePos(e, IMAGE_WIDTH);
+              this.changeFocusIdx();
+            }}
           ></i>
-          <div className="imageContainor">
-            <img src={productImageUrl[curImageIdx]} alt="temp1" />
-            <img src={productImageUrl[curImageIdx]} alt="temp2" />
-            <img src={productImageUrl[curImageIdx]} alt="temp3" />
+          <div
+            className="imagesWrapper"
+            onMouseDown={this.dragStart}
+            onMouseMove={this.dragMove}
+            onMouseUp={e => this.dragEnd(e, maxPos)}
+            onMouseLeave={this.focusOut}
+          >
+            <div
+              className={`imageContainer`}
+              ref={this.imgContainerRef}
+              style={{
+                width: `${maxPos}px`,
+              }}
+            >
+              {imageList.map((image, idx) => {
+                return <img src={image} key={idx} alt="temp1" />;
+              })}
+            </div>
           </div>
           <i
             className="fas fa-chevron-right arrow"
-            onClick={() => this.onClick('right')}
+            onClick={e => {
+              this.dragPosRef.current.originPosX !== -(maxPos - IMAGE_WIDTH) &&
+                this.changeImagePos(e, -IMAGE_WIDTH);
+              this.changeFocusIdx();
+            }}
           ></i>
         </div>
-        {/* 데이터 작업 후 알맞은 key 변경 필요 */}
         <div className="list">
-          {productImageUrl.map(image => {
-            return <img src={image} key={image} alt={image}></img>;
+          {imageList.map((image, idx) => {
+            return (
+              <img
+                src={image}
+                key={idx}
+                alt={image}
+                className={this.state.focusIdx === idx ? 'focus' : undefined}
+                onClick={() => this.imageListClick(idx)}
+              ></img>
+            );
           })}
         </div>
       </section>

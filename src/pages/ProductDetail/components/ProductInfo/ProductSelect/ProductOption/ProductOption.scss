@@ -12,8 +12,10 @@
     appearance: none;
     font-size: 12px;
   }
-
-  .fa-arrow-down {
+  optgroup {
+    font-weight: bold;
+  }
+  .fa-chevron-down {
     position: absolute;
     top: 8px;
     right: 5px;
