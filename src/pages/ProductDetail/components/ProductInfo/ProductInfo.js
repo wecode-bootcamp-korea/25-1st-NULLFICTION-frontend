@@ -6,19 +6,19 @@ import './ProductInfo.scss';
 
 class ProductInfo extends Component {
   setSize = sizes => {
-    const UNIT = 0;
+    const CAPACITY = 0;
     for (const size of sizes) {
-      if (size[UNIT]) return size;
+      if (size[CAPACITY]) return size;
     }
+    return [];
   };
 
   stringToHtml = str => {
     const doc = new DOMParser().parseFromString(str, 'text/html');
-    const HTMLArray = [...doc.body.children].map(
+    const htmlArray = [...doc.body.children].map(
       categoryElement => categoryElement.innerHTML
     );
-
-    return HTMLArray;
+    return htmlArray;
   };
 
   render() {
@@ -51,7 +51,7 @@ class ProductInfo extends Component {
           name="scent"
           contextList={this.stringToHtml(scent_description)}
         />
-        <ProductCategory name="ingredient" contextList={ingredient} />
+        <ProductCategory name="ingredient" contextList={[ingredient]} />
         <ProductCategory
           name="infomation"
           contextList={this.stringToHtml(INFOMATION_CONTEXT)}

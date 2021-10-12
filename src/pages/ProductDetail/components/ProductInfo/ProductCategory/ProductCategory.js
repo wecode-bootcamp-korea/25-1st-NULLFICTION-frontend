@@ -11,13 +11,7 @@ class ProductCategory extends Component {
 
   setFocusCategory = category => {
     const { focus } = this.state;
-    focus === category
-      ? this.setState({
-          focus: '',
-        })
-      : this.setState({
-          focus: category,
-        });
+    this.setState({ focus: focus === category ? '' : category });
   };
 
   render() {
@@ -36,18 +30,14 @@ class ProductCategory extends Component {
             <span>{focus === name ? '-' : '+'}</span>
           </div>
           <div className="context">
-            {Array.isArray(contextList) ? (
-              contextList.map((context, idx) => (
-                <div
-                  className={name === 'infomation' ? 'contant' : undefined}
-                  key={idx}
-                >
-                  {context}
-                </div>
-              ))
-            ) : (
-              <div>{contextList}</div>
-            )}
+            {contextList.map((context, idx) => (
+              <div
+                className={`${name === 'infomation' && 'contant'}`}
+                key={idx}
+              >
+                {context}
+              </div>
+            ))}
           </div>
         </div>
       </div>
