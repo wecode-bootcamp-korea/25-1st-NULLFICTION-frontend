@@ -1,6 +1,22 @@
-.agreement-content {
+.agreementContent {
   margin: 10px;
   height: 100px;
   font-size: 11px;
   overflow: scroll;
+  background-color: aqua;
+}
+.clickContentOff {
+  display: none;
+}
+.clickContentOn {
+  display: block;
+  // padding: 20px 60px;
+  // text-align: left;
+  color: #797979;
+  // font-size: 14px;
+  margin: 10px;
+  height: 100px;
+  font-size: 11px;
+  overflow: scroll;
+  background-color: aqua;
 }

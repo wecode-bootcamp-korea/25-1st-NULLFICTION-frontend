@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-import Input from '../Input/Input';
 import '../Mobile/Mobile.scss';
 
 class Mobile extends Component {
   render() {
-    const { idx, label, name, options, handleInput, handleMobileInput } =
-      this.props;
+    const { label, options, handleMobileInput } = this.props;
     return (
       <li className="mobile">
         <label>{label}</label>

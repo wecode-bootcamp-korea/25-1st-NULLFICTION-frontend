@@ -3,7 +3,7 @@ import '../BirthDay/BirthDay.scss';
 
 class BirthDay extends Component {
   render() {
-    const { label, maxlangth, getInputValue } = this.props;
+    const { label } = this.props;
     return (
       <li className="birthDay">
         <label>{label}</label>

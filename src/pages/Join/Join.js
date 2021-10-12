@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Input from './Input/Input';
 import Mobile from './Mobile/Mobile';
-import BirthDay from './BirthDay/BirthDay';
 import Agreement from './Agreement/Agreement';
 import Button from './Button/Button';
 import UESR_INFO from './Agreement/UESR_INFO';
@@ -21,6 +20,7 @@ class Join extends Component {
       pwCheck: '',
       mobile: { num1: '', num2: '', num3: '' },
       checkList: { check1: false, check2: false, check3: false },
+      isAgreementRead: false,
     };
   }
 
@@ -51,6 +51,11 @@ class Join extends Component {
         [name]: value,
       },
     });
+  };
+
+  toggleAgreementRead = () => {
+    const { isAgreementRead } = this.state;
+    this.setState({ isAgreementRead: !isAgreementRead });
   };
 
   signUp = () => {
@@ -85,10 +90,9 @@ class Join extends Component {
         }
       });
   };
-
   render() {
     console.log(this.state);
-    const { year, month, date } = this.state;
+
     return (
       <main className="Join">
         <div className="container">
@@ -181,6 +185,8 @@ class Join extends Component {
                   label={label}
                   text={text}
                   handleClickChange={this.handleClickChange}
+                  isAgreementRead={this.props.isAgreementRead}
+                  toggleAgreementRead={this.toggleAgreementRead}
                 />
               );
             })}

@@ -5,15 +5,26 @@ import '../Agreement/Agreement.scss';
 
 class Agreement extends Component {
   render() {
-    const { idx, name, label, text, handleClickChange } = this.props;
+    const {
+      idx,
+      name,
+      label,
+      text,
+      handleClickChange,
+      isAgreementRead,
+      toggleAgreementRead,
+    } = this.props;
 
+    console.log(this.props.isAgreementRead);
     return (
       <div className="Agreement">
         <div className="agreement-title">
           <h4>{name}</h4>
-          <span className="read">READ</span>
+          <span className="read" onClick={toggleAgreementRead}>
+            READ
+          </span>
         </div>
-        <Check text={text} />
+        <Check text={text} isAgreementRead={isAgreementRead} />
         <CheckBox
           idx={idx}
           label={label}
