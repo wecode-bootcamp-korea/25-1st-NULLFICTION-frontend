@@ -22,8 +22,6 @@ class Join extends Component {
       mobile: { num1: '', num2: '', num3: '' },
       checkList: { check1: false, check2: false, check3: false },
       isAgreementRead: { read1: false, read2: false, read3: false },
-      usingid: false,
-      usingpw: false,
     };
   }
 
@@ -62,12 +60,6 @@ class Join extends Component {
       isAgreementRead: { ...isAgreementRead, [name]: !isAgreementRead[name] },
     });
   };
-  toggleIdCheck = () => {
-    const { idCheck } = this.state;
-    this.setState({
-      idCheck: !idCheck,
-    });
-  };
 
   signUp = () => {
     const {
@@ -104,22 +96,12 @@ class Join extends Component {
   };
 
   render() {
-    const {
-      name,
-      email,
-      mobile,
-      year,
-      month,
-      date,
-      id,
-      pw,
-      pwCheck,
-      checkList,
-    } = this.state;
+    const { name, email, mobile, year, month, date, id, pw, pwCheck } =
+      this.state;
     const checkForm = pw => {
-      // const num = /[0-9]/;
-      // const str = /[a-zA-Z]/;
-      // const special = /[~!@#$%^&*()_+|<>?:{}]/;
+      const num = /[0-9]/;
+      const str = /[a-zA-Z]/;
+      const special = /[~!@#$%^&*()_+|<>?:{}]/;
       const formCheck =
         name &&
         email.includes('@') &&
@@ -130,6 +112,9 @@ class Join extends Component {
         month < 13 &&
         date > 0 &&
         date < 32 &&
+        num.test(pw) &&
+        str.test(pw) &&
+        special.test(pw) &&
         id &&
         pw.length >= 8 &&
         pwCheck === pw;
