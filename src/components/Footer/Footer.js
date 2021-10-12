@@ -3,105 +3,24 @@ import { Link } from 'react-router-dom';
 import './Footer.scss';
 
 class Footer extends Component {
-  constructor() {
-    super();
-    this.state = {
-      giftList: [
-        {
-          src: '/',
-          title: '공식 온라인',
-        },
-        {
-          src: '/',
-          title: '스토어 혜택',
-        },
-        {
-          src: '/',
-          title: '무료 시향지 신청',
-        },
-      ],
-      infoList: [
-        {
-          src: '',
-          title: '배송 & 교환/반품',
-        },
-        {
-          src: '',
-          title: '이용약관',
-        },
-        {
-          src: '',
-          title: '개인정보 보호정책',
-        },
-        {
-          src: '',
-          title: '적립금안내',
-        },
-        {
-          src: '',
-          title: '주문조회',
-        },
-      ],
-      contactList: [
-        {
-          src: '',
-          title: '문의하기',
-        },
-        {
-          src: '',
-          title: '자주묻는 질문',
-        },
-        {
-          src: '',
-          title: '공지사항',
-        },
-        {
-          src: '',
-          title: '고객 센터',
-        },
-        {
-          src: '',
-          title: '매장안내',
-        },
-      ],
-      socialList: [
-        {
-          src: '',
-          title: 'Instagram',
-        },
-        {
-          src: '',
-          title: 'Facebook',
-        },
-        {
-          src: '',
-          title: 'Printerest',
-        },
-        {
-          src: '',
-          title: 'Kakao',
-        },
-      ],
-    };
-  }
   render() {
     return (
-      <footer>
+      <footer className="Footer">
         <article>
           <section>
             {/* <div className="leftBox"> */}
             <ul className="firstWrapBox">
               CUSTOMER SERVICE
               <li className="number">
-                <i class="fas fa-phone-alt"></i>
+                <i className="fas fa-phone-alt" />
                 1666-7891
               </li>
               <li className="time">
-                <i class="far fa-clock"></i>
+                <i className="far fa-clock" />
                 10:00 ~ 17:00 (Lunch Time 12:00 ~ 13:30)
               </li>
               <li className="day">
-                <i class="fas fa-check"></i>
+                <i className="fas fa-check" />
                 토, 일요일 및 공휴일 휴무
               </li>
             </ul>
@@ -109,7 +28,7 @@ class Footer extends Component {
             {/* <div className="rightBox"> */}
             <ul className="wrapBox">
               GIFT
-              {this.state.giftList.map((list, index) => {
+              {giftList.map((list, index) => {
                 return (
                   <li className="text" key={index}>
                     <Link to={list.src}>{list.title}</Link>
@@ -120,7 +39,7 @@ class Footer extends Component {
 
             <ul className="wrapBox">
               INFO
-              {this.state.infoList.map((list, index) => {
+              {infoList.map((list, index) => {
                 return (
                   <li className="text" key={index}>
                     <Link to={list.src}>{list.title}</Link>
@@ -131,7 +50,7 @@ class Footer extends Component {
 
             <ul className="wrapBox">
               CONTACT US
-              {this.state.contactList.map((list, index) => {
+              {contactList.map((list, index) => {
                 return (
                   <li className="text" key={index}>
                     <Link to={list.src}>{list.title}</Link>
@@ -142,7 +61,7 @@ class Footer extends Component {
 
             <ul className="wrapBox">
               SOCIAL
-              {this.state.socialList.map((list, index) => {
+              {socialList.map((list, index) => {
                 return (
                   <li className="text" key={index}>
                     <Link to={list.src}>{list.title}</Link>
@@ -167,3 +86,83 @@ class Footer extends Component {
 }
 
 export default Footer;
+
+const giftList = [
+  {
+    src: '/',
+    title: '공식 온라인',
+  },
+  {
+    src: '/',
+    title: '스토어 혜택',
+  },
+  {
+    src: '/',
+    title: '무료 시향지 신청',
+  },
+];
+
+const infoList = [
+  {
+    src: '',
+    title: '배송 & 교환/반품',
+  },
+  {
+    src: '',
+    title: '이용약관',
+  },
+  {
+    src: '',
+    title: '개인정보 보호정책',
+  },
+  {
+    src: '',
+    title: '적립금안내',
+  },
+  {
+    src: '',
+    title: '주문조회',
+  },
+];
+
+const contactList = [
+  {
+    src: '',
+    title: '문의하기',
+  },
+  {
+    src: '',
+    title: '자주묻는 질문',
+  },
+  {
+    src: '',
+    title: '공지사항',
+  },
+  {
+    src: '',
+    title: '고객 센터',
+  },
+  {
+    src: '',
+    title: '매장안내',
+  },
+];
+
+const socialList = [
+  {
+    src: '',
+    title: 'Instagram',
+  },
+  {
+    src: '',
+    title: 'Facebook',
+  },
+  {
+    src: '',
+    title: 'Printerest',
+  },
+  {
+    src: '',
+    title: 'Kakao',
+  },
+];

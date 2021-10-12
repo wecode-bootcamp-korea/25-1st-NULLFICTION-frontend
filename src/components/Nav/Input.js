@@ -11,11 +11,11 @@ class Input extends Component {
   }
 
   componentDidMount() {
-    fetch(`'127.0.0.1:8000/products?keyword=${this.result}'`)
-      .then(res => res.json())
-      .then(res => {
-        this.setState({ products: res });
-      });
+    // fetch(`http://localhost:8000/products?keyword=${this.result}`)
+    //   .then(res => res.json())
+    //   .then(res => {
+    //     this.setState({ products: res });
+    //   });
   }
 
   handleChange = e => {

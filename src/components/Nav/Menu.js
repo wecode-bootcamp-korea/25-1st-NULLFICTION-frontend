@@ -8,77 +8,22 @@ class Menu extends Component {
     this.state = {
       isShopHovered: false,
       isAboutHovered: false,
-      shopList: [
-        {
-          link: '/product',
-          text: 'SHOP ALL',
-        },
-        {
-          link: '/',
-          text: 'BEST SELLER',
-        },
-        {
-          link: '/',
-          text: 'PERFUME',
-        },
-        {
-          link: '/',
-          text: 'BODY CARE',
-        },
-        {
-          link: '/',
-          text: 'HAND CARE',
-        },
-        {
-          link: '/',
-          text: 'LIP CARE',
-        },
-        {
-          link: '/',
-          text: 'HOME OBJECTS',
-        },
-        {
-          link: '/',
-          text: 'GIFT SET',
-        },
-        {
-          link: '/',
-          text: 'ACC',
-        },
-      ],
-      aboutList: [
-        {
-          link: '/',
-          text: 'OUR STORY',
-        },
-        {
-          link: '/',
-          text: 'PRESS',
-        },
-        {
-          link: '/',
-          text: 'CAMPAIGN',
-        },
-      ],
     };
   }
 
   render() {
+    const { isShopHovered, isAboutHovered } = this.state;
     return (
       <div className="menu">
         <div
           className="category wrapBox"
-          onMouseEnter={() =>
-            this.setState({ isShopHovered: !this.state.isShopHovered })
-          }
-          onMouseLeave={() =>
-            this.setState({ isShopHovered: !this.state.isShopHovered })
-          }
+          onMouseEnter={() => this.setState({ isShopHovered: !isShopHovered })}
+          onMouseLeave={() => this.setState({ isShopHovered: !isShopHovered })}
         >
           <Link to="/">SHOP</Link>
-          {this.state.isShopHovered && (
+          {isShopHovered && (
             <ul className="shopCloseBox">
-              {this.state.shopList.map((list, index) => {
+              {shopList.map((list, index) => {
                 return (
                   <li className="shopClose" key={index}>
                     <Link to={list.link}>{list.text}</Link>
@@ -91,16 +36,16 @@ class Menu extends Component {
         <div
           className="category wrapBox"
           onMouseEnter={() =>
-            this.setState({ isAboutHovered: !this.state.isAboutHovered })
+            this.setState({ isAboutHovered: !isAboutHovered })
           }
           onMouseLeave={() =>
-            this.setState({ isAboutHovered: !this.state.isAboutHovered })
+            this.setState({ isAboutHovered: !isAboutHovered })
           }
         >
           <Link to="/">ABOUT</Link>
-          {this.state.isAboutHovered && (
+          {isAboutHovered && (
             <ul className="aboutCloseBox">
-              {this.state.aboutList.map((list, index) => {
+              {aboutList.map((list, index) => {
                 return (
                   <li className="shopClose" key={index}>
                     <Link to={list.link}>{list.text}</Link>
@@ -123,3 +68,57 @@ class Menu extends Component {
 }
 
 export default Menu;
+
+const shopList = [
+  {
+    link: '/product',
+    text: 'SHOP ALL',
+  },
+  {
+    link: '/',
+    text: 'BEST SELLER',
+  },
+  {
+    link: '/',
+    text: 'PERFUME',
+  },
+  {
+    link: '/',
+    text: 'BODY CARE',
+  },
+  {
+    link: '/',
+    text: 'HAND CARE',
+  },
+  {
+    link: '/',
+    text: 'LIP CARE',
+  },
+  {
+    link: '/',
+    text: 'HOME OBJECTS',
+  },
+  {
+    link: '/',
+    text: 'GIFT SET',
+  },
+  {
+    link: '/',
+    text: 'ACC',
+  },
+];
+
+const aboutList = [
+  {
+    link: '/',
+    text: 'OUR STORY',
+  },
+  {
+    link: '/',
+    text: 'PRESS',
+  },
+  {
+    link: '/',
+    text: 'CAMPAIGN',
+  },
+];

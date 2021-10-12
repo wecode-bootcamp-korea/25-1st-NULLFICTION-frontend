@@ -8,7 +8,6 @@
 
   .navBox {
     display: flex;
-    position: relative;
     justify-content: center;
     width: 100%;
     margin-bottom: 10px;
@@ -36,7 +35,6 @@
 
   //menu
   .menuBox {
-    position: absolute;
     position: fixed;
     width: 200px;
     height: 300px;
@@ -58,7 +56,6 @@
   }
 
   .searchBox {
-    width: 100%;
     border-bottom: 1px solid black;
 
     .search {
