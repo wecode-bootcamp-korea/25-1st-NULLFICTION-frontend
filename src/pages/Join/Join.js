@@ -4,6 +4,7 @@ import Mobile from './Mobile/Mobile';
 import Agreement from './Agreement/Agreement';
 import Button from './Button/Button';
 import UESR_INFO from './Agreement/UESR_INFO';
+import { SIGN_UP } from './config';
 import './Join.scss';
 
 class Join extends Component {
@@ -20,7 +21,9 @@ class Join extends Component {
       pwCheck: '',
       mobile: { num1: '', num2: '', num3: '' },
       checkList: { check1: false, check2: false, check3: false },
-      isAgreementRead: false,
+      isAgreementRead: { read1: false, read2: false, read3: false },
+      usingid: false,
+      usingpw: false,
     };
   }
 
@@ -53,9 +56,17 @@ class Join extends Component {
     });
   };
 
-  toggleAgreementRead = () => {
+  toggleAgreementRead = name => {
     const { isAgreementRead } = this.state;
-    this.setState({ isAgreementRead: !isAgreementRead });
+    this.setState({
+      isAgreementRead: { ...isAgreementRead, [name]: !isAgreementRead[name] },
+    });
+  };
+  toggleIdCheck = () => {
+    const { idCheck } = this.state;
+    this.setState({
+      idCheck: !idCheck,
+    });
   };
 
   signUp = () => {
@@ -68,8 +79,9 @@ class Join extends Component {
       year,
       month,
       date,
+      checkList,
     } = this.state;
-    fetch('http://192.168.1.147:8000/users/signup', {
+    fetch(`${SIGN_UP}`, {
       method: 'POST',
       body: JSON.stringify({
         username,
@@ -90,9 +102,57 @@ class Join extends Component {
         }
       });
   };
-  render() {
-    console.log(this.state);
 
+  render() {
+    const {
+      name,
+      email,
+      mobile,
+      year,
+      month,
+      date,
+      id,
+      pw,
+      pwCheck,
+      checkList,
+    } = this.state;
+    const checkForm = pw => {
+      // const num = /[0-9]/;
+      // const str = /[a-zA-Z]/;
+      // const special = /[~!@#$%^&*()_+|<>?:{}]/;
+      const formCheck =
+        name &&
+        email.includes('@') &&
+        mobile.length >= 11 &&
+        year > 1920 &&
+        year < 2007 &&
+        month > 0 &&
+        month < 13 &&
+        date > 0 &&
+        date < 32 &&
+        id &&
+        pw.length >= 8 &&
+        pwCheck === pw;
+
+      formCheck
+        ? this.signUp()
+        : this.setState(
+            {
+              name: '',
+              email: '',
+              mobile: '',
+              year: '',
+              month: '',
+              date: '',
+              pw: '',
+              pwCheck: '',
+              gender: '',
+            },
+            () => {
+              alert('회원가입 정보를 다시 확인해 주세요');
+            }
+          );
+    };
     return (
       <main className="Join">
         <div className="container">
@@ -105,6 +165,8 @@ class Join extends Component {
               checkLabel="아이디를 입력해 주세요."
               maxLength="12"
               handleInput={this.handleInput}
+              idCheck={this.state.idCheck}
+              toggleIdCheck={this.toggleIdCheck}
             />
             <Input
               name="pw"
@@ -142,13 +204,7 @@ class Join extends Component {
               ]}
               handleMobileInput={this.handleMobileInput}
             />
-            <Input
-              name="email"
-              type="email"
-              label="E-mail"
-              handleInput={this.handleInput}
-            />
-
+            <Input name="email" type="email" label="E-mail" />
             <li className="birthDay">
               <label>Birthday</label>
               <input
@@ -185,13 +241,13 @@ class Join extends Component {
                   label={label}
                   text={text}
                   handleClickChange={this.handleClickChange}
-                  isAgreementRead={this.props.isAgreementRead}
                   toggleAgreementRead={this.toggleAgreementRead}
+                  isAgreementRead={this.state.isAgreementRead[`read${id}`]}
                 />
               );
             })}
           </div>
-          <Button name="Sign UP" signUp={this.signUp} />
+          <Button name="Sign UP" checkForm={checkForm} />
         </div>
       </main>
     );

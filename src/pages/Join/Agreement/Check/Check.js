@@ -3,9 +3,9 @@ import './Check.scss';
 
 class Check extends Component {
   render() {
-    const { id, text, isAgreementRead } = this.props;
+    const { read1, id, text } = this.props;
     return (
-      <div className={isAgreementRead ? 'clickContentOn' : 'clickContentOff'}>
+      <div className="agreementContent">
         <p id={id}>{text}</p>
       </div>
     );

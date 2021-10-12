@@ -17,16 +17,22 @@ li {
   span {
     margin-top: 10px;
   }
-}
-
-.birthDay {
-  input {
-    width: 50px;
-    margin-right: 5px;
-    padding: 10px;
-    @include fontSize(12px);
-    color: #9a9a9a;
-    background: transparent;
-    border: 1px solid #000;
+  .on {
+    display: block;
+  }
+  .off {
+    display: none;
   }
 }
+
+// .birthDay {
+//   input {
+//     width: 50px;
+//     margin-right: 5px;
+//     padding: 10px;
+//     @include fontSize(12px);
+//     color: #9a9a9a;
+//     background: transparent;
+//     border: 1px solid #000;
+//   }
+// }
