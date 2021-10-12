@@ -15,10 +15,8 @@
   .capacity {
     padding: 15px 0;
 
-    span {
-      &:first-child {
-        margin-right: 2px;
-      }
+    span:first-child {
+      margin-right: 5px;
     }
   }
 

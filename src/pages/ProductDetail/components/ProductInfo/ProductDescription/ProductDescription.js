@@ -9,7 +9,9 @@ class ProductDescription extends Component {
       <div className="productDescription">
         <span className="name header">{name}</span>
         <div className="capacity header">
-          {size && size.map((size, idx) => <span key={idx}>{size}</span>)}
+          {size.map((size, idx) => (
+            <span key={idx}>{size}</span>
+          ))}
         </div>
         <span className="collection header">{collection}</span>
         <div className="detail">

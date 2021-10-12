@@ -3,11 +3,11 @@ import './ProductOption.scss';
 
 class ProductOption extends Component {
   render() {
-    const { optionID, optionSelect } = this.props;
+    const { optionSelect } = this.props;
 
     return (
       <div className="productOption">
-        <select value={optionID} onChange={optionSelect}>
+        <select onChange={optionSelect}>
           <option value={0}>Select Option</option>
           <optgroup label="-------------------"></optgroup>
           <optgroup label="엽서">

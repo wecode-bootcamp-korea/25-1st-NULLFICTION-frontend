@@ -24,7 +24,7 @@ class ProductDetail extends Component {
   }
 
   componentDidMount() {
-    fetch('http://192.168.1.229:8000/products/product?id=3')
+    fetch('http://10.58.2.54:8000/products/2')
       .then(res => res.json())
       .then(({ result: data }) => {
         data
