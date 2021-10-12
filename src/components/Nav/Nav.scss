@@ -40,6 +40,7 @@
     position: fixed;
     width: 200px;
     height: 300px;
+
     a {
       color: black;
       line-height: 1.5;
@@ -50,9 +51,9 @@
         text-decoration: underline;
       }
     }
+
     ul {
       margin-left: 13px;
-      // transition: ease 2s;
     }
   }
 
