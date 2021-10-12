@@ -1,0 +1,126 @@
+.popup {
+  display: none;
+}
+
+.buttonForPopup {
+  display: inline-block;
+  padding: 10px;
+  height: 40px;
+  width: 100%;
+  border: 1px solid black;
+  text-align: center;
+  font-size: 14px;
+  background-color: white;
+  cursor: pointer;
+}
+
+.popupWrapperOn {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+
+  .popupBackground {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    z-index: 2;
+
+    .popupHeader {
+      padding: 12px 35px 12px 19px;
+      color: white;
+      background-color: black;
+    }
+
+    .buttonForClose {
+      position: absolute;
+      top: 0;
+      right: 0;
+      transform: translate(-30%, +20%);
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: none;
+      font-size: 15px;
+      text-align: center;
+      background-color: black;
+      color: white;
+      z-index: 1;
+      cursor: pointer;
+    }
+
+    .popupContent {
+      .popupContentElement {
+        padding: 20px 25px 14px;
+        width: 600px;
+
+        h2 {
+          padding-bottom: 20px;
+          border-bottom: 1px dotted black;
+          font-size: 12px;
+        }
+
+        .popupProductList {
+          margin-top: 20px;
+
+          img {
+            width: 80px;
+            height: 80px;
+          }
+
+          .popupProductContent {
+            display: inline-block;
+            position: relative;
+            top: -70px;
+            margin: 0px 0px 0px 20px;
+            width: 80%;
+
+            span {
+              font-size: 14px;
+            }
+
+            select {
+              float: right;
+            }
+          }
+        }
+
+        .popupOptionDescription {
+          padding: 2px 9px 50px;
+          border-bottom: 1px solid rgb(154, 155, 160);
+          color: red;
+          font-size: 13px;
+        }
+
+        .totalPriceWrapper {
+          padding: 10px 10px;
+          font-size: 14px;
+          font-weight: 600;
+
+          .totalPrice {
+            padding-left: 5px;
+            font-size: 16px;
+          }
+        }
+      }
+    }
+  }
+
+  .backgroundClickClose {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+  }
+}
+
+.popupWrapperOff {
+  display: none;
+}
