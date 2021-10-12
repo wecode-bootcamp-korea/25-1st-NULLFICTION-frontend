@@ -2,18 +2,20 @@
   display: flex;
   margin: 20px 45px;
 
+  img {
+    object-fit: cover;
+  }
+
   .navBox {
     display: flex;
-    position: relative;
     justify-content: center;
-    height: 95px;
     width: 100%;
     margin-bottom: 10px;
   }
 
   .navLogo {
-    width: 140px;
-    height: 74px;
+    width: 150px;
+    height: 80px;
   }
 
   .topUl {
@@ -23,7 +25,6 @@
   }
 
   .topLi {
-    list-style-type: none;
     margin-left: 40px;
     font-size: 18px;
   }
@@ -32,27 +33,44 @@
     color: black;
   }
 
-  .menu {
-    position: absolute;
-    display: flex;
-    align-items: flex-end;
+  //menu
+  .menuBox {
+    position: fixed;
     width: 200px;
     height: 300px;
+
+    a {
+      color: black;
+      line-height: 1.5;
+      font-size: 18px;
+      letter-spacing: normal;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    ul {
+      margin-left: 13px;
+    }
   }
 
   .searchBox {
-    width: 100%;
     border-bottom: 1px solid black;
-  }
 
-  .search {
-    width: 100%;
-    font-size: 100%;
-    border: none;
-  }
+    .search {
+      width: 100%;
+      margin-top: 5px;
+      border: none;
 
-  .search::placeholder {
-    color: black;
-    font-size: 20px;
+      &::placeholder {
+        color: black;
+        font-size: 18px;
+      }
+    }
+
+    input:focus::placeholder {
+      color: transparent;
+    }
   }
 }

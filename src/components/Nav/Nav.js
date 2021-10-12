@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Input from './Input';
+import Menu from './Menu';
 import { Link } from 'react-router-dom';
 import './Nav.scss';
 
@@ -25,10 +27,9 @@ class Nav extends Component {
           </ul>
         </div>
 
-        <div className="menu">
-          <div className="searchBox">
-            <input className="search" placeholder="SEARCH" />
-          </div>
+        <div className="menuBox">
+          <Menu />
+          <Input />
         </div>
       </div>
     );
