@@ -1,4 +1,4 @@
-import React, { Component, useDebugValue } from 'react';
+import React, { Component } from 'react';
 import '../Input/Input.scss';
 
 class Input extends Component {
@@ -18,24 +18,16 @@ class Input extends Component {
   };
 
   onInputBlur = () => {
-    const { isInputFocus } = this.state;
+    const { isInputBlur } = this.state;
     this.setState({
       isInputBlur: true,
     });
   };
 
   render() {
-    const { isInputFocus, isInputBlur } = this.state;
-    const {
-      name,
-      label,
-      type,
-      maxLength,
-      handleInput,
-      checkLabel,
-      onInputFocus,
-      onInputBlur,
-    } = this.props;
+    const { isInputBlur } = this.state;
+    const { name, label, type, maxLength, handleInput, checkLabel } =
+      this.props;
 
     return (
       <div className="userId">

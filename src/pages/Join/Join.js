@@ -68,7 +68,6 @@ class Join extends Component {
     e.preventDefault();
     const { id, pw, pwCheck, name, email, mobile, year, month, date } =
       this.state;
-    const userMobile = `${mobile.num1}${mobile.num2}${mobile.num3}`;
     const formCheckList =
       name &&
       email.includes('@') &&
@@ -110,22 +109,7 @@ class Join extends Component {
   };
 
   render() {
-    const {
-      name,
-      email,
-      mobile,
-      year,
-      month,
-      date,
-      id,
-      pw,
-      pwCheck,
-      isInputFocus,
-      isInputBlur,
-      inputId,
-    } = this.state;
-
-    console.log(this.state);
+    console.log('>>>>>', this.state);
     return (
       <main className="Join">
         <div className="container">
@@ -140,6 +124,7 @@ class Join extends Component {
               handleInput={this.handleInput}
               idCheck={this.idCheck}
             />
+
             <Input
               name="pw"
               type="password"
@@ -148,6 +133,7 @@ class Join extends Component {
               maxLength="16"
               handleInput={this.handleInput}
             />
+
             <Input
               name="pwCheck"
               label="Password Check"
@@ -155,6 +141,7 @@ class Join extends Component {
               maxLength="16"
               handleInput={this.handleInput}
             />
+
             <Input
               name="name"
               label="Name"
@@ -162,6 +149,7 @@ class Join extends Component {
               maxLength="6"
               handleInput={this.handleInput}
             />
+
             <Mobile
               label="Mobile"
               handleMobileInput={this.handleMobileInput}
@@ -175,6 +163,7 @@ class Join extends Component {
                 { id: '6', option: '019' },
               ]}
             />
+
             <Input
               name="email"
               type="email"
