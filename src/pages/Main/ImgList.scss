@@ -17,17 +17,17 @@
     }
 
     img:hover ~ .leftTextBox {
-      display: block;
+      // display: block;
       opacity: 1;
     }
 
     img:hover ~ .rightTextBox {
-      display: block;
+      // display: block;
       opacity: 1;
     }
 
     img:hover ~ .shortTextBox {
-      display: block;
+      // display: block;
       opacity: 1;
     }
   }
@@ -125,7 +125,6 @@
     left: 10%;
     width: 50%;
 
-    // display: block;
     .cream {
       width: 50%;
     }
@@ -144,7 +143,7 @@
 
   .twotoneBox {
     width: 40%;
-    position: absolute;
+    // position: absolute;
     left: 0;
     top: 1000px;
 
