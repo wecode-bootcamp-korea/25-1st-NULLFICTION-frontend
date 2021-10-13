@@ -4,18 +4,34 @@ import './EachProduct.scss';
 import Popup from './Popup';
 
 class EachProduct extends Component {
+  setSize = sizes => {
+    const CAPACITY = 0;
+    let result = [];
+    for (const size of sizes) {
+      if (size[CAPACITY]) result.push(size);
+    }
+    return result;
+  };
+
   render() {
     const {
       id,
       image,
       name,
       collection,
+      size_g,
       size_ml,
       size_oz,
       price,
       description,
     } = this.props;
 
+    const size = this.setSize([
+      [size_g, 'g'],
+      [size_ml, 'ml'],
+      [size_oz, 'oz'],
+    ]);
+    console.log(size); // [  [ unit, capacity  ] , [ unit, capacity ]   ]
     return (
       <li className="eachProduct">
         <img src={image} alt="productImage" />
@@ -35,9 +51,16 @@ class EachProduct extends Component {
           </Link>
           <div className="productInfo">
             <span className="mensuration">
-              <span className="productVolumeKr">{size_ml}</span>ml &nbsp;/&nbsp;{' '}
+              {size.length !== 0 &&
+                size.map((size, idx) => (
+                  <span key={idx} className="productVolume">
+                    {' '}
+                    {size}
+                  </span>
+                ))}
+              {/* <span className="productVolumeKr">{size_ml}</span>ml &nbsp;/&nbsp;{' '}
               <span className="productVolumeUs">{size_oz}</span>
-              oz
+              oz */}
             </span>
             <span>
               <span className="productPrice">{price.toLocaleString()}</span>
