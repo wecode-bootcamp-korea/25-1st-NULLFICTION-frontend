@@ -11,14 +11,12 @@ class Input extends Component {
   }
 
   onInputFocus = () => {
-    const { isInputFocus } = this.state;
     this.setState({
       isInputFocus: true,
     });
   };
 
   onInputBlur = () => {
-    const { isInputBlur } = this.state;
     this.setState({
       isInputBlur: true,
     });
