@@ -93,7 +93,7 @@ class Product extends Component {
                   id={product.id}
                   name={product.name}
                   collection={product.collection}
-                  sub_category={product.sub_category}
+                  subCategory={product.sub_category}
                   size_g={product.size_g}
                   size_ml={product.size_ml}
                   size_oz={product.size_oz}

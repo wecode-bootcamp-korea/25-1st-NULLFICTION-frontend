@@ -1,43 +1,47 @@
 import React, { Component } from 'react';
-import './Popup.scss';
+import './Modal.scss';
 
-class Popup extends Component {
+class Modal extends Component {
   constructor() {
     super();
     this.state = {
-      isPopupOn: false,
+      isModalOn: false,
     };
   }
 
-  togglePopup = () => {
+  toggleModal = () => {
     this.setState({
-      isPopupOn: !this.state.isPopupOn,
+      isModalOn: !this.state.isModalOn,
     });
   };
 
   render() {
-    const { isPopupOn } = this.state;
+    const { isModalOn } = this.state;
     const { image, name, price } = this.props;
 
     return (
-      <div>
-        <label className="buttonForPopup">
+      <div className="modal">
+        <label className="buttonForModal">
           Add to Cart
-          <input type="checkbox" className="popup" onClick={this.togglePopup} />
+          <input
+            type="checkbox"
+            className="modalInput"
+            onClick={this.toggleModal}
+          />
         </label>
-        <div className={isPopupOn ? 'popupWrapperOn' : 'popupWrapperOff'}>
-          <div className="popupBackground">
-            <div className="popupHeader">옵션 선택</div>
-            <button className="buttonForClose" onClick={this.togglePopup}>
+        <div className={isModalOn ? 'modalWrapperOn' : 'modalWrapperOff'}>
+          <div className="modalBackground">
+            <div className="modalHeader">옵션 선택</div>
+            <button className="closeButton" onClick={this.toggleModal}>
               ✕
             </button>
 
-            <div className="popupContent">
-              <div className="popupContentElement">
+            <div className="modalContent">
+              <div className="modalContentElement">
                 <h2>{name}</h2>
-                <div className="popupProductList">
+                <div className="modalProductList">
                   <img src={image} alt="productImage" />
-                  <div className="popupProductContent">
+                  <div className="modalProductContent">
                     <span>엽서</span>
                     <select>
                       Select
@@ -54,7 +58,7 @@ class Popup extends Component {
                   </div>
                 </div>
                 <div className="totalProducts">
-                  <p className="popupOptionDescription">
+                  <p className="modalOptionDescription">
                     ❗ &nbsp;위 옵션선택 박스를 선택하시면 아래에 상품이
                     추가됩니다.
                   </p>
@@ -68,7 +72,7 @@ class Popup extends Component {
           </div>
           <span
             className="backgroundClickClose"
-            onClick={this.togglePopup}
+            onClick={this.toggleModal}
           ></span>
         </div>
       </div>
@@ -76,4 +80,4 @@ class Popup extends Component {
   }
 }
 
-export default Popup;
+export default Modal;

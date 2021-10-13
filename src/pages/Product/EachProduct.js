@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './EachProduct.scss';
-import Popup from './Popup';
+import Modal from './Modal';
 
 class EachProduct extends Component {
   setSize = sizes => {
@@ -31,7 +31,7 @@ class EachProduct extends Component {
       [size_ml, 'ml'],
       [size_oz, 'oz'],
     ]);
-    console.log(size); // [  [ unit, capacity  ] , [ unit, capacity ]   ]
+
     return (
       <li className="eachProduct">
         <img src={image} alt="productImage" />
@@ -58,9 +58,6 @@ class EachProduct extends Component {
                     {size}
                   </span>
                 ))}
-              {/* <span className="productVolumeKr">{size_ml}</span>ml &nbsp;/&nbsp;{' '}
-              <span className="productVolumeUs">{size_oz}</span>
-              oz */}
             </span>
             <span>
               <span className="productPrice">{price.toLocaleString()}</span>
@@ -69,7 +66,7 @@ class EachProduct extends Component {
           </div>
           <p className="productDescription">{description}</p>
         </div>
-        <Popup id={id} name={name} price={price} image={image} />
+        <Modal id={id} name={name} price={price} image={image} />
       </li>
     );
   }
