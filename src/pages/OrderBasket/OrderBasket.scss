@@ -1,0 +1,16 @@
+.orderBasket {
+  // 수정!
+  margin: 300px;
+
+  .linkWrapper {
+    text-align: center;
+
+    .link {
+      padding-bottom: 5px;
+      border-bottom: 1px solid black;
+      color: black;
+      font-size: 14px;
+      font-weight: bold;
+    }
+  }
+}
