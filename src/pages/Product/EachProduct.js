@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import './EachProduct.scss';
 import Modal from './Modal';
 
@@ -36,19 +37,14 @@ class EachProduct extends Component {
       <li className="eachProduct">
         <img src={image} alt="productImage" />
         <div className="thumbnailInfo">
-          <Link
-            to={{
-              pathname: '/product/detail',
-              state: {
-                id,
-              },
-            }}
+          <h3
+            onClick={() =>
+              this.props.history.push(`/products/${this.props.id}`)
+            }
           >
-            <h3>
-              <div className="productName">{name}</div>
-              <div>{collection}</div>
-            </h3>
-          </Link>
+            <div className="productName">{name}</div>
+            <div>{collection}</div>
+          </h3>
           <div className="productInfo">
             <span className="mensuration">
               {size.length !== 0 &&
@@ -72,4 +68,4 @@ class EachProduct extends Component {
   }
 }
 
-export default EachProduct;
+export default withRouter(EachProduct);
