@@ -3,11 +3,11 @@ import '../Button/Button.scss';
 
 class Button extends Component {
   render() {
-    const { name, label, checkForm } = this.props;
+    const { name, label, signUp } = this.props;
     return (
       <div className="join-btn">
         <label>{label}</label>
-        <button onClick={checkForm}>{name}</button>
+        <button onClick={signUp}>{name}</button>
       </div>
     );
   }

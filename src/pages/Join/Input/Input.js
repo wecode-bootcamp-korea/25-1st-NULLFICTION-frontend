@@ -1,21 +1,55 @@
-import React, { Component } from 'react';
+import React, { Component, useDebugValue } from 'react';
 import '../Input/Input.scss';
 
 class Input extends Component {
+  constructor() {
+    super();
+    this.state = {
+      isInputFocus: false,
+      isInputBlur: false,
+    };
+  }
+
+  onInputFocus = () => {
+    const { isInputFocus } = this.state;
+    this.setState({
+      isInputFocus: true,
+    });
+  };
+
+  onInputBlur = () => {
+    const { isInputFocus } = this.state;
+    this.setState({
+      isInputBlur: true,
+    });
+  };
+
   render() {
-    const { name, label, type, checkLabel, maxLength, handleInput } =
-      this.props;
+    const { isInputFocus, isInputBlur } = this.state;
+    const {
+      name,
+      label,
+      type,
+      maxLength,
+      handleInput,
+      checkLabel,
+      onInputFocus,
+      onInputBlur,
+    } = this.props;
+
     return (
-      <li className="userId">
+      <div className="userId">
         <label>{label}</label>
         <input
           type={type}
           name={name}
           maxLength={maxLength}
           onChange={handleInput}
+          onFocus={this.onInputFocus}
+          onBlur={this.onInputBlur}
         />
-        <span>{checkLabel}</span>
-      </li>
+        {name.length > 0 && isInputBlur && <span>{checkLabel}</span>}
+      </div>
     );
   }
 }

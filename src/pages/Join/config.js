@@ -1,2 +1,2 @@
-const BASE_URL = 'http://10.58.2.215:8000';
-export const SIGN_UP = `${BASE_URL}/users/signin`;
+const BASE_URL = 'http://10.58.5.116:8000';
+export const URL = `${BASE_URL}/users/signup`;

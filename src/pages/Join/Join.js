@@ -4,7 +4,7 @@ import Mobile from './Mobile/Mobile';
 import Agreement from './Agreement/Agreement';
 import Button from './Button/Button';
 import UESR_INFO from './Agreement/UESR_INFO';
-import { SIGN_UP } from './config';
+import { URL } from './config';
 import './Join.scss';
 
 class Join extends Component {
@@ -27,6 +27,8 @@ class Join extends Component {
 
   handleInput = e => {
     const { name, value } = e.target;
+    console.log('name===', name);
+    console.log('value===', value);
     this.setState({
       [name]: value,
     });
@@ -61,88 +63,74 @@ class Join extends Component {
     });
   };
 
-  signUp = () => {
+  //회원가입
+  signUp = e => {
+    e.preventDefault();
+    const { id, pw, pwCheck, name, email, mobile, year, month, date } =
+      this.state;
+    const userMobile = `${mobile.num1}${mobile.num2}${mobile.num3}`;
+    const formCheckList =
+      name &&
+      email.includes('@') &&
+      email.includes('.com') &&
+      year > 1920 &&
+      year < 2007 &&
+      month > 0 &&
+      month < 13 &&
+      date > 0 &&
+      date < 32 &&
+      id &&
+      pw.length >= 8 === pwCheck;
+
+    console.log(id, pw, pwCheck, name, email, mobile, year, month, date);
+    if (formCheckList) {
+      fetch(URL, {
+        method: 'POST',
+        body: JSON.stringify({
+          username: id,
+          password: pw,
+          name,
+          email,
+          birthday: `${year}-${month}-${date}`,
+          mobile: `${mobile.num1}${mobile.num2}${mobile.num3}`,
+        }),
+      })
+        .then(response => response.json())
+        .then(response => {
+          if (response.message === 'SUCCESS') {
+            alert('회원가입 축하드립니다.');
+            this.props.history.push('/member/login');
+          } else {
+            alert('이미 가입된 이메일 입니다.');
+          }
+        });
+    } else {
+      alert('아이디를 다시 확인하세요');
+    }
+  };
+
+  render() {
     const {
-      id: username,
-      pw: password,
       name,
       email,
       mobile,
       year,
       month,
       date,
-      checkList,
+      id,
+      pw,
+      pwCheck,
+      isInputFocus,
+      isInputBlur,
+      inputId,
     } = this.state;
-    fetch(`${SIGN_UP}`, {
-      method: 'POST',
-      body: JSON.stringify({
-        username,
-        password,
-        name,
-        email,
-        birthday: `${year}-${month}-${date}`,
-        mobile: `${mobile.num1}${mobile.num2}${mobile.num3}`,
-      }),
-    })
-      .then(response => response.json())
-      .then(response => {
-        if (response.message === 'SUCCESS') {
-          alert('회원가입 축하드립니다.');
-          this.props.goToLogin('login');
-        } else {
-          alert('이미 가입된 이메일 입니다.');
-        }
-      });
-  };
 
-  render() {
-    const { name, email, mobile, year, month, date, id, pw, pwCheck } =
-      this.state;
-    const checkForm = pw => {
-      const num = /[0-9]/;
-      const str = /[a-zA-Z]/;
-      const special = /[~!@#$%^&*()_+|<>?:{}]/;
-      const formCheck =
-        name &&
-        email.includes('@') &&
-        mobile.length >= 11 &&
-        year > 1920 &&
-        year < 2007 &&
-        month > 0 &&
-        month < 13 &&
-        date > 0 &&
-        date < 32 &&
-        num.test(pw) &&
-        str.test(pw) &&
-        special.test(pw) &&
-        id &&
-        pw.length >= 8 &&
-        pwCheck === pw;
-
-      formCheck
-        ? this.signUp()
-        : this.setState(
-            {
-              name: '',
-              email: '',
-              mobile: '',
-              year: '',
-              month: '',
-              date: '',
-              pw: '',
-              pwCheck: '',
-              gender: '',
-            },
-            () => {
-              alert('회원가입 정보를 다시 확인해 주세요');
-            }
-          );
-    };
+    console.log(this.state);
     return (
       <main className="Join">
         <div className="container">
           <h1>Sign Up</h1>
-          <ul className="join-inner">
+          <form className="join-inner">
             <Input
               name="id"
               label="ID"
@@ -150,8 +138,7 @@ class Join extends Component {
               checkLabel="아이디를 입력해 주세요."
               maxLength="12"
               handleInput={this.handleInput}
-              idCheck={this.state.idCheck}
-              toggleIdCheck={this.toggleIdCheck}
+              idCheck={this.idCheck}
             />
             <Input
               name="pw"
@@ -176,8 +163,8 @@ class Join extends Component {
               handleInput={this.handleInput}
             />
             <Mobile
-              name="num"
               label="Mobile"
+              handleMobileInput={this.handleMobileInput}
               options={[
                 { id: '0', option: '선택' },
                 { id: '1', option: '010' },
@@ -187,10 +174,15 @@ class Join extends Component {
                 { id: '5', option: '018' },
                 { id: '6', option: '019' },
               ]}
-              handleMobileInput={this.handleMobileInput}
             />
-            <Input name="email" type="email" label="E-mail" />
-            <li className="birthDay">
+            <Input
+              name="email"
+              type="email"
+              label="E-mail"
+              handleInput={this.handleInput}
+            />
+
+            <div className="birthDay">
               <label>Birthday</label>
               <input
                 name="year"
@@ -213,8 +205,8 @@ class Join extends Component {
                 maxLength="2"
                 onChange={this.handleInput}
               />
-            </li>
-          </ul>
+            </div>
+          </form>
           <div className="register-agreement">
             {UESR_INFO.map(data => {
               const { id, name, label, text } = data;
@@ -232,7 +224,7 @@ class Join extends Component {
               );
             })}
           </div>
-          <Button name="Sign UP" checkForm={checkForm} />
+          <Button name="Sign UP" signUp={this.signUp} />
         </div>
       </main>
     );
