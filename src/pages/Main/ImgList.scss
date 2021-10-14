@@ -2,83 +2,67 @@
   img {
     object-fit: cover;
   }
+
   //최상위 부모 div
   .mainImgPBox {
     display: flex;
     justify-content: space-around;
-    position: relative;
   }
+
   // text div감싸고 있는 div
   .textBox {
     margin: 135px 0;
+    position: relative;
 
     img:hover {
-      opacity: 0.7;
+      opacity: 0.5;
     }
 
     img:hover ~ .leftTextBox {
-      // display: block;
       opacity: 1;
     }
 
     img:hover ~ .rightTextBox {
-      // display: block;
       opacity: 1;
     }
 
     img:hover ~ .shortTextBox {
-      // display: block;
       opacity: 1;
     }
   }
 
   //text div
   .leftTextBox,
-  .rightTextBox {
+  .rightTextBox,
+  .shortTextBox {
     position: absolute;
-    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     opacity: 0;
-    letter-spacing: 1px;
-    line-height: 1.5;
-    color: rgb(177, 175, 175);
+    color: rgb(136, 135, 135);
+    letter-spacing: 1.5px;
+    line-height: 1.7;
 
     &:hover {
-      display: block;
       opacity: 1;
     }
   }
 
-  .leftTextBox {
-    top: 600px;
-    left: 140px;
-  }
-
-  .rightTextBox {
-    top: 340px;
-    right: 250px;
-  }
-
   //상품 제목만 있는 text div
   .shortTextBox {
-    position: absolute;
-    text-align: center;
-    opacity: 0;
-    letter-spacing: 1px;
-    line-height: 1.5;
-    top: 700px;
-    left: 320px;
     color: rgb(27, 61, 30);
   }
+
   //빈 div
   .ImgEmptyBox {
     width: 50%;
   }
 
   //img
-
   .soapTopBox {
     width: 52%;
-    margin-top: 350px;
+    margin-top: 300px;
 
     .soapTop {
       width: 100%;
@@ -96,7 +80,7 @@
 
   .sampleTopBox {
     margin-top: 0;
-    width: 40%;
+    width: 50%;
 
     .sampleTop {
       width: 100%;
@@ -113,7 +97,7 @@
 
   .sampleBottomBox {
     width: 52%;
-    margin-top: 50px;
+    margin-top: 0px;
 
     .sampleBottom {
       width: 100%;
@@ -121,9 +105,9 @@
   }
 
   .creamBox {
-    position: absolute;
-    left: 10%;
-    width: 50%;
+    width: 45%;
+    margin-left: 15%;
+    margin-top: 15%;
 
     .cream {
       width: 50%;
@@ -133,7 +117,6 @@
   .womanBottomBox {
     width: 50%;
     margin-top: 0;
-    position: absolute;
     right: 0;
 
     .womanBottom {
@@ -143,9 +126,6 @@
 
   .twotoneBox {
     width: 40%;
-    // position: absolute;
-    left: 0;
-    top: 1000px;
 
     .twotone {
       width: 100%;
