@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import '../Mobile/Mobile.scss';
 
 class Mobile extends Component {
   render() {
@@ -7,7 +6,7 @@ class Mobile extends Component {
     return (
       <li className="mobile">
         <label>{label}</label>
-        <div className="mobile-input-inner">
+        <div className="mobile-input-inner info">
           <select
             className="mobileNum"
             name="num1"
@@ -26,16 +25,15 @@ class Mobile extends Component {
             type="text"
             maxLength="4"
             onChange={handleMobileInput}
-          ></input>
+          />
 
           <input
             name="num3"
             type="text"
             maxLength="4"
             onChange={handleMobileInput}
-          ></input>
+          />
         </div>
-        <span></span>
       </li>
     );
   }

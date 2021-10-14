@@ -11,9 +11,7 @@ class Button extends Component {
         <button className={signUpColor} onClick={goToMain}>
           {name}
         </button>
-        <Link to="#">
-          <p>{findUserID}</p>
-        </Link>
+        <p>{findUserID}</p>
       </div>
     );
   }
