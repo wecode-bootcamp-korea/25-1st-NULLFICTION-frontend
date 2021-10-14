@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import './Nav.scss';
 
 class Menu extends Component {
@@ -8,11 +8,13 @@ class Menu extends Component {
     this.state = {
       isShopHovered: false,
       isAboutHovered: false,
+      link: '',
     };
   }
 
   render() {
     const { isShopHovered, isAboutHovered } = this.state;
+
     return (
       <div className="menu">
         <div
@@ -26,7 +28,16 @@ class Menu extends Component {
               {shopList.map((list, index) => {
                 return (
                   <li className="shopClose" key={index}>
-                    <Link to={list.link}>{list.text}</Link>
+                    <Link
+                      to={
+                        //link가 categoryUrl일때 index를 붙이고 그렇지 않을떄 link를 리턴
+                        list.link === categoryUrl
+                          ? `${categoryUrl}${index - 1}`
+                          : list.link
+                      }
+                    >
+                      {list.text}
+                    </Link>
                   </li>
                 );
               })}
@@ -67,43 +78,45 @@ class Menu extends Component {
   }
 }
 
-export default Menu;
+export default withRouter(Menu);
+const categoryUrl = '/products?main-category=';
+const baseUrl = '/products?';
 
 const shopList = [
   {
-    link: '/product',
+    link: baseUrl,
     text: 'SHOP ALL',
   },
   {
-    link: '/',
+    link: `${baseUrl}best-seller=4`,
     text: 'BEST SELLER',
   },
   {
-    link: '/',
+    link: categoryUrl,
     text: 'PERFUME',
   },
   {
-    link: '/',
+    link: categoryUrl,
     text: 'BODY CARE',
   },
   {
-    link: '/',
+    link: categoryUrl,
     text: 'HAND CARE',
   },
   {
-    link: '/',
+    link: categoryUrl,
     text: 'LIP CARE',
   },
   {
-    link: '/',
+    link: categoryUrl,
     text: 'HOME OBJECTS',
   },
   {
-    link: '/',
+    link: categoryUrl,
     text: 'GIFT SET',
   },
   {
-    link: '/',
+    link: categoryUrl,
     text: 'ACC',
   },
 ];
