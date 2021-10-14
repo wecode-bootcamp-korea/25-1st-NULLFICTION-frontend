@@ -1,18 +1,10 @@
 import React, { Component } from 'react';
-import ProductDescription from './ProductDescription/ProductDescription';
-import ProductCategory from './ProductCategory/ProductCategory';
-import ProductSelect from './ProductSelect/ProductSelect';
+import ProductDescription from './ProductDescription';
+import ProductCategory from './ProductCategory';
+import ProductSelect from './ProductSelect';
 import './ProductInfo.scss';
 
 class ProductInfo extends Component {
-  setSize = sizes => {
-    const CAPACITY = 0;
-    for (const size of sizes) {
-      if (size[CAPACITY]) return size;
-    }
-    return [];
-  };
-
   stringToHtml = str => {
     const doc = new DOMParser().parseFromString(str, 'text/html');
     const htmlArray = [...doc.body.children].map(
@@ -23,6 +15,7 @@ class ProductInfo extends Component {
 
   render() {
     const {
+      id,
       name,
       collection,
       size_g,
@@ -32,17 +25,17 @@ class ProductInfo extends Component {
       detail_description,
       scent_description,
       ingredient,
-    } = this.props.info;
+    } = this.props;
 
     return (
       <div className="productInfo">
         <ProductDescription
           name={name}
-          size={this.setSize([
+          sizes={[
             [size_g, 'g'],
             [size_ml, 'ml'],
             [size_oz, 'oz'],
-          ])}
+          ].filter(item => item[0])}
           collection={collection}
           price={price}
           detailDescriptionList={this.stringToHtml(detail_description)}
@@ -56,7 +49,7 @@ class ProductInfo extends Component {
           name="infomation"
           contextList={this.stringToHtml(INFOMATION_CONTEXT)}
         />
-        <ProductSelect />
+        <ProductSelect id={id} />
       </div>
     );
   }
