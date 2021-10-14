@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Input from './Input';
 import Menu from './Menu';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import './Nav.scss';
 
 class Nav extends Component {
@@ -10,7 +10,13 @@ class Nav extends Component {
       <div className="navContainer">
         <div className="navBox">
           <Link className="navLogo" to="/">
-            <img alt="navLogo" src="/images/navLogo.png" className="navLogo" />
+            {window.location.pathname !== '/' && (
+              <img
+                alt="navLogo"
+                src="/images/navLogo.png"
+                className="navLogo"
+              />
+            )}
           </Link>
           <ul className="topUl">
             <li className="topLi">USD</li>
@@ -36,4 +42,4 @@ class Nav extends Component {
   }
 }
 
-export default Nav;
+export default withRouter(Nav);
