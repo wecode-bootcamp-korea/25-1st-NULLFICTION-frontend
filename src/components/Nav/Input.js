@@ -10,13 +10,14 @@ class Input extends Component {
     };
   }
 
-  componentDidMount() {
-    // fetch(`http://localhost:8000/products?keyword=${this.result}`)
-    //   .then(res => res.json())
-    //   .then(res => {
-    //     this.setState({ products: res });
-    //   });
-  }
+  // componentDidMount() {
+  //   // fetch(`http://localhost:8000/products?keyword=${this.result}`)
+  //   fetch('http://localhost:3000/productList')
+  //     .then(res => res.json())
+  //     .then(res => {
+  //       this.setState({ products: res });
+  //     });
+  // }
 
   handleChange = e => {
     this.setState({

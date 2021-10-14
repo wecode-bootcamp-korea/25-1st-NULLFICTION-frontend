@@ -9,7 +9,7 @@ class Nav extends Component {
     return (
       <div className="navContainer">
         <div className="navBox">
-          <Link to="/">
+          <Link className="navLogo" to="/">
             <img alt="navLogo" src="/images/navLogo.png" className="navLogo" />
           </Link>
           <ul className="topUl">
