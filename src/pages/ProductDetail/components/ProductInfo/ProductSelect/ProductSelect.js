@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import ProductOption from './ProductOption/ProductOption';
+import { withRouter } from 'react-router';
+import ProductOption from './ProductOption';
 import './ProductSelect.scss';
 
 class ProductSelect extends Component {
@@ -27,18 +28,22 @@ class ProductSelect extends Component {
         <button
           onClick={e => {
             e.preventDefault();
-            // console.log(id, optionID);
-
-            if (optionID)
-              fetch('URL', {
+            this.props.history.push('/cart');
+            console.log(id, optionID);
+            console.log(typeof id, typeof optionID);
+            if (optionID) {
+              fetch('http://10.58.0.90:8000/cart', {
                 method: 'POST',
-                body: JSON.stringfy({
+                headers: {
+                  Authorization: localStorage.getItem('Authorization'),
+                },
+                body: JSON.stringify({
                   product_id: id,
                   option_id: optionID,
                   quantity: 1,
                 }),
               });
-            // alert(`팝업창`) : alert(`필수 옵션을 선택해주세요.`);
+            } else alert(`필수 옵션을 선택해주세요.`);
           }}
         >
           <span>Add to Cart</span>
@@ -49,4 +54,4 @@ class ProductSelect extends Component {
   }
 }
 
-export default ProductSelect;
+export default withRouter(ProductSelect);
