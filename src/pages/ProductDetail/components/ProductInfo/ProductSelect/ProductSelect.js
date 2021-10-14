@@ -29,8 +29,8 @@ class ProductSelect extends Component {
   };
 
   render() {
-    const { optionID } = this.state;
-    const { id, isPopupOpen } = this.props;
+    const { optionID, isPopupOpen } = this.state;
+    const { id } = this.props;
 
     return (
       <section className="productSelect">
