@@ -24,7 +24,7 @@
     }
 
     .join-inner {
-      div {
+      .info {
         list-style: none;
 
         label {
@@ -43,32 +43,29 @@
         }
       }
 
-      .mobile {
-        .mobile-input-inner {
-          position: relative;
-          height: 40px;
+      .mobile-input-inner {
+        position: relative;
+        height: 40px;
 
-          select {
-            height: 100%;
-            box-sizing: border-box;
-            padding: 7px;
-            font-size: 13px;
-            border: 1px solid #000;
-            background: transparent;
-          }
+        select {
+          height: 100%;
+          padding: 7px;
+          font-size: 13px;
+          border: 1px solid #000;
+          background: transparent;
+        }
 
-          input {
-            position: absolute;
-            width: 50px;
-            height: 100%;
-            border: 1px solid black;
-            margin-left: 17px;
-            padding: 7px 2px;
-            text-align: center;
+        input {
+          position: absolute;
+          width: 50px;
+          height: 100%;
+          border: 1px solid black;
+          margin-left: 10px;
+          padding: 7px 2px;
+          text-align: center;
 
-            &:last-child {
-              left: 127px;
-            }
+          &:last-child {
+            left: 127px;
           }
         }
       }
@@ -76,7 +73,7 @@
       .birthDay {
         input {
           width: 50px;
-          margin-right: 5px;
+          margin-right: 10px;
           padding: 10px;
           font-size: 12px;
           color: #9a9a9a;

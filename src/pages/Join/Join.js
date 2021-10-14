@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
-import Input from './Input/Input';
 import Mobile from './Mobile/Mobile';
+import IdInput from './IdInput/IdInput';
+import PwInput from './PwInput/PwInput';
+import PwCheckInput from './PwCheckInput/PwCheckInput';
+import NameInput from './NameInput/NameInput';
+import EmailInput from './EmailInput/EmailInput';
+import BirthDay from './BirthDay/BirthDay';
 import Agreement from './Agreement/Agreement';
 import Button from './Button/Button';
-import UESR_INFO from './Agreement/UESR_INFO';
+import USER_INFO from './Agreement/USER_INFO';
 import { URL } from './config';
 import './Join.scss';
 
@@ -62,7 +67,7 @@ class Join extends Component {
     });
   };
 
-  //회원가입
+  //회원가입로직
   signUp = e => {
     e.preventDefault();
     const {
@@ -120,64 +125,16 @@ class Join extends Component {
     }
   };
 
-  isIdCheck = e => {
-    const { value: username } = e.target;
-    fetch(URL, {
-      method: 'POST',
-      body: JSON.stringify({
-        username,
-      }),
-    })
-      .then(res => res.json())
-      .then(res => {
-        if (res.message === 'SUCCESS') {
-          this.setState({ isAvailableId: true });
-        } else if (res.message === 'ERROR_ID_ALREADY_EXIST’') {
-          console.log('이미 사용중인 아이디입니다.');
-        }
-      });
-  };
-
   render() {
     return (
       <main className="Join">
         <div className="container">
           <h1>Sign Up</h1>
           <form className="join-inner">
-            <Input
-              name="id"
-              label="ID"
-              type="text"
-              maxLength="12"
-              handleInput={this.handleInput}
-              isIdCheck={this.isIdCheck}
-            />
-
-            <Input
-              name="pw"
-              type="password"
-              label="Password"
-              checkLabel="(영문 대소문자/숫자/특수문자 중 2가지 이상 조합, 8자~16자)"
-              maxLength="16"
-              handleInput={this.handleInput}
-            />
-
-            <Input
-              name="pwCheck"
-              label="Password Check"
-              type="password"
-              maxLength="16"
-              handleInput={this.handleInput}
-            />
-
-            <Input
-              name="name"
-              label="Name"
-              type="text"
-              maxLength="6"
-              handleInput={this.handleInput}
-            />
-
+            <IdInput handleInput={this.handleInput} />
+            <PwInput handleInput={this.handleInput} />
+            <PwCheckInput handleInput={this.handleInput} />
+            <NameInput handleInput={this.handleInput} />
             <Mobile
               label="Mobile"
               handleMobileInput={this.handleMobileInput}
@@ -191,41 +148,11 @@ class Join extends Component {
                 { id: '6', option: '019' },
               ]}
             />
-
-            <Input
-              name="email"
-              type="email"
-              label="E-mail"
-              handleInput={this.handleInput}
-            />
-
-            <div className="birthDay">
-              <label>Birthday</label>
-              <input
-                name="year"
-                type="text"
-                placeholder="YYYY"
-                maxLength="4"
-                onChange={this.handleInput}
-              />
-              <input
-                name="month"
-                type="text"
-                placeholder="MM"
-                maxLength="2"
-                onChange={this.handleInput}
-              />
-              <input
-                name="date"
-                type="text"
-                placeholder="DD"
-                maxLength="2"
-                onChange={this.handleInput}
-              />
-            </div>
+            <EmailInput handleInput={this.handleInput} />
+            <BirthDay handleInput={this.handleInput} />
           </form>
           <div className="register-agreement">
-            {UESR_INFO.map(data => {
+            {USER_INFO.map(data => {
               const { id, name, label, text } = data;
               return (
                 <Agreement
