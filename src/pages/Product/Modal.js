@@ -7,7 +7,6 @@ class Modal extends Component {
     this.state = {
       isModalOn: false,
       inputValue: '',
-      countQuantity: 1,
       currentProduct: [],
     };
   }
@@ -19,50 +18,60 @@ class Modal extends Component {
   };
 
   handleChange = event => {
-    this.setState({ inputValue: event.target.value });
-    const NOT_EXIST = -1;
-    if (
-      this.state.currentProduct.findIndex(
-        item => item.key === event.target.value
-      ) !== NOT_EXIST
-    )
-      return;
+    const { name, price } = this.props;
+    const { currentProduct } = this.state;
+    const { value: selectedOption } = event.target;
 
-    if (event.target.value === '선택 안함') return;
+    if (selectedOption === '선택 안함') return;
 
-    this.setState({
-      currentProduct: [
-        ...this.state.currentProduct,
-        {
-          key: event.target.value,
-          name: this.props.name,
-          quantity: this.state.countQuantity,
-          price: this.props.price,
-          value: event.target.value,
-        },
-      ],
-    });
+    const selectedProduct = currentProduct.find(
+      item => item.id === selectedOption
+    );
+    const isAlreadyExist = !!selectedProduct;
+
+    if (isAlreadyExist) {
+      this.setState(prev => {
+        const prevProduct = prev.currentProduct;
+        const nextProduct = prevProduct.map(product => {
+          if (product.id !== selectedProduct.id) return product;
+          else return { ...product, quantity: product.quantity + 1 };
+        });
+
+        return { currentProduct: nextProduct };
+      });
+    } else {
+      const optionToAdd = {
+        id: selectedOption,
+        name,
+        price,
+        value: selectedOption,
+        quantity: 1,
+      };
+
+      this.setState(prev => ({
+        currentProduct: [...prev.currentProduct, optionToAdd],
+      }));
+    }
+
+    this.setState({ inputValue: selectedOption });
   };
 
-  increaseQuantity = () => {
-    this.state.countQuantity < 10
-      ? this.setState({
-          countQuantity: this.state.countQuantity + 1,
-        })
-      : alert('최대 주문 수량은 10개입니다.');
-  };
+  // increaseQuantity = () => {
+  //   if (product.quantity < 10) return alert('최대 주문 수량은 10개입니다.');
+  // };
 
-  decreaseQuantity = () => {
-    this.state.countQuantity > 1
-      ? this.setState({
-          countQuantity: this.state.countQuantity - 1,
-        })
-      : alert('최소 주문 수량은 1개입니다.');
-  };
+  // decreaseQuantity = () => {
+  //   if (product.quantity > 1) return alert('최대 주문 수량은 10개입니다.');
+  // };
 
   render() {
     const { isModalOn, currentProduct } = this.state;
     const { image, name, price } = this.props;
+
+    const totalQuantity = currentProduct.reduce(
+      (acc, cur) => acc + cur.price * cur.quantity,
+      0
+    );
 
     return (
       <div className="modal">
@@ -111,30 +120,28 @@ class Modal extends Component {
                     추가됩니다.
                   </p>
                   {currentProduct.length !== 0 &&
-                    currentProduct.map((productList, idx) => (
+                    currentProduct.map((product, idx) => (
                       <div key={idx} className="selectedWrapper">
                         <div className="selectedProduct">
                           <div>{name}</div>
-                          <div className="selectedInput">
-                            {productList.value}
-                          </div>
+                          <div className="selectedInput">{product.value}</div>
                         </div>
                         <div className="selectedCount">
                           <div className="countedNumber">
-                            {this.state.countQuantity}
+                            {product.quantity}
                           </div>
                           <button onClick={this.increaseQuantity}>⬆</button>
                           <button onClick={this.decreaseQuantity}>⬇</button>
                         </div>
                         <div className="selectedPrice">
-                          {(price * this.state.countQuantity).toLocaleString()}
+                          {(price * product.quantity).toLocaleString()}
                         </div>
                       </div>
                     ))}
                   <p className="totalPriceWrapper">
                     총 상품금액 (수량):
                     <span className="totalPrice">
-                      {(price * this.state.countQuantity).toLocaleString()}
+                      {totalQuantity.toLocaleString()}
                     </span>
                   </p>
                   <div className="cartButtonWrapper">
@@ -142,8 +149,8 @@ class Modal extends Component {
                       className="cartButton"
                       onClick={() => {
                         this.props.history.push({
-                          pathname: 'http://10.58.0.90:8000/order/basket',
-                          state: { currentProduct: currentProduct },
+                          pathname: '/order/basket',
+                          state: { currentProduct },
                         });
                       }}
                     >
@@ -154,10 +161,7 @@ class Modal extends Component {
               </div>
             </div>
           </div>
-          <span
-            className="backgroundClickClose"
-            onClick={this.toggleModal}
-          ></span>
+          <span className="backgroundClickClose" onClick={this.toggleModal} />
         </div>
       </div>
     );
