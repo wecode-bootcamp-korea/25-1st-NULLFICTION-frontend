@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './Product.scss';
+
 class Product extends Component {
   render() {
     const { data, setCount, removeProduct } = this.props;
