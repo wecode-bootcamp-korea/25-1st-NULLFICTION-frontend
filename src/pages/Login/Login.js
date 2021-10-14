@@ -25,8 +25,8 @@ export default class Login extends Component {
   goToMain = () => {
     const { id, pw } = this.state;
     if (
-      (id.length < 4 || id.length > 12) &&
-      (pw.length < 8 || pw.length >= 12)
+      (id.length > 4 || id.length > 12) &&
+      (pw.length > 7 || pw.length >= 12)
     ) {
       fetch(`${LOGIN_API}`, {
         method: 'POST',
