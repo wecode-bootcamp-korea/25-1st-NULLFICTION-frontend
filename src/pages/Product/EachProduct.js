@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
-import './EachProduct.scss';
 import Modal from './Modal';
+import './EachProduct.scss';
 
 class EachProduct extends Component {
   setSize = sizes => {
