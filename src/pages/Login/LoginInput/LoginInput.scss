@@ -22,4 +22,10 @@
       outline: 1px solid rgb(33, 33, 33);
     }
   }
+  span {
+    color: rgb(254, 60, 60);
+    margin-top: 10px;
+    font-family: 'Arial, Helvetica, sans-serif';
+    @include fontSize(12px);
+  }
 }

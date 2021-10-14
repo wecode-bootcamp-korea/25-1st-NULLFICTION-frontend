@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import '../Button/Button.scss';
 
 class Button extends Component {
@@ -11,9 +10,7 @@ class Button extends Component {
         <button className={signUpColor} onClick={goToMain}>
           {name}
         </button>
-        <Link to="#">
-          <p>{findUserID}</p>
-        </Link>
+        <p>{findUserID}</p>
       </div>
     );
   }

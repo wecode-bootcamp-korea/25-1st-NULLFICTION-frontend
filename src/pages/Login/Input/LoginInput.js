@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../Input/Input.scss';
+import './Input.scss';
 
 export default class Input extends Component {
   render() {
