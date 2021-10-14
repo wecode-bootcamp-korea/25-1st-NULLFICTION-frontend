@@ -1,12 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Kaisei+HarunoUmi&display=swap');
-@mixin flex($axis: 'main', $row, $column) {
+@mixin flexRow($row, $axis: 'main') {
   display: flex;
-  @if ($axis == 'main') {
+  @if $axis == 'main' {
     justify-content: $row;
-    align-items: $column;
-  } @else if($axis == 'cross') {
+  } @else if $axis == 'cross' {
     flex-direction: column;
-    justify-content: $column;
     align-items: $row;
   }
 }
