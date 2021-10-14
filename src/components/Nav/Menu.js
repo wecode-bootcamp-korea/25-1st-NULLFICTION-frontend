@@ -30,6 +30,7 @@ class Menu extends Component {
                   <li className="shopClose" key={index}>
                     <Link
                       to={
+                        //link가 categoryUrl일때 index를 붙이고 그렇지 않을떄 link를 리턴
                         list.link === categoryUrl
                           ? `${categoryUrl}${index - 1}`
                           : list.link

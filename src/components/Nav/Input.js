@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router';
 
 class Input extends Component {
   constructor() {
@@ -12,12 +13,13 @@ class Input extends Component {
 
   getData = () => {
     const { keyword } = this.state;
-    fetch(`http://10.58.2.54:8000/products?keyword=${keyword}`)
+    const { history } = this.props;
+    fetch(`http://10.58.0.90:8000/products?keyword=${keyword}`)
       .then(res => res.json())
       .then(res => {
         this.setState({ products: res.result });
+        history.push(`/products?keyword=${keyword}`);
       });
-    //여기서 상품 리스트로 이동하는 함수를 호출해야 하는지?
   };
 
   handleChange = e => {
@@ -55,4 +57,4 @@ class Input extends Component {
   }
 }
 
-export default Input;
+export default withRouter(Input);
