@@ -1,5 +1,6 @@
 .navContainer {
   display: flex;
+  position: fixed;
   margin: 20px 45px;
 
   img {
@@ -8,9 +9,12 @@
 
   .navBox {
     display: flex;
+    position: fixed;
     justify-content: center;
     width: 100%;
+    top: 0;
     margin-bottom: 10px;
+    background-color: white;
   }
 
   .navLogo {
@@ -22,11 +26,12 @@
     position: fixed;
     display: flex;
     right: 45px;
+    margin-top: 30px;
   }
 
   .topLi {
     margin-left: 40px;
-    font-size: 18px;
+    font-size: 20px;
   }
 
   .topLink {
@@ -62,16 +67,13 @@
     .search {
       width: 100%;
       margin-top: 5px;
+      background-color: transparent;
       border: none;
 
       &::placeholder {
         color: black;
         font-size: 18px;
       }
-    }
-
-    input:focus::placeholder {
-      color: transparent;
     }
   }
 }

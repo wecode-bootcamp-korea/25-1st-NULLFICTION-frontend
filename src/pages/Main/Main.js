@@ -10,11 +10,9 @@ class Main extends Component {
     return (
       <main>
         <div className="mainContainer">
-          <Nav />
           <Scroll />
           <ImgList />
         </div>
-        <Footer />
       </main>
     );
   }
