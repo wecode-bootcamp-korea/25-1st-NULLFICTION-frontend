@@ -8,7 +8,7 @@ class OrderBasket extends Component {
     return (
       <main className="orderBasket">
         <div className="linkWrapper">
-          <Link className="link" to="/product">
+          <Link className="link" to="/products">
             Return to store
           </Link>
         </div>

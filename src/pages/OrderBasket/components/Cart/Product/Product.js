@@ -5,6 +5,7 @@ import './Product.scss';
 class Product extends Component {
   render() {
     const { data, setCount, removeProduct } = this.props;
+
     return (
       <li className="product">
         <div className="main">
@@ -12,20 +13,20 @@ class Product extends Component {
             {data.name}
           </Link>
           <div className="countAndRemove">
-            <button value={-1} onClick={e => setCount(e, data.id)}>
+            <button value={-1} onClick={e => setCount(e, data.cart_id)}>
               DOWN
             </button>
-            <span className="count">{data.count}</span>
-            <button value={1} onClick={e => setCount(e, data.id)}>
+            <span className="count">{data.quantity}</span>
+            <button value={1} onClick={e => setCount(e, data.cart_id)}>
               UP
             </button>
-            <button onClick={() => removeProduct(data.id)}>Remove</button>
+            <button onClick={() => removeProduct(data.cart_id)}>Remove</button>
           </div>
           <div className="price">
-            {(data.count * data.price).toLocaleString()} KRW
+            {(data.quantity * data.price).toLocaleString()} KRW
           </div>
         </div>
-        <div className="option">{data.optionID}</div>
+        <div className="option">{data.option}</div>
       </li>
     );
   }
