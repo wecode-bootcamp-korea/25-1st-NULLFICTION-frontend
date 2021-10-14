@@ -3,14 +3,15 @@ import Input from '../Input/Input';
 
 class PwCheckInput extends Component {
   render() {
-    const { handleInput } = this.props;
+    const { handleInput, value } = this.props;
     return (
       <Input
+        value={value}
         name="pwCheck"
         label="Password Check"
         type="password"
         maxLength="16"
-        handleInput={this.handleInput}
+        handleInput={handleInput}
       />
     );
   }

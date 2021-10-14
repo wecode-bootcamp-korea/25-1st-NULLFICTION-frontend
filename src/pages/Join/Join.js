@@ -24,7 +24,7 @@ class Join extends Component {
       id: '',
       pw: '',
       pwCheck: '',
-      idValue: '',
+      value: '',
       mobile: { num1: '', num2: '', num3: '' },
       checkList: { check1: false, check2: false, check3: false },
       isAgreementRead: { read1: false, read2: false, read3: false },
@@ -126,18 +126,16 @@ class Join extends Component {
   };
 
   render() {
+    const { id, pw, name, email, pwCheck } = this.state;
     return (
       <main className="Join">
         <div className="container">
           <h1>Sign Up</h1>
           <form className="join-inner">
-            <IdInput
-              value={this.state.idValue}
-              handleInput={this.handleInput}
-            />
-            <PwInput handleInput={this.handleInput} />
-            <PwCheckInput handleInput={this.handleInput} />
-            <NameInput handleInput={this.handleInput} />
+            <IdInput value={id} handleInput={this.handleInput} />
+            <PwInput value={pw} handleInput={this.handleInput} />
+            <PwCheckInput value={pwCheck} handleInput={this.handleInput} />
+            <NameInput value={name} handleInput={this.handleInput} />
             <Mobile
               label="Mobile"
               handleMobileInput={this.handleMobileInput}
@@ -151,7 +149,7 @@ class Join extends Component {
                 { id: '6', option: '019' },
               ]}
             />
-            <EmailInput handleInput={this.handleInput} />
+            <EmailInput value={email} handleInput={this.handleInput} />
             <BirthDay handleInput={this.handleInput} />
           </form>
           <div className="register-agreement">

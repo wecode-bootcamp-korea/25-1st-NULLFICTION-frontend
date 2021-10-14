@@ -3,9 +3,10 @@ import Input from '../Input/Input';
 
 class NameInput extends Component {
   render() {
-    const { handleInput } = this.props;
+    const { handleInput, value } = this.props;
     return (
       <Input
+        value={value}
         name="name"
         label="Name"
         type="text"

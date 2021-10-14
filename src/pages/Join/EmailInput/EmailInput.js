@@ -3,9 +3,10 @@ import Input from '../Input/Input';
 
 class EmailInput extends Component {
   render() {
-    const { handleInput } = this.props;
+    const { handleInput, value } = this.props;
     return (
       <Input
+        value={value}
         name="email"
         type="email"
         label="E-mail"

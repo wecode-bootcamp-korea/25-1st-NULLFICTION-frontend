@@ -3,9 +3,10 @@ import Input from '../Input/Input';
 
 class PwInput extends Component {
   render() {
-    const { handleInput } = this.props;
+    const { handleInput, value } = this.props;
     return (
       <Input
+        value={value}
         name="pw"
         type="password"
         label="Password"

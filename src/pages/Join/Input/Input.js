@@ -3,20 +3,6 @@ import { URL } from '../config';
 import '../Input/Input.scss';
 
 class Input extends Component {
-  constructor() {
-    super();
-    this.state = {
-      isAvailableId: false,
-    };
-  }
-
-  isFormBlur = () => {
-    const { isCheckedIdform } = this.state;
-    this.setState({
-      isAvailableId: true,
-    });
-  };
-
   render() {
     const {
       name,
@@ -25,9 +11,10 @@ class Input extends Component {
       maxLength,
       handleInput,
       checkLabel,
-      isAvailableId,
+      isFormBlur,
       value,
     } = this.props;
+
     return (
       <div className="userId info">
         <label>{label}</label>
@@ -37,14 +24,9 @@ class Input extends Component {
           name={name}
           maxLength={maxLength}
           onChange={handleInput}
-          onBlur={this.isIdFormBlur}
+          onBlur={isFormBlur}
         />
         <span>{checkLabel}</span>
-        {isAvailableId ? (
-          <span>{`${name}는 사용가능한 아이디 입니다.`}</span>
-        ) : (
-          ''
-        )}
       </div>
     );
   }
