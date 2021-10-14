@@ -57,19 +57,6 @@ export default class Login extends Component {
     this.props.history.push('join');
   };
 
-  // isIdCheckValue = e => {
-  //   const { isCheckedId } = this.state;
-  //   this.setState({
-  //     isCheckedId: true,
-  //   });
-  // };
-  // isPwCheckValue = e => {
-  //   const { isCheckedPassword } = this.state;
-  //   this.setState({
-  //     isCheckedPassword: true,
-  //   });
-  // };
-
   render() {
     const { isCheckedId, isCheckedPassword } = this.state;
     return (
