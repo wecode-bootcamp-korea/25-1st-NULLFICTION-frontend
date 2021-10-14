@@ -94,21 +94,94 @@
             }
           }
 
-          .modalOptionDescription {
-            padding: 2px 9px 50px;
-            border-bottom: 1px solid rgb(154, 155, 160);
-            color: red;
-            font-size: 13px;
-          }
+          .totalProducts {
+            .modalOptionDescription {
+              padding: 2px 9px 50px;
+              border-bottom: 1px solid rgb(154, 155, 160);
+              color: red;
+              font-size: 13px;
+            }
 
-          .totalPriceWrapper {
-            padding: 10px;
-            font-size: 14px;
-            font-weight: 600;
+            .selectedWrapper {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
 
-            .totalPrice {
-              padding-left: 5px;
-              font-size: 16px;
+              .selectedInput {
+                margin-top: 5px;
+                color: gray;
+              }
+
+              .selectedProduct {
+                display: inline-block;
+                padding: 10px;
+                font-size: 14px;
+              }
+
+              .selectedCount {
+                position: absolute;
+                right: 42%;
+                display: inline-block;
+                padding: 10px;
+
+                .countedNumber {
+                  display: inline-block;
+                  padding: 5px;
+                  font-size: 14px;
+                }
+
+                button {
+                  width: 20px;
+                  height: 20px;
+                  border: none;
+                  font-size: 13px;
+                  background-color: white;
+                  color: black;
+                  cursor: pointer;
+                }
+              }
+
+              .selectedPrice {
+                display: inline-block;
+                padding: 10px;
+                font-size: 14px;
+                color: royalblue;
+              }
+            }
+
+            .totalPriceWrapper {
+              padding: 10px;
+              font-size: 14px;
+              font-weight: 600;
+              border-top: 1px solid rgb(154, 155, 160);
+
+              .totalPrice {
+                padding-left: 5px;
+                font-size: 16px;
+              }
+            }
+
+            .cartButtonWrapper {
+              display: flex;
+              justify-content: center;
+
+              .cartButton {
+                margin: 20px;
+                padding: 10px;
+                height: 40px;
+                width: 60%;
+                border: 1px solid black;
+                text-align: center;
+                font-size: 14px;
+                background-color: white;
+                cursor: pointer;
+
+                &:hover {
+                  color: white;
+                  background-color: black;
+                  transition: 0.7s;
+                }
+              }
             }
           }
         }
