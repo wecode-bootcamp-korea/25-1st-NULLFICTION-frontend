@@ -1,0 +1,24 @@
+.productOption {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  select {
+    padding: 4px;
+    width: 100%;
+    outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    font-size: 12px;
+  }
+  optgroup {
+    font-weight: bold;
+  }
+  .fa-chevron-down {
+    position: absolute;
+    top: 8px;
+    right: 5px;
+    font-size: 10px;
+  }
+}
