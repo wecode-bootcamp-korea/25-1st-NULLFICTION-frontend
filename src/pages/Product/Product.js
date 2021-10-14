@@ -15,11 +15,11 @@ class Product extends Component {
   }
 
   componentDidMount() {
-    fetch('http://192.168.1.229:8000/products', {})
+    fetch('data/productList.json', {})
       .then(res => res.json())
       .then(data => {
         this.setState({
-          productList: data.result,
+          productList: data,
         });
       });
   }
@@ -38,6 +38,7 @@ class Product extends Component {
 
   render() {
     const { isProductListOn, isScentsListOn, productList } = this.state;
+
     return (
       <div className="contents">
         <div className="contentBox">
@@ -92,6 +93,7 @@ class Product extends Component {
                   id={product.id}
                   name={product.name}
                   collection={product.collection}
+                  subCategory={product.sub_category}
                   size_g={product.size_g}
                   size_ml={product.size_ml}
                   size_oz={product.size_oz}
