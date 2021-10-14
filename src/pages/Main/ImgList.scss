@@ -1,0 +1,134 @@
+.imgSection {
+  img {
+    object-fit: cover;
+  }
+
+  //최상위 부모 div
+  .mainImgPBox {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  // text div감싸고 있는 div
+  .textBox {
+    margin: 135px 0;
+    position: relative;
+
+    img:hover {
+      opacity: 0.5;
+    }
+
+    img:hover ~ .leftTextBox {
+      opacity: 1;
+    }
+
+    img:hover ~ .rightTextBox {
+      opacity: 1;
+    }
+
+    img:hover ~ .shortTextBox {
+      opacity: 1;
+    }
+  }
+
+  //text div
+  .leftTextBox,
+  .rightTextBox,
+  .shortTextBox {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    color: rgb(136, 135, 135);
+    letter-spacing: 1.5px;
+    line-height: 1.7;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  //상품 제목만 있는 text div
+  .shortTextBox {
+    color: rgb(27, 61, 30);
+  }
+
+  //빈 div
+  .ImgEmptyBox {
+    width: 50%;
+  }
+
+  //img
+  .soapTopBox {
+    width: 52%;
+    margin-top: 300px;
+
+    .soapTop {
+      width: 100%;
+    }
+  }
+
+  .womanTopBox {
+    width: 20%;
+    margin-top: 200px;
+
+    .womanTop {
+      width: 100%;
+    }
+  }
+
+  .sampleTopBox {
+    margin-top: 0;
+    width: 50%;
+
+    .sampleTop {
+      width: 100%;
+    }
+  }
+
+  .bathRoomBox {
+    width: 50%;
+
+    .bathRoom {
+      width: 100%;
+    }
+  }
+
+  .sampleBottomBox {
+    width: 52%;
+    margin-top: 0px;
+
+    .sampleBottom {
+      width: 100%;
+    }
+  }
+
+  .creamBox {
+    width: 45%;
+    margin-left: 15%;
+    margin-top: 15%;
+
+    .cream {
+      width: 50%;
+    }
+  }
+
+  .womanBottomBox {
+    width: 50%;
+    margin-top: 0;
+    right: 0;
+
+    .womanBottom {
+      width: 100%;
+    }
+  }
+
+  .twotoneBox {
+    width: 40%;
+
+    .twotone {
+      width: 100%;
+    }
+  }
+}

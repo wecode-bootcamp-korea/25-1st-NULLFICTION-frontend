@@ -1,4 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Kaisei+HarunoUmi&display=swap');
+@mixin flexRow($row, $axis: 'main') {
+  display: flex;
+  @if $axis == 'main' {
+    justify-content: $row;
+  } @else if $axis == 'cross' {
+    flex-direction: column;
+    align-items: $row;
+  }
+}
+
+@mixin border($direction: 'all') {
+  @if $direction == 'left' {
+    border-left: 1px solid black;
+  } @else if $direction == 'right' {
+    border-right: 1px solid black;
+  } @else if $direction == 'top' {
+    border-top: 1px solid black;
+  } @else if $direction == 'bottom' {
+    border-bottom: 1px solid black;
+  } @else if $direction == 'all' {
+    border: 1px solid black;
+  }
+}
 
 * {
   box-sizing: border-box;

@@ -2,12 +2,15 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router';
 import ProductOption from './ProductOption';
 import './ProductSelect.scss';
+// 삭제 해야함
+import Popup from '../../../../../components/Popup/Popup';
 
 class ProductSelect extends Component {
   constructor() {
     super();
     this.state = {
       optionID: 0,
+      isPopupOpen: false,
     };
   }
 
@@ -18,9 +21,16 @@ class ProductSelect extends Component {
     });
   };
 
+  closePopup = () => {
+    const { isPopupOpen } = this.state;
+    this.setState({
+      isPopupOpen: !isPopupOpen,
+    });
+  };
+
   render() {
     const { optionID } = this.state;
-    const { id } = this.props;
+    const { id, isPopupOpen } = this.props;
 
     return (
       <section className="productSelect">
@@ -28,9 +38,7 @@ class ProductSelect extends Component {
         <button
           onClick={e => {
             e.preventDefault();
-            this.props.history.push('/cart');
-            console.log(id, optionID);
-            console.log(typeof id, typeof optionID);
+
             if (optionID) {
               fetch('http://10.58.0.90:8000/cart', {
                 method: 'POST',
@@ -43,12 +51,14 @@ class ProductSelect extends Component {
                   quantity: 1,
                 }),
               });
+              this.props.history.push('/cart');
             } else alert(`필수 옵션을 선택해주세요.`);
           }}
         >
           <span>Add to Cart</span>
           <span>18,000 KRW</span>
         </button>
+        {isPopupOpen && <Popup closePopup={this.closePopup} />}
       </section>
     );
   }

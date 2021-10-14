@@ -1,0 +1,75 @@
+.contents {
+  padding: 240px 50px 50px 50px;
+
+  .contentBox {
+    margin: 0px 223px;
+
+    .productTitle {
+      margin-bottom: 40px;
+      font-size: 20px;
+      font-weight: 400;
+    }
+
+    .filter {
+      margin-bottom: 40px;
+      display: flex;
+      justify-content: space-between;
+
+      button {
+        margin: 0px 25px 5px;
+        padding: 0;
+        border: none;
+        text-decoration: none;
+        font-size: 14px;
+        background-color: white;
+        cursor: pointer;
+
+        &:hover {
+          box-shadow: 0 1px black;
+        }
+      }
+
+      .selectScentsList {
+        text-align: right;
+      }
+
+      .productList {
+        li {
+          margin: 0px 25px 5px;
+          font-size: 14px;
+        }
+
+        &.on {
+          height: fit-content;
+          transition: all 0.8s;
+          opacity: 1;
+        }
+
+        &.off {
+          height: 0px;
+          transition: all 0.1s;
+          opacity: 0;
+        }
+      }
+
+      .scentsList {
+        li {
+          margin: 0px 25px 5px;
+          font-size: 14px;
+        }
+
+        &.on {
+          height: fit-content;
+          transition: all 0.8s;
+          opacity: 1;
+        }
+
+        &.off {
+          height: 0px;
+          transition: all 0.05s;
+          opacity: 0;
+        }
+      }
+    }
+  }
+}
