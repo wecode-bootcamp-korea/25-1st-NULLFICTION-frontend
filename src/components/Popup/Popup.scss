@@ -1,0 +1,50 @@
+// @import '../../styles//common.scss';
+.popup {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 14px;
+  border: 1px solid black;
+
+  > header {
+    // @include flexRow(space-between);
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    width: 100%;
+    background-color: black;
+    color: white;
+
+    button {
+      border: none;
+      background-color: inherit;
+      color: inherit;
+      font-weight: bold;
+    }
+  }
+
+  .context {
+    padding: 100px;
+    background-color: white;
+  }
+
+  .links {
+    padding: 10px;
+    font-size: 12px;
+    background-color: #fafafa;
+    border-top: 1px solid rgba($color: black, $alpha: 0.1);
+
+    .goToCart {
+      color: black;
+      margin: 0 20px;
+      cursor: pointer;
+    }
+
+    .continue {
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+    }
+  }
+}

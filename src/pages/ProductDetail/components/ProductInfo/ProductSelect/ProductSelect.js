@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import ProductOption from './ProductOption/ProductOption';
 import './ProductSelect.scss';
+// 삭제 해야함
+import Popup from '../../../../../components/Popup/Popup';
 
 class ProductSelect extends Component {
   constructor() {
     super();
     this.state = {
       optionID: 0,
+      isPopupOpen: true,
     };
   }
 
@@ -17,8 +20,15 @@ class ProductSelect extends Component {
     });
   };
 
+  closePopup = () => {
+    const { isPopupOpen } = this.state;
+    this.setState({
+      isPopupOpen: !isPopupOpen,
+    });
+  };
+
   render() {
-    const { optionID } = this.state;
+    const { optionID, isPopupOpen } = this.state;
 
     return (
       <section className="productSelect">
@@ -32,6 +42,7 @@ class ProductSelect extends Component {
           <span>Add to Cart</span>
           <span>18,000 KRW</span>
         </button>
+        {isPopupOpen && <Popup closePopup={this.closePopup} />}
       </section>
     );
   }
