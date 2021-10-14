@@ -22,13 +22,12 @@ class Join extends Component {
       mobile: { num1: '', num2: '', num3: '' },
       checkList: { check1: false, check2: false, check3: false },
       isAgreementRead: { read1: false, read2: false, read3: false },
+      isAvailableId: false,
     };
   }
 
   handleInput = e => {
     const { name, value } = e.target;
-    console.log('name===', name);
-    console.log('value===', value);
     this.setState({
       [name]: value,
     });
@@ -66,8 +65,18 @@ class Join extends Component {
   //회원가입
   signUp = e => {
     e.preventDefault();
-    const { id, pw, pwCheck, name, email, mobile, year, month, date } =
-      this.state;
+    const {
+      id,
+      pw,
+      pwCheck,
+      name,
+      email,
+      mobile,
+      year,
+      month,
+      date,
+      checkList,
+    } = this.state;
     const formCheckList =
       name &&
       email.includes('@') &&
@@ -81,8 +90,11 @@ class Join extends Component {
       id &&
       pw.length >= 8 === pwCheck;
 
-    console.log(id, pw, pwCheck, name, email, mobile, year, month, date);
-    if (formCheckList) {
+    const isCheckListValue = Object.entries(checkList).every(
+      e => e[1] === true
+    );
+
+    if (formCheckList && isCheckListValue) {
       fetch(URL, {
         method: 'POST',
         body: JSON.stringify({
@@ -100,7 +112,7 @@ class Join extends Component {
             alert('회원가입 축하드립니다.');
             this.props.history.push('/member/login');
           } else {
-            alert('이미 가입된 이메일 입니다.');
+            alert('이미 가입된 아이디 입니다.');
           }
         });
     } else {
@@ -108,8 +120,25 @@ class Join extends Component {
     }
   };
 
+  isIdCheck = e => {
+    const { value: username } = e.target;
+    fetch(URL, {
+      method: 'POST',
+      body: JSON.stringify({
+        username,
+      }),
+    })
+      .then(res => res.json())
+      .then(res => {
+        if (res.message === 'SUCCESS') {
+          this.setState({ isAvailableId: true });
+        } else if (res.message === 'ERROR_ID_ALREADY_EXIST’') {
+          console.log('이미 사용중인 아이디입니다.');
+        }
+      });
+  };
+
   render() {
-    console.log('>>>>>', this.state);
     return (
       <main className="Join">
         <div className="container">
@@ -119,10 +148,9 @@ class Join extends Component {
               name="id"
               label="ID"
               type="text"
-              checkLabel="아이디를 입력해 주세요."
               maxLength="12"
               handleInput={this.handleInput}
-              idCheck={this.idCheck}
+              isIdCheck={this.isIdCheck}
             />
 
             <Input
@@ -213,7 +241,7 @@ class Join extends Component {
               );
             })}
           </div>
-          <Button name="Sign UP" signUp={this.signUp} />
+          <Button name="SignUP" signUp={this.signUp} />
         </div>
       </main>
     );

@@ -1,31 +1,19 @@
 import React, { Component } from 'react';
+import { URL } from '../config';
 import '../Input/Input.scss';
 
 class Input extends Component {
-  constructor() {
-    super();
-    this.state = {
-      isInputFocus: false,
-      isInputBlur: false,
-    };
-  }
-
-  onInputFocus = () => {
-    this.setState({
-      isInputFocus: true,
-    });
-  };
-
-  onInputBlur = () => {
-    this.setState({
-      isInputBlur: true,
-    });
-  };
-
   render() {
-    const { isInputBlur } = this.state;
-    const { name, label, type, maxLength, handleInput, checkLabel } =
-      this.props;
+    const {
+      name,
+      label,
+      type,
+      maxLength,
+      handleInput,
+      checkLabel,
+      isAvailableId,
+      isIdCheck,
+    } = this.props;
 
     return (
       <div className="userId">
@@ -35,10 +23,14 @@ class Input extends Component {
           name={name}
           maxLength={maxLength}
           onChange={handleInput}
-          onFocus={this.onInputFocus}
-          onBlur={this.onInputBlur}
+          onBlur={isIdCheck}
         />
-        {name.length > 0 && isInputBlur && <span>{checkLabel}</span>}
+        <span>{checkLabel}</span>
+        {isAvailableId ? (
+          <span>{`${name}는 사용가능한 아이디 입니다.`}</span>
+        ) : (
+          ''
+        )}
       </div>
     );
   }
