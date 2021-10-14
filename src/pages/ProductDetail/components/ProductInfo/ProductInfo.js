@@ -23,6 +23,7 @@ class ProductInfo extends Component {
 
   render() {
     const {
+      id,
       name,
       collection,
       size_g,
@@ -56,7 +57,7 @@ class ProductInfo extends Component {
           name="infomation"
           contextList={this.stringToHtml(INFOMATION_CONTEXT)}
         />
-        <ProductSelect />
+        <ProductSelect id={id} />
       </div>
     );
   }

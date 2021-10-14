@@ -19,6 +19,7 @@ class ProductSelect extends Component {
 
   render() {
     const { optionID } = this.state;
+    const { id } = this.props;
 
     return (
       <section className="productSelect">
@@ -26,7 +27,18 @@ class ProductSelect extends Component {
         <button
           onClick={e => {
             e.preventDefault();
-            optionID ? alert(`팝업창`) : alert(`필수 옵션을 선택해주세요.`);
+            // console.log(id, optionID);
+
+            if (optionID)
+              fetch('URL', {
+                method: 'POST',
+                body: JSON.stringfy({
+                  product_id: id,
+                  option_id: optionID,
+                  quantity: 1,
+                }),
+              });
+            // alert(`팝업창`) : alert(`필수 옵션을 선택해주세요.`);
           }}
         >
           <span>Add to Cart</span>

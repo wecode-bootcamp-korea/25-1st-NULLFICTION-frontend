@@ -24,7 +24,8 @@ class ProductDetail extends Component {
   }
 
   componentDidMount() {
-    fetch('http://10.58.2.54:8000/products/2')
+    const { id } = this.props.match.params;
+    fetch(`http://10.58.0.90:8000/products/${id}`)
       .then(res => res.json())
       .then(({ result: data }) => {
         data
@@ -38,6 +39,7 @@ class ProductDetail extends Component {
 
   render() {
     const {
+      id,
       name,
       collection,
       size_g,
@@ -65,6 +67,7 @@ class ProductDetail extends Component {
           <div className="rightWrapper">
             <ProductInfo
               info={{
+                id,
                 name,
                 collection,
                 size_g,
