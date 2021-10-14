@@ -1,0 +1,9 @@
+@mixin boxStyle($padding: 15px) {
+  padding: $padding 0;
+  border-top: 1px solid black;
+}
+@mixin width($value: 30%) {
+  width: $value;
+}
+
+$border: 1px solid black;
