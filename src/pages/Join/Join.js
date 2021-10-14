@@ -24,10 +24,10 @@ class Join extends Component {
       id: '',
       pw: '',
       pwCheck: '',
+      idValue: '',
       mobile: { num1: '', num2: '', num3: '' },
       checkList: { check1: false, check2: false, check3: false },
       isAgreementRead: { read1: false, read2: false, read3: false },
-      isAvailableId: false,
     };
   }
 
@@ -131,7 +131,10 @@ class Join extends Component {
         <div className="container">
           <h1>Sign Up</h1>
           <form className="join-inner">
-            <IdInput handleInput={this.handleInput} />
+            <IdInput
+              value={this.state.idValue}
+              handleInput={this.handleInput}
+            />
             <PwInput handleInput={this.handleInput} />
             <PwCheckInput handleInput={this.handleInput} />
             <NameInput handleInput={this.handleInput} />

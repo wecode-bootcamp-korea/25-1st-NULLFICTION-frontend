@@ -3,6 +3,20 @@ import { URL } from '../config';
 import '../Input/Input.scss';
 
 class Input extends Component {
+  constructor() {
+    super();
+    this.state = {
+      isAvailableId: false,
+    };
+  }
+
+  isFormBlur = () => {
+    const { isCheckedIdform } = this.state;
+    this.setState({
+      isAvailableId: true,
+    });
+  };
+
   render() {
     const {
       name,
@@ -12,18 +26,18 @@ class Input extends Component {
       handleInput,
       checkLabel,
       isAvailableId,
-      isIdCheck,
+      value,
     } = this.props;
-
     return (
       <div className="userId info">
         <label>{label}</label>
         <input
+          value={value}
           type={type}
           name={name}
           maxLength={maxLength}
           onChange={handleInput}
-          onBlur={isIdCheck}
+          onBlur={this.isIdFormBlur}
         />
         <span>{checkLabel}</span>
         {isAvailableId ? (
