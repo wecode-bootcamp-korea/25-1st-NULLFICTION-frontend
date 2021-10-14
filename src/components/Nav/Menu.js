@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import './Nav.scss';
 
 class Menu extends Component {
@@ -8,11 +8,20 @@ class Menu extends Component {
     this.state = {
       isShopHovered: false,
       isAboutHovered: false,
+      link: '',
     };
+  }
+  componentDidMount() {
+    fetch(`${baseUrl}${this.props.location.search}`)
+      .then(data => data.json())
+      .then(data => {
+        this.setState({ link: data });
+      });
   }
 
   render() {
     const { isShopHovered, isAboutHovered } = this.state;
+
     return (
       <div className="menu">
         <div
@@ -24,9 +33,11 @@ class Menu extends Component {
           {isShopHovered && (
             <ul className="shopCloseBox">
               {shopList.map((list, index) => {
+                console.log(`${shopList.text}====== ${list.link}${index - 1}`);
+
                 return (
                   <li className="shopClose" key={index}>
-                    <Link to={list.link}>{list.text}</Link>
+                    <Link to={`${list.link}${index - 1}`}>{list.text}</Link>
                   </li>
                 );
               })}
@@ -67,43 +78,45 @@ class Menu extends Component {
   }
 }
 
-export default Menu;
+export default withRouter(Menu);
+const { categoryUrl } = 'http://127.0.0.1:8000/products?main-category=';
+const { baseUrl } = 'http://127.0.0.1:8000/products?';
 
 const shopList = [
   {
-    link: '/product',
+    link: 'http://127.0.0.1:8000/products',
     text: 'SHOP ALL',
   },
   {
-    link: '/',
+    link: `${baseUrl}best-seller=4`,
     text: 'BEST SELLER',
   },
   {
-    link: '/',
+    link: { categoryUrl },
     text: 'PERFUME',
   },
   {
-    link: '/',
+    link: { categoryUrl },
     text: 'BODY CARE',
   },
   {
-    link: '/',
+    link: { categoryUrl },
     text: 'HAND CARE',
   },
   {
-    link: '/',
+    link: { categoryUrl },
     text: 'LIP CARE',
   },
   {
-    link: '/',
+    link: { categoryUrl },
     text: 'HOME OBJECTS',
   },
   {
-    link: '/',
+    link: { categoryUrl },
     text: 'GIFT SET',
   },
   {
-    link: '/',
+    link: { categoryUrl },
     text: 'ACC',
   },
 ];

@@ -10,18 +10,26 @@ class Input extends Component {
     };
   }
 
-  componentDidMount() {
-    // fetch(`http://localhost:8000/products?keyword=${this.result}`)
-    //   .then(res => res.json())
-    //   .then(res => {
-    //     this.setState({ products: res });
-    //   });
-  }
+  getData = () => {
+    const { keyword } = this.state;
+    fetch(`http://10.58.2.54:8000/products?keyword=${keyword}`)
+      .then(res => res.json())
+      .then(res => {
+        this.setState({ products: res.result });
+      });
+    //여기서 상품 리스트로 이동하는 함수를 호출해야 하는지?
+  };
 
   handleChange = e => {
     this.setState({
       keyword: e.target.value,
     });
+  };
+
+  handleInputCheck = e => {
+    e.preventDefault();
+    const { value } = e.target[0];
+    value ? this.getData() : alert('검색어를 입력해주세요.');
   };
 
   handleInput = () => {
@@ -31,20 +39,17 @@ class Input extends Component {
   };
 
   render() {
-    const { products, keyword } = this.state;
-    const result = products.filter(list =>
-      list.toLowerCase().includes(keyword)
-    );
-
     return (
       <div className="searchBox">
-        <input
-          className="search"
-          type="search"
-          placeholder="SEARCH"
-          onFocus={this.handleInput}
-          onChange={result}
-        />
+        <form onSubmit={this.handleInputCheck}>
+          <input
+            className="search"
+            type="search"
+            placeholder="SEARCH"
+            onFocus={this.handleInput}
+            onChange={this.handleChange}
+          />
+        </form>
       </div>
     );
   }
