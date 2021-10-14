@@ -17,8 +17,16 @@ export default class Input extends Component {
   };
 
   render() {
-    const { value, name, label, type, placeholder, handleInput, checkLabel } =
-      this.props;
+    const {
+      value,
+      name,
+      label,
+      type,
+      placeholder,
+      handleInput,
+      checkLabel,
+      isCheckValue,
+    } = this.props;
 
     return (
       <div className="input-inner">
@@ -31,7 +39,7 @@ export default class Input extends Component {
           onChange={handleInput}
           onBlur={this.isCheckedValue}
         />
-        {this.state.isChecked && value.length === 0 ? (
+        {this.state.isChecked && value.length > 0 ? (
           <span>{checkLabel}</span>
         ) : (
           ' '

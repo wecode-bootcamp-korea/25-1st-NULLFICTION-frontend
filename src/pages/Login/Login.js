@@ -57,6 +57,19 @@ export default class Login extends Component {
     this.props.history.push('join');
   };
 
+  // isIdCheckValue = e => {
+  //   const { isCheckedId } = this.state;
+  //   this.setState({
+  //     isCheckedId: true,
+  //   });
+  // };
+  // isPwCheckValue = e => {
+  //   const { isCheckedPassword } = this.state;
+  //   this.setState({
+  //     isCheckedPassword: true,
+  //   });
+  // };
+
   render() {
     const { isCheckedId, isCheckedPassword } = this.state;
     return (
@@ -66,6 +79,7 @@ export default class Login extends Component {
           <form className="login-inner">
             <LoginInput
               value={this.state.id}
+              isCheckValue={this.isIdCheckValue}
               name="id"
               placeholder="아이디"
               type="text"
@@ -74,6 +88,7 @@ export default class Login extends Component {
               handleInput={this.handleInput}
             />
             <LoginInput
+              isCheckValue={this.isPwCheckValue}
               value={this.state.pw}
               name="pw"
               placeholder="비밀번호"
