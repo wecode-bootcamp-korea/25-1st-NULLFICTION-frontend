@@ -8,7 +8,7 @@ class ImgList extends Component {
       <section className="imgSection">
         <div className="mainImgPBox">
           <div className="soapTopBox textBox">
-            <Link to="/">
+            <Link to="/products/2">
               <img
                 alt="soapTop"
                 src="https://images.unsplash.com/photo-1622116555322-a5d04117efce?ixid=MnwxMjA3fDB8MHxwcm9maWxlLWxpa2VkfDV8fHxlbnwwfHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
@@ -38,7 +38,7 @@ class ImgList extends Component {
             </Link>
           </div>
           <div className="sampleTopBox textBox">
-            <Link to="/">
+            <Link to="/products/1">
               <img
                 alt="sampleTop"
                 src="https://images.unsplash.com/photo-1620917669809-1af0497965de?ixid=MnwxMjA3fDB8MHxwcm9maWxlLWxpa2VkfDMyfHx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
@@ -59,7 +59,7 @@ class ImgList extends Component {
         </div>
         <div className="mainImgPBox">
           <div className="bathRoomBox textBox">
-            <Link to="/">
+            <Link to="/products?main-category=2 ">
               <img
                 alt="bathRoom"
                 src="https://images.unsplash.com/photo-1523772354886-34a1dc2f72e7?ixid=MnwxMjA3fDB8MHxwcm9maWxlLWxpa2VkfDEzfHx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
@@ -74,7 +74,7 @@ class ImgList extends Component {
         </div>
         <div className="mainImgPBox">
           <div className="sampleBottomBox textBox">
-            <Link to="/">
+            <Link to="/products?main-category=3 ">
               <img
                 alt="sampleBottom"
                 src="https://images.unsplash.com/photo-1601327413082-1eefaafeb2b8?ixid=MnwxMjA3fDB8MHxwcm9maWxlLWxpa2VkfDIxfHx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
@@ -89,7 +89,7 @@ class ImgList extends Component {
         </div>
         <div className="mainImgPBox">
           <div className="creamBox">
-            <Link to="/">
+            <Link to="/products">
               <img
                 alt="cream"
                 src="https://images.unsplash.com/photo-1620946419923-06eec7e45220?ixid=MnwxMjA3fDB8MHxwcm9maWxlLWxpa2VkfDQxfHx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
@@ -98,7 +98,7 @@ class ImgList extends Component {
             </Link>
           </div>
           <div className="womanBottomBox textBox">
-            <Link to="/">
+            <Link to="/products">
               <img
                 alt="womanBottom"
                 src="https://images.unsplash.com/photo-1594824483472-f70a4decd6d8?ixid=MnwxMjA3fDB8MHxwcm9maWxlLWxpa2VkfDMzfHx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
@@ -112,7 +112,7 @@ class ImgList extends Component {
         </div>
         <div className="mainImgPBox">
           <div className="twotoneBox textBox">
-            <Link to="/">
+            <Link to="/products?main-category=2">
               <img
                 alt="twotone"
                 src="https://images.unsplash.com/photo-1511933801659-156d99ebea3e?ixid=MnwxMjA3fDB8MHxwcm9maWxlLWxpa2VkfDMxfHx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
