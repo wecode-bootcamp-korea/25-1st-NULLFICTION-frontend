@@ -16,16 +16,16 @@ class Join extends Component {
   constructor() {
     super();
     this.state = {
-      name: '이이이우',
-      email: 'sdkjvnj@3dsa.com',
-      year: '1999',
-      month: '9',
-      date: '13',
-      id: 'dnfjbjb23',
-      pw: 'nvnbnbfjj',
-      pwCheck: 'nvnbnbfjj',
+      name: '',
+      email: '',
+      year: '',
+      month: '',
+      date: '',
+      id: '',
+      pw: '',
+      pwCheck: '',
       value: '',
-      mobile: { num1: '010', num2: '1234', num3: '2222' },
+      mobile: { num1: '', num2: '', num3: '' },
       checkList: { check1: false, check2: false, check3: false },
       isAgreementRead: { read1: false, read2: false, read3: false },
     };
