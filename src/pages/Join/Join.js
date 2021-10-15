@@ -104,13 +104,13 @@ class Join extends Component {
       date > 0 &&
       date < 32 &&
       id &&
-      pw.length >= 8 === pwCheck;
+      pw.length >= 8;
 
     const isCheckListValue = Object.entries(checkList).every(
       e => e[1] === true
     );
 
-    if (formCheckList && isCheckListValue) {
+    if (formCheckList && isCheckListValue && this.pwRegExpCheck) {
       fetch(URL, {
         method: 'POST',
         body: JSON.stringify({
@@ -137,7 +137,7 @@ class Join extends Component {
   };
 
   render() {
-    console.log('>>>>>>', this.state.pw);
+    console.log(this.state);
     const { id, pw, name, email, pwCheck } = this.state;
     return (
       <main className="Join">
