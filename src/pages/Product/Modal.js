@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './Modal.scss';
 
 class Modal extends Component {
@@ -56,13 +58,29 @@ class Modal extends Component {
     this.setState({ inputValue: selectedOption });
   };
 
-  // increaseQuantity = () => {
-  //   if (product.quantity < 10) return alert('최대 주문 수량은 10개입니다.');
-  // };
+  increaseQuantity = (quantity, id) => {
+    if (quantity > 9) return alert('상품별 최대 주문 수량은 10개입니다.');
 
-  // decreaseQuantity = () => {
-  //   if (product.quantity > 1) return alert('최대 주문 수량은 10개입니다.');
-  // };
+    const newProduct = this.state.currentProduct.map(product => {
+      if (product.id !== id) return product;
+      else return { ...product, quantity: quantity + 1 };
+    });
+    this.setState({
+      currentProduct: newProduct,
+    });
+  };
+
+  decreaseQuantity = (quantity, id) => {
+    if (quantity < 2) return alert('상품별 최소 주문 수량은 1개입니다.');
+
+    const newProduct = this.state.currentProduct.map(product => {
+      if (product.id !== id) return product;
+      else return { ...product, quantity: quantity - 1 };
+    });
+    this.setState({
+      currentProduct: newProduct,
+    });
+  };
 
   render() {
     const { isModalOn, currentProduct } = this.state;
@@ -130,8 +148,26 @@ class Modal extends Component {
                           <div className="countedNumber">
                             {product.quantity}
                           </div>
-                          <button onClick={this.increaseQuantity}>⬆</button>
-                          <button onClick={this.decreaseQuantity}>⬇</button>
+                          <button
+                            onClick={() =>
+                              this.increaseQuantity(
+                                product.quantity,
+                                product.id
+                              )
+                            }
+                          >
+                            ⬆
+                          </button>
+                          <button
+                            onClick={() =>
+                              this.decreaseQuantity(
+                                product.quantity,
+                                product.id
+                              )
+                            }
+                          >
+                            ⬇
+                          </button>
                         </div>
                         <div className="selectedPrice">
                           {(price * product.quantity).toLocaleString()}
@@ -145,17 +181,9 @@ class Modal extends Component {
                     </span>
                   </p>
                   <div className="cartButtonWrapper">
-                    <button
-                      className="cartButton"
-                      onClick={() => {
-                        this.props.history.push({
-                          pathname: '/order/basket',
-                          state: { currentProduct },
-                        });
-                      }}
-                    >
-                      Add to Cart
-                    </button>
+                    <Link to="/cart" state={currentProduct}>
+                      <button className="cartButton">Add to Cart</button>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -168,4 +196,4 @@ class Modal extends Component {
   }
 }
 
-export default Modal;
+export default withRouter(Modal);
