@@ -24,16 +24,6 @@ class Product extends Component {
       });
   }
 
-  componentDidUpdate() {
-    fetch(`http://10.58.3.156:8000/products${this.props.location.search}`)
-      .then(res => res.json())
-      .then(data => {
-        this.setState({
-          productList: data.result,
-        });
-      });
-  }
-
   toggleProductList = () => {
     this.setState({
       isProductListOn: !this.state.isProductListOn,
