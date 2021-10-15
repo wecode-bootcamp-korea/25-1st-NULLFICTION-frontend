@@ -38,12 +38,13 @@ class ProductSelect extends Component {
         <button
           onClick={e => {
             e.preventDefault();
-
             if (optionID) {
-              fetch('http://10.58.0.90:8000/cart', {
+              fetch('http://10.58.3.156:8000/cart', {
                 method: 'POST',
                 headers: {
-                  Authorization: localStorage.getItem('Authorization'),
+                  Authorization:
+                    'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6NH0.y2j5H_mbt1TBJdsiatUoH45sABlaALeyBO06EnnbR4c',
+                  //  Authorization: localStorage.getItem('Authorization'),
                 },
                 body: JSON.stringify({
                   product_id: id,
