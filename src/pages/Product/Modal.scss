@@ -10,6 +10,12 @@
     background-color: white;
     cursor: pointer;
 
+    &:hover {
+      color: white;
+      background-color: black;
+      transition: 0.8s;
+    }
+
     .modalInput {
       display: none;
     }
@@ -169,7 +175,7 @@
                 margin: 20px;
                 padding: 10px;
                 height: 40px;
-                width: 60%;
+                width: 300px;
                 border: 1px solid black;
                 text-align: center;
                 font-size: 14px;
@@ -179,7 +185,7 @@
                 &:hover {
                   color: white;
                   background-color: black;
-                  transition: 0.7s;
+                  transition: 0.8s;
                 }
               }
             }
