@@ -6,8 +6,6 @@ import Join from './pages/Join/Join';
 import Product from './pages/Product/Product';
 import ProductDetail from './pages/ProductDetail/ProductDetail';
 import OrderBasket from './pages/OrderBasket/OrderBasket';
-import Nav from './components/Nav/Nav';
-import Footer from './components/Footer/Footer';
 
 class Routes extends Component {
   render() {

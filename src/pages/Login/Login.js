@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import Input from './Input/Input';
+import LoginInput from './LoginInput/LoginInput';
 import Button from './Button/Button';
 import Outer from './SignUp/Outer';
 import { LOGIN_API } from '../Login/config.js';
@@ -63,18 +63,22 @@ export default class Login extends Component {
         <div className="container">
           <h1>Login</h1>
           <form className="login-inner">
-            <Input
+            <LoginInput
+              value={this.state.id}
               name="id"
               placeholder="아이디"
               type="text"
               label="ID"
+              checkLabel="아이디를 입력해주세요"
               handleInput={this.handleInput}
             />
-            <Input
+            <LoginInput
+              value={this.state.pw}
               name="pw"
               placeholder="비밀번호"
               type="password"
               label="Password"
+              checkLabel="비밀번호를 입력해주세요"
               handleInput={this.handleInput}
             />
             <Button
