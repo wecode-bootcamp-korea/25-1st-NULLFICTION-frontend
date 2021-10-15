@@ -6,12 +6,20 @@ import './Nav.scss';
 
 class Nav extends Component {
   render() {
+    console.log(window.location.pathname);
     return (
       <div className="navContainer">
         <div className="navBox">
           <Link className="navLogo" to="/">
-            <img alt="navLogo" src="/images/navLogo.png" className="navLogo" />
+            {window.location.pathname !== '/' && (
+              <img
+                alt="navLogo"
+                src="/images/navLogo.png"
+                className="navLogo"
+              />
+            )}
           </Link>
+
           <ul className="topUl">
             <li className="topLi">USD</li>
             <li className="topLi">

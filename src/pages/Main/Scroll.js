@@ -12,6 +12,9 @@ class Scroll extends Component {
       this.setState({ scrollY: window.scrollY });
     });
   }
+  // componentWillUnmount() {
+  //   window.removeEventListener());
+  // }
 
   render() {
     return (
