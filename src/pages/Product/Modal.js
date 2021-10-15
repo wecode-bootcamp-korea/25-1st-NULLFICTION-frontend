@@ -16,8 +16,8 @@ class Modal extends Component {
   };
 
   render() {
-    const { isModalOn } = this.state;
-    const { image, name, price } = this.props;
+    const { isModalOn, currentProduct } = this.state;
+    const { id, image, name, price } = this.props;
 
     return (
       <div className="modal">
@@ -66,6 +66,42 @@ class Modal extends Component {
                     총 상품금액 (수량):
                     <span className="totalPrice">{price.toLocaleString()}</span>
                   </p>
+                  <div className="cartButtonWrapper">
+                    <Link
+                      to="/cart"
+                      onClick={() => {
+                        this.state.currentProduct.forEach(product => {
+                          fetch('http://10.58.3.156:8000/cart', {
+                            method: 'POST',
+                            headers: {
+                              Authorization:
+                                'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6NH0.y2j5H_mbt1TBJdsiatUoH45sABlaALeyBO06EnnbR4c',
+                            },
+                            body: JSON.stringify({
+                              product_id: this.props.id,
+                              option_id: Number(product.id[3]),
+                              quantity: product.quantity,
+                            }),
+                          });
+                        });
+                        // fetch('http://10.58.3.156:8000/cart', {
+                        //   method: 'POST',
+                        //   headers: {
+                        //     Authorization:
+                        //       'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6NH0.y2j5H_mbt1TBJdsiatUoH45sABlaALeyBO06EnnbR4c',
+                        //   },
+                        //   body: JSON.stringify({
+                        //     product_id: this.props.id,
+                        //     option_id: option_id[1],
+                        //     quantity: 1,
+                        //   }),
+                        // });
+                        this.props.history.push('/cart');
+                      }}
+                    >
+                      <button className="cartButton">Add to Cart</button>
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>
