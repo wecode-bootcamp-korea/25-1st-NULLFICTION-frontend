@@ -15,14 +15,24 @@ class Product extends Component {
   }
 
   componentDidMount() {
-    fetch('data/productList.json')
-      // `http://10.58.0.90:8000/products${this.props.location.search}`
+    fetch(`http://10.58.3.156:8000/products${this.props.location.search}`)
       .then(res => res.json())
       .then(data => {
         this.setState({
-          productList: data,
+          productList: data.result,
         });
       });
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.location.search !== this.props.location.search)
+      fetch(`http://10.58.3.156:8000/products${this.props.location.search}`)
+        .then(res => res.json())
+        .then(data => {
+          this.setState({
+            productList: data.result,
+          });
+        });
   }
 
   toggleProductList = () => {

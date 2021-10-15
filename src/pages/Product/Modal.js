@@ -84,7 +84,7 @@ class Modal extends Component {
 
   render() {
     const { isModalOn, currentProduct } = this.state;
-    const { image, name, price } = this.props;
+    const { id, image, name, price } = this.props;
 
     const totalQuantity = currentProduct.reduce(
       (acc, cur) => acc + cur.price * cur.quantity,
@@ -181,7 +181,26 @@ class Modal extends Component {
                     </span>
                   </p>
                   <div className="cartButtonWrapper">
-                    <Link to="/cart" state={currentProduct}>
+                    <Link
+                      to="/cart"
+                      onClick={() => {
+                        this.state.currentProduct.forEach(product => {
+                          fetch('http://10.58.3.156:8000/cart', {
+                            method: 'POST',
+                            headers: {
+                              Authorization:
+                                'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6NH0.y2j5H_mbt1TBJdsiatUoH45sABlaALeyBO06EnnbR4c',
+                            },
+                            body: JSON.stringify({
+                              product_id: this.props.id,
+                              option_id: Number(product.id[3]),
+                              quantity: product.quantity,
+                            }),
+                          });
+                        });
+                        this.props.history.push('/cart');
+                      }}
+                    >
                       <button className="cartButton">Add to Cart</button>
                     </Link>
                   </div>
