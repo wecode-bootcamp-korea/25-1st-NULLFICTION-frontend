@@ -10,23 +10,15 @@ export default class LoginInput extends Component {
   }
 
   isCheckedValue = e => {
-    const { isCheckedId } = this.state;
+    const { isChecked } = this.state;
     this.setState({
       isChecked: true,
     });
   };
 
   render() {
-    const {
-      value,
-      name,
-      label,
-      type,
-      placeholder,
-      handleInput,
-      checkLabel,
-      isCheckValue,
-    } = this.props;
+    const { value, name, label, type, placeholder, handleInput, checkLabel } =
+      this.props;
 
     return (
       <div className="input-inner">

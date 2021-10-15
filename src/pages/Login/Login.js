@@ -58,7 +58,6 @@ export default class Login extends Component {
   };
 
   render() {
-    const { isCheckedId, isCheckedPassword } = this.state;
     return (
       <main className="Login">
         <div className="container">
