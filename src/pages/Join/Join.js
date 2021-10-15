@@ -67,6 +67,16 @@ class Join extends Component {
     });
   };
 
+  pwRegExpCheck = pw => {
+    const num = /[0-9]/;
+    const str = /[a-zA-Z]/;
+    const special = /[~!@#$%^&*()_+|<>?:{}]/;
+
+    num.test(pw);
+    str.test(pw);
+    special.test(pw);
+  };
+
   //회원가입로직
   signUp = e => {
     e.preventDefault();
@@ -82,6 +92,7 @@ class Join extends Component {
       date,
       checkList,
     } = this.state;
+
     const formCheckList =
       name &&
       email.includes('@') &&
@@ -126,6 +137,7 @@ class Join extends Component {
   };
 
   render() {
+    console.log('>>>>>>', this.state.pw);
     const { id, pw, name, email, pwCheck } = this.state;
     return (
       <main className="Join">
