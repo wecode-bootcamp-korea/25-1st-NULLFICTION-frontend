@@ -10,7 +10,6 @@ export default class LoginInput extends Component {
   }
 
   isCheckedValue = e => {
-    const { isChecked } = this.state;
     this.setState({
       isChecked: true,
     });
