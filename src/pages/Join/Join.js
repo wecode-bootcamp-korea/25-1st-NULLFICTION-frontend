@@ -67,6 +67,17 @@ class Join extends Component {
     });
   };
 
+  //정규식 표현 검사
+  pwRegExpCheck = pw => {
+    const num = /[0-9]/;
+    const str = /[a-zA-Z]/;
+    const special = /[~!@#$%^&*()_+|<>?:{}]/;
+
+    num.test(pw);
+    str.test(pw);
+    special.test(pw);
+  };
+
   //회원가입로직
   signUp = e => {
     e.preventDefault();
@@ -82,6 +93,7 @@ class Join extends Component {
       date,
       checkList,
     } = this.state;
+
     const formCheckList =
       name &&
       email.includes('@') &&
@@ -93,13 +105,13 @@ class Join extends Component {
       date > 0 &&
       date < 32 &&
       id &&
-      pw.length >= 8 === pwCheck;
+      pw.length >= 8;
 
     const isCheckListValue = Object.entries(checkList).every(
       e => e[1] === true
     );
 
-    if (formCheckList && isCheckListValue) {
+    if (formCheckList && isCheckListValue && this.pwRegExpCheck) {
       fetch(URL, {
         method: 'POST',
         body: JSON.stringify({
@@ -116,6 +128,8 @@ class Join extends Component {
           if (response.message === 'SUCCESS') {
             alert('회원가입 축하드립니다.');
             this.props.history.push('/member/login');
+          } else if (pw) {
+            alert('비밀번호 다시 확인하세요.');
           } else {
             alert('이미 가입된 아이디 입니다.');
           }

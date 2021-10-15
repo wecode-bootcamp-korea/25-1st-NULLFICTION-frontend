@@ -26,7 +26,7 @@ export default class Login extends Component {
     e.preventDefault();
     const { id, pw } = this.state;
     if (
-      (id.length > 4 || id.length < 12) &&
+      (id.length > 4 || id.length < 16) &&
       (pw.length > 7 || pw.length <= 12)
     ) {
       fetch(LOGIN_API, {
