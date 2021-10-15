@@ -15,11 +15,11 @@ class Product extends Component {
   }
 
   componentDidMount() {
-    fetch('data/productList.json', {})
+    fetch(`http://10.58.0.90:8000/products${this.props.location.search}`)
       .then(res => res.json())
       .then(data => {
         this.setState({
-          productList: data,
+          productList: data.result,
         });
       });
   }

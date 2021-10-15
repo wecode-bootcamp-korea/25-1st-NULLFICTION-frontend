@@ -3,13 +3,13 @@ import './ProductDescription.scss';
 
 class ProductDescription extends Component {
   render() {
-    const { name, size, collection, detailDescriptionList } = this.props;
+    const { name, sizes, collection, detailDescriptionList } = this.props;
 
     return (
       <div className="productDescription">
         <span className="name header">{name}</span>
         <div className="capacity header">
-          {size.map((size, idx) => (
+          {sizes.map((size, idx) => (
             <span key={idx}>{size}</span>
           ))}
         </div>

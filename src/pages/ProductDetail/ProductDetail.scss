@@ -10,15 +10,16 @@
     display: flex;
     justify-content: center;
 
-    .leftWrapper {
+    .productImageWrapper {
       margin-right: 70px;
       max-width: 1080px;
-      .etc {
+
+      .gift {
         display: flex;
         flex-direction: column;
         text-align: center;
 
-        span {
+        > span {
           font-size: 16px;
 
           &:not(:last-child) {
@@ -35,7 +36,8 @@
         }
       }
     }
-    .rightWrapper {
+
+    .productInfoWrapper {
       max-width: 380px;
     }
   }
