@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './LoginInput.scss';
 
-export default class Input extends Component {
+export default class LoginInput extends Component {
   constructor() {
     super();
     this.state = {

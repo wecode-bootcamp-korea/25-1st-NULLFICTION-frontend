@@ -66,7 +66,6 @@ export default class Login extends Component {
           <form className="login-inner">
             <LoginInput
               value={this.state.id}
-              isCheckValue={this.isIdCheckValue}
               name="id"
               placeholder="아이디"
               type="text"
@@ -75,7 +74,6 @@ export default class Login extends Component {
               handleInput={this.handleInput}
             />
             <LoginInput
-              isCheckValue={this.isPwCheckValue}
               value={this.state.pw}
               name="pw"
               placeholder="비밀번호"
