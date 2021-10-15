@@ -7,10 +7,18 @@ class Scroll extends Component {
     this.state = { scrollY: 0 };
   }
 
-  componentDidMount() {
-    window.addEventListener('scroll', () => {
-      this.setState({ scrollY: window.scrollY });
+  detectScroll = () => {
+    this.setState({
+      scrollY: window.scrollY,
     });
+  };
+
+  componentDidMount() {
+    window.addEventListener('scroll', this.detectScroll);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.detectScroll);
   }
 
   render() {
