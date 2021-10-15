@@ -22,26 +22,27 @@ export default class Login extends Component {
     });
   };
 
-  goToMain = () => {
+  goToMain = e => {
+    e.preventDefault();
     const { id, pw } = this.state;
     if (
-      (id.length < 4 || id.length > 12) &&
-      (pw.length < 8 || pw.length >= 12)
+      (id.length > 4 || id.length < 16) &&
+      (pw.length > 7 || pw.length <= 12)
     ) {
-      fetch(`${LOGIN_API}`, {
+      fetch(LOGIN_API, {
         method: 'POST',
         body: JSON.stringify({
           username: id,
           password: pw,
         }),
       })
-        .then(response => response.json())
-        .then(response => {
-          if (response.token) {
-            localStorage.setItem('token', response.token);
-            localStorage.setItem('user_id', response.user_id);
+        .then(res => res.json())
+        .then(res => {
+          if (res.token) {
+            localStorage.setItem('Authorization', res.token);
+            localStorage.setItem('username', res.username);
             this.props.history.push('/');
-          } else if (response.message === 'INVALID_USER_ID') {
+          } else if (res.message === 'INVALID_USER_ID') {
             alert('아이디를 다시 확인해주세요');
             this.setState({ id: '', pw: '' });
           }

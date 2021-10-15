@@ -13,17 +13,19 @@ class ProductImage extends Component {
     // 드래그 관련 Ref
     this.isDragStart = React.createRef();
     this.isDragStart.current = false;
+    this.isDraging = React.createRef();
+    this.isDraging.current = false;
     this.dragPosRef = React.createRef();
     this.dragPosRef.current = {
       originPosX: 0,
       startPosX: 0,
     };
-    this.imgContainerRef = React.createRef();
+    this.imgDomRef = React.createRef();
   }
 
   dragStart = e => {
     e.preventDefault();
-    if (this.isDragStart.current === false) {
+    if (!this.isDragStart.current && !this.isDraging.current) {
       const { offsetX: endPosX } = e.nativeEvent;
       this.isDragStart.current = true;
       this.dragPosRef.current.startPosX = endPosX;
@@ -41,11 +43,11 @@ class ProductImage extends Component {
       const gap = endPosX - startPosX;
       this.isDragStart.current = false;
 
-      const successChange =
-        (gap <= -MIN_GAP && originPosX !== -(maxPos - IMAGE_WIDTH)) ||
-        (MIN_GAP <= gap && originPosX !== 0);
+      const limitToLeft = MIN_GAP <= gap && originPosX !== 0;
+      const limitToRight =
+        gap <= -MIN_GAP && originPosX !== -(maxPos - IMAGE_WIDTH);
 
-      if (successChange) {
+      if (limitToLeft || limitToRight) {
         gap > 0
           ? this.changeImagePos(e, IMAGE_WIDTH)
           : this.changeImagePos(e, -IMAGE_WIDTH);
@@ -62,21 +64,23 @@ class ProductImage extends Component {
     this.resetImagePos(originPosX);
   };
 
-  changeImagePos = (e, val = 0) => {
+  changeImagePos = (e, movement = 0) => {
     const { startPosX } = this.dragPosRef.current;
     const { offsetX: nextPosX } = e.nativeEvent;
+    const { originPosX } = this.dragPosRef.current;
+    this.isDraging.current = true;
 
-    this.dragPosRef.current.originPosX =
-      this.dragPosRef.current.originPosX + val;
-    this.imgContainerRef.current.style.transform = val
-      ? `translateX(${this.dragPosRef.current.originPosX}px)`
-      : `translateX(${
-          this.dragPosRef.current.originPosX + (nextPosX - startPosX)
-        }px)`;
+    const finalPosX = originPosX + movement;
+    this.dragPosRef.current.originPosX = finalPosX;
+    this.imgDomRef.current.style.transform = movement
+      ? `translateX(${finalPosX}px)`
+      : `translateX(${finalPosX + (nextPosX - startPosX)}px)`;
+
+    setTimeout(() => (this.isDraging.current = false), 500);
   };
 
   resetImagePos = originPosX =>
-    (this.imgContainerRef.current.style.transform = `translateX(${originPosX}px)`);
+    (this.imgDomRef.current.style.transform = `translateX(${originPosX}px)`);
 
   changeFocusIdx = () =>
     this.setState({
@@ -85,7 +89,7 @@ class ProductImage extends Component {
 
   imageListClick = idx => {
     this.dragPosRef.current.originPosX = -(IMAGE_WIDTH * idx);
-    this.imgContainerRef.current.style.transform = `translateX(${this.dragPosRef.current.originPosX}px)`;
+    this.imgDomRef.current.style.transform = `translateX(${this.dragPosRef.current.originPosX}px)`;
     this.changeFocusIdx();
   };
 
@@ -113,7 +117,7 @@ class ProductImage extends Component {
           >
             <div
               className={`imageContainer`}
-              ref={this.imgContainerRef}
+              ref={this.imgDomRef}
               style={{
                 width: `${maxPos}px`,
               }}

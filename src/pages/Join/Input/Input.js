@@ -1,44 +1,32 @@
 import React, { Component } from 'react';
+import { URL } from '../config';
 import '../Input/Input.scss';
 
 class Input extends Component {
-  constructor() {
-    super();
-    this.state = {
-      isInputFocus: false,
-      isInputBlur: false,
-    };
-  }
-
-  onInputFocus = () => {
-    this.setState({
-      isInputFocus: true,
-    });
-  };
-
-  onInputBlur = () => {
-    this.setState({
-      isInputBlur: true,
-    });
-  };
-
   render() {
-    const { isInputBlur } = this.state;
-    const { name, label, type, maxLength, handleInput, checkLabel } =
-      this.props;
+    const {
+      name,
+      label,
+      type,
+      maxLength,
+      handleInput,
+      checkLabel,
+      isFormBlur,
+      value,
+    } = this.props;
 
     return (
-      <div className="userId">
+      <div className="userId info">
         <label>{label}</label>
         <input
+          value={value}
           type={type}
           name={name}
           maxLength={maxLength}
           onChange={handleInput}
-          onFocus={this.onInputFocus}
-          onBlur={this.onInputBlur}
+          onBlur={isFormBlur}
         />
-        {name.length > 0 && isInputBlur && <span>{checkLabel}</span>}
+        <span>{checkLabel}</span>
       </div>
     );
   }

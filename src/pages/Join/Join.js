@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
-import Input from './Input/Input';
 import Mobile from './Mobile/Mobile';
+import IdInput from './IdInput/IdInput';
+import PwInput from './PwInput/PwInput';
+import PwCheckInput from './PwCheckInput/PwCheckInput';
+import NameInput from './NameInput/NameInput';
+import EmailInput from './EmailInput/EmailInput';
+import BirthDay from './BirthDay/BirthDay';
 import Agreement from './Agreement/Agreement';
 import Button from './Button/Button';
-import UESR_INFO from './Agreement/UESR_INFO';
+import USER_INFO from './Agreement/USER_INFO';
 import { URL } from './config';
 import './Join.scss';
 
@@ -19,6 +24,7 @@ class Join extends Component {
       id: '',
       pw: '',
       pwCheck: '',
+      value: '',
       mobile: { num1: '', num2: '', num3: '' },
       checkList: { check1: false, check2: false, check3: false },
       isAgreementRead: { read1: false, read2: false, read3: false },
@@ -27,8 +33,6 @@ class Join extends Component {
 
   handleInput = e => {
     const { name, value } = e.target;
-    console.log('name===', name);
-    console.log('value===', value);
     this.setState({
       [name]: value,
     });
@@ -63,11 +67,33 @@ class Join extends Component {
     });
   };
 
-  //회원가입
+  //정규식 표현 검사
+  pwRegExpCheck = pw => {
+    const num = /[0-9]/;
+    const str = /[a-zA-Z]/;
+    const special = /[~!@#$%^&*()_+|<>?:{}]/;
+
+    num.test(pw);
+    str.test(pw);
+    special.test(pw);
+  };
+
+  //회원가입로직
   signUp = e => {
     e.preventDefault();
-    const { id, pw, pwCheck, name, email, mobile, year, month, date } =
-      this.state;
+    const {
+      id,
+      pw,
+      pwCheck,
+      name,
+      email,
+      mobile,
+      year,
+      month,
+      date,
+      checkList,
+    } = this.state;
+
     const formCheckList =
       name &&
       email.includes('@') &&
@@ -79,10 +105,13 @@ class Join extends Component {
       date > 0 &&
       date < 32 &&
       id &&
-      pw.length >= 8 === pwCheck;
+      pw.length >= 8;
 
-    console.log(id, pw, pwCheck, name, email, mobile, year, month, date);
-    if (formCheckList) {
+    const isCheckListValue = Object.entries(checkList).every(
+      e => e[1] === true
+    );
+
+    if (formCheckList && isCheckListValue && this.pwRegExpCheck) {
       fetch(URL, {
         method: 'POST',
         body: JSON.stringify({
@@ -99,8 +128,10 @@ class Join extends Component {
           if (response.message === 'SUCCESS') {
             alert('회원가입 축하드립니다.');
             this.props.history.push('/member/login');
+          } else if (pw) {
+            alert('비밀번호 다시 확인하세요.');
           } else {
-            alert('이미 가입된 이메일 입니다.');
+            alert('이미 가입된 아이디 입니다.');
           }
         });
     } else {
@@ -109,47 +140,16 @@ class Join extends Component {
   };
 
   render() {
-    console.log('>>>>>', this.state);
+    const { id, pw, name, email, pwCheck } = this.state;
     return (
       <main className="Join">
         <div className="container">
           <h1>Sign Up</h1>
           <form className="join-inner">
-            <Input
-              name="id"
-              label="ID"
-              type="text"
-              checkLabel="아이디를 입력해 주세요."
-              maxLength="12"
-              handleInput={this.handleInput}
-              idCheck={this.idCheck}
-            />
-
-            <Input
-              name="pw"
-              type="password"
-              label="Password"
-              checkLabel="(영문 대소문자/숫자/특수문자 중 2가지 이상 조합, 8자~16자)"
-              maxLength="16"
-              handleInput={this.handleInput}
-            />
-
-            <Input
-              name="pwCheck"
-              label="Password Check"
-              type="password"
-              maxLength="16"
-              handleInput={this.handleInput}
-            />
-
-            <Input
-              name="name"
-              label="Name"
-              type="text"
-              maxLength="6"
-              handleInput={this.handleInput}
-            />
-
+            <IdInput value={id} handleInput={this.handleInput} />
+            <PwInput value={pw} handleInput={this.handleInput} />
+            <PwCheckInput value={pwCheck} handleInput={this.handleInput} />
+            <NameInput value={name} handleInput={this.handleInput} />
             <Mobile
               label="Mobile"
               handleMobileInput={this.handleMobileInput}
@@ -163,41 +163,11 @@ class Join extends Component {
                 { id: '6', option: '019' },
               ]}
             />
-
-            <Input
-              name="email"
-              type="email"
-              label="E-mail"
-              handleInput={this.handleInput}
-            />
-
-            <div className="birthDay">
-              <label>Birthday</label>
-              <input
-                name="year"
-                type="text"
-                placeholder="YYYY"
-                maxLength="4"
-                onChange={this.handleInput}
-              />
-              <input
-                name="month"
-                type="text"
-                placeholder="MM"
-                maxLength="2"
-                onChange={this.handleInput}
-              />
-              <input
-                name="date"
-                type="text"
-                placeholder="DD"
-                maxLength="2"
-                onChange={this.handleInput}
-              />
-            </div>
+            <EmailInput value={email} handleInput={this.handleInput} />
+            <BirthDay handleInput={this.handleInput} />
           </form>
           <div className="register-agreement">
-            {UESR_INFO.map(data => {
+            {USER_INFO.map(data => {
               const { id, name, label, text } = data;
               return (
                 <Agreement
@@ -213,7 +183,7 @@ class Join extends Component {
               );
             })}
           </div>
-          <Button name="Sign UP" signUp={this.signUp} />
+          <Button name="SignUP" signUp={this.signUp} />
         </div>
       </main>
     );
