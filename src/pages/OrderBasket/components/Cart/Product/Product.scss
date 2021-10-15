@@ -1,0 +1,42 @@
+@import '../common.scss';
+.product {
+  font-size: 14px;
+
+  .main {
+    display: flex;
+    justify-content: space-between;
+
+    .name {
+      @include width();
+      color: black;
+      font-size: 20px;
+    }
+
+    .countAndRemove {
+      @include width(40%);
+
+      .count {
+        margin: 0 10px;
+      }
+
+      button {
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+
+        &:last-child {
+          opacity: 0.4;
+          text-decoration: underline;
+        }
+      }
+      .price {
+        @include width();
+      }
+    }
+  }
+
+  .option {
+    margin-top: 30px;
+    opacity: 0.4;
+  }
+}

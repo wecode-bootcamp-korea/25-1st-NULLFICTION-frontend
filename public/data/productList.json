@@ -1,0 +1,156 @@
+[
+  {
+    "id": 1,
+    "name": "ROSE PALE",
+    "collection": "Scented Soap",
+    "size_g": "156",
+    "size_ml": "",
+    "size_oz": "",
+    "price": 18000,
+    "description": "여린 핑크빛 장미의 뽀얗고 클린한 향을 담아낸 95% 천연 식물 유래 성분 베지터블 솝. 조밀하고 풍성한 거품이 산뜻하고 뽀득한 세정감을 주고, 강력한 보습력의 히알루론산과 다섯 가지 종류의 식물성 바디 컨디셔닝 성분이 피부를 촉촉하게 보호합니다.",
+    "image": "./images/product/product.jpg"
+  },
+  {
+    "id": 2,
+    "name": "PALE YELLOW",
+    "collection": "Scented Soap",
+    "size_g": "156",
+    "size_ml": "",
+    "size_oz": "",
+    "price": 18000,
+    "description": "여린 핑크빛 장미의 뽀얗고 클린한 향을 담아낸 95% 천연 식물 유래 성분 베지터블 솝. 조밀하고 풍성한 거품이 산뜻하고 뽀득한 세정감을 주고, 강력한 보습력의 히알루론산과 다섯 가지 종류의 식물성 바디 컨디셔닝 성분이 피부를 촉촉하게 보호합니다.",
+    "image": "./images/product/product.jpg"
+  },
+  {
+    "id": 3,
+    "name": "CANOPEE",
+    "collection": "Scented Soap",
+    "size_g": "156",
+    "size_ml": "",
+    "size_oz": "",
+    "price": 18000,
+    "description": "베르가못과 얼그레이의 향이 프레시하게 어우러진 95% 천연 식물 유래 성분 베지터블 솝. 조밀하고 풍성한 거품이 산뜻하고 뽀득한 세정감을 주고, 강력한 보습력의 히알루론산과 다섯 가지 종류의 식물성 바디 컨디셔닝 성분이 피부를 촉촉하게 보호합니다.",
+    "image": "./images/product/product.jpg"
+  },
+  {
+    "id": 4,
+    "name": "GAIAC FLOWER TRAVEL",
+    "collection": "Travel Body Lotion",
+    "size_g": "",
+    "size_ml": "100",
+    "size_oz": "3.3",
+    "price": 18000,
+    "description": "스모키하게 변주된 오리엔탈 플로럴 향의 가이악플라워. 바디워시와 완벽한 페어를 이룰 트래블 사이즈의 바디로션입니다.",
+    "image": "./images/product/product.jpg"
+  },
+  {
+    "id": 5,
+    "name": "FORGET ME NOT TRAVEL",
+    "collection": "Travel Body Lotion",
+    "size_g": "",
+    "size_ml": "100",
+    "size_oz": "3.3",
+    "price": 18000,
+    "description": "스파이시 페퍼, 앰버, 그린 노트의 독특한 조합으로 신비롭고 매혹적인 새로운 무드의 시트러스 향. 바디워시와 완벽한 페어를 이룰 트래블 사이즈의 바디로션입니다.",
+    "image": "./images/product/product.jpg"
+  },
+  {
+    "id": 6,
+    "name": "FORGET ME NOT TRAVEL",
+    "collection": "Travel Body Wash",
+    "size_g": "",
+    "size_ml": "100",
+    "size_oz": "3.3",
+    "price": 18000,
+    "description": "스파이시 페퍼, 앰버, 그린 노트가 빚어낸 신비롭고 매혹적인 새로운 무드의 시트러스 향. 여행의 순간을 더욱 풍성하게 채워줄 트래블 사이즈의 바디워시입니다.",
+    "image": "./images/product/product.jpg"
+  },
+  {
+    "id": 7,
+    "name": "GAIAC FLOWER TRAVEL",
+    "collection": "Travel Body Wash",
+    "size_g": "",
+    "size_ml": "100",
+    "size_oz": "3.3",
+    "price": 18000,
+    "description": "스모키하게 변주된 오리엔탈 플로럴 향의 가이악플라워. 여행의 순간을 더욱 풍성하게 채워줄 트래블 사이즈의 바디워시입니다.",
+    "image": "./images/product/product.jpg"
+  },
+  {
+    "id": 8,
+    "name": "GIFT SET",
+    "collection": "Hand & Lip Care Duo",
+    "size_g": "3.8",
+    "size_ml": "50",
+    "size_oz": "",
+    "price": 39000,
+    "description": "핸드크림과 모이스춰라이징 비건 립밤으로 구성된 세트입니다. 쉽게 건조해지는 손과 입술을 위한 데일리 모이스춰라이징 루틴을 완성하세요.",
+    "image": "./images/product/product.jpg"
+  },
+  {
+    "id": 9,
+    "name": "GIFT SET",
+    "collection": "Portable Perfume & Hand Cream Set",
+    "size_g": "",
+    "size_ml": "",
+    "size_oz": "",
+    "price": 80000,
+    "description": "포터블사이즈 향수와 핸드크림으로 구성된 프래그런스 세트입니다. 언제 어디서든 간편하고 즉각적인 리프레시를 경험하세요.",
+    "image": "./images/product/product.jpg"
+  },
+  {
+    "id": 10,
+    "name": "GIFT SET",
+    "collection": "Body Care Set",
+    "size_g": "",
+    "size_ml": "300",
+    "size_oz": "",
+    "price": 72000,
+    "description": "바디워시와 바디로션으로 구성된 바디케어 세트입니다. 논픽션 베스트 프래그런스와 함께 하루의 시작과 마무리를 완성하는 건강한 보습 루틴을 경험하세요.",
+    "image": "./images/product/product.jpg"
+  },
+  {
+    "id": 11,
+    "name": "GIFT SET",
+    "collection": "Hand Care Set",
+    "size_g": "",
+    "size_ml": "300",
+    "size_oz": "",
+    "price": 53000,
+    "description": "핸드워시와 핸드크림으로 구성된 핸드케어 세트입니다. 논픽션 베스트 프래그런스와 함께 건조해지기 쉬운 손 피부에 건강한 보습 루틴을 선물하세요.",
+    "image": "./images/product/product.jpg"
+  },
+  {
+    "id": 12,
+    "name": "SANTAL CREAM",
+    "collection": "Hand & Lip Care Trio",
+    "size_g": "",
+    "size_ml": "",
+    "size_oz": "",
+    "price": 71000,
+    "description": "핸드 워시, 핸드 크림, 모이스처라이징 립밤으로 구성된 기프트 세트입니다. 논픽션의 베스트 프래그런스로 건조한 일상에 보습 루틴을 선물하세요.",
+    "image": "./images/product/product.jpg"
+  },
+  {
+    "id": 13,
+    "name": "GENTLE NIGHT",
+    "collection": "Hand & Lip Care Trio",
+    "size_g": "",
+    "size_ml": "",
+    "size_oz": "",
+    "price": 71000,
+    "description": "논픽션의 베스트 향이 담긴 기프트 세트입니다. 일상의 핸드 앤 립 케어에 즐거움을 더할 제품으로 구성되어 있어, 받는 사람 모두에게 특별한 리프레쉬를 선사합니다.",
+    "image": "./images/product/product.jpg"
+  },
+  {
+    "id": 14,
+    "name": "SANTAL CREAM",
+    "collection": "Portable Perfume",
+    "size_g": "",
+    "size_ml": "30",
+    "size_oz": "1.0",
+    "price": 59000,
+    "description": "Sandalwood, Vetiver, Fig, Cardamom, Ginger, Bergamot. 베티버와 샌달우드, 신선한 카다멈 향의 조화로 고요하고 나른한 무드의 우디 향. 가볍게 휴대할 수 있는 포터블 사이즈의 오드 퍼퓸입니다. 언제 어디서든, 내면의 힘을 깨우는 즉각적인 리프레시를 느낄 수 있습니다.",
+    "image": "./images/product/product.jpg"
+  }
+]

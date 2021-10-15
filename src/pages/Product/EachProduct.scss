@@ -1,0 +1,50 @@
+.eachProduct {
+  display: inline-block;
+  padding: 25px;
+
+  img {
+    margin-bottom: 10px;
+    width: 400px;
+    height: 400px;
+  }
+
+  .thumbnailInfo {
+    h3 {
+      font-size: 18px;
+      font-weight: 400;
+      text-align: center;
+      text-decoration: none;
+      outline: none;
+      color: black;
+      cursor: pointer;
+
+      .productName {
+        margin-bottom: 5px;
+      }
+    }
+
+    .productInfo {
+      margin: 20px 0 10px 0;
+      display: flex;
+      justify-content: space-between;
+
+      .mensuration {
+        font-size: 12px;
+
+        .productVolume {
+          padding-right: 10px;
+          font-size: 16px;
+        }
+      }
+    }
+
+    .productDescription {
+      margin: 5px 0;
+      padding: 5px 0;
+      width: 400px;
+      min-height: 100px;
+      border-top: 1px solid black;
+      font-size: 14px;
+    }
+  }
+}
