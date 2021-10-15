@@ -8,7 +8,6 @@ class Footer extends Component {
       <footer className="Footer">
         <article>
           <section>
-            {/* <div className="leftBox"> */}
             <ul className="firstWrapBox">
               CUSTOMER SERVICE
               <li className="number">
@@ -24,8 +23,6 @@ class Footer extends Component {
                 토, 일요일 및 공휴일 휴무
               </li>
             </ul>
-            {/* </div> */}
-            {/* <div className="rightBox"> */}
             <ul className="wrapBox">
               GIFT
               {giftList.map((list, index) => {
@@ -69,7 +66,6 @@ class Footer extends Component {
                 );
               })}
             </ul>
-            {/* </div> */}
           </section>
           <p>
             상호명 : (주)널픽션 / 대표 : 홍길동 / 사업자 등록번호 : 819-87-00000
