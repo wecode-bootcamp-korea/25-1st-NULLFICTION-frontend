@@ -16,16 +16,16 @@ class Join extends Component {
   constructor() {
     super();
     this.state = {
-      name: '',
-      email: '',
-      year: '',
-      month: '',
-      date: '',
-      id: '',
-      pw: '',
-      pwCheck: '',
+      name: '이이이우',
+      email: 'sdkjvnj@3dsa.com',
+      year: '1999',
+      month: '9',
+      date: '13',
+      id: 'dnfjbjb23',
+      pw: 'nvnbnbfjj',
+      pwCheck: 'nvnbnbfjj',
       value: '',
-      mobile: { num1: '', num2: '', num3: '' },
+      mobile: { num1: '010', num2: '1234', num3: '2222' },
       checkList: { check1: false, check2: false, check3: false },
       isAgreementRead: { read1: false, read2: false, read3: false },
     };
@@ -67,6 +67,7 @@ class Join extends Component {
     });
   };
 
+  //정규식 표현 검사
   pwRegExpCheck = pw => {
     const num = /[0-9]/;
     const str = /[a-zA-Z]/;
@@ -127,6 +128,8 @@ class Join extends Component {
           if (response.message === 'SUCCESS') {
             alert('회원가입 축하드립니다.');
             this.props.history.push('/member/login');
+          } else if (pw) {
+            alert('비밀번호 다시 확인하세요.');
           } else {
             alert('이미 가입된 아이디 입니다.');
           }
@@ -137,7 +140,6 @@ class Join extends Component {
   };
 
   render() {
-    console.log(this.state);
     const { id, pw, name, email, pwCheck } = this.state;
     return (
       <main className="Join">
