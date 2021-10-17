@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import ProductImage from './components/ProductImage';
 import ProductInfo from './components/ProductInfo';
 import './ProductDetail.scss';
+import { BASE_URL } from './config';
 
-class ProductDetail extends Component {
+export default class ProductDetail extends Component {
   constructor() {
     super();
     this.state = {
@@ -25,7 +26,7 @@ class ProductDetail extends Component {
 
   componentDidMount() {
     const { id } = this.props.match.params;
-    fetch(`http://10.58.3.156:8000/products/${id}`)
+    fetch(`${BASE_URL}/products`)
       .then(res => res.json())
       .then(({ result: data }) => {
         if (data) this.setState({ productInfo: data });
@@ -55,5 +56,3 @@ class ProductDetail extends Component {
     );
   }
 }
-
-export default ProductDetail;

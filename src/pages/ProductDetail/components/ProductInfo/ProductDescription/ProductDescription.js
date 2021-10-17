@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './ProductDescription.scss';
 
-class ProductDescription extends Component {
+export default class ProductDescription extends Component {
   render() {
     const { name, sizes, collection, detailDescriptionList } = this.props;
 
@@ -33,5 +33,3 @@ class ProductDescription extends Component {
     );
   }
 }
-
-export default ProductDescription;

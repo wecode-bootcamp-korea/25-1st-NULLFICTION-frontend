@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router';
 import ProductOption from './ProductOption';
-import './ProductSelect.scss';
-// 삭제 해야함
 import Popup from '../../../../../components/Popup/Popup';
+import { BASE_URL } from '../../../config';
+import './ProductSelect.scss';
 
 class ProductSelect extends Component {
   constructor() {
@@ -39,12 +39,10 @@ class ProductSelect extends Component {
           onClick={e => {
             e.preventDefault();
             if (optionID) {
-              fetch('http://10.58.3.156:8000/cart', {
+              fetch(`${BASE_URL}/cart`, {
                 method: 'POST',
                 headers: {
-                  Authorization:
-                    'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6NH0.y2j5H_mbt1TBJdsiatUoH45sABlaALeyBO06EnnbR4c',
-                  //  Authorization: localStorage.getItem('Authorization'),
+                  Authorization: localStorage.getItem('Authorization'),
                 },
                 body: JSON.stringify({
                   product_id: id,
@@ -64,5 +62,4 @@ class ProductSelect extends Component {
     );
   }
 }
-
 export default withRouter(ProductSelect);

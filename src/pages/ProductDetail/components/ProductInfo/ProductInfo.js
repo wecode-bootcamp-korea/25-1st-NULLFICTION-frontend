@@ -4,7 +4,7 @@ import ProductCategory from './ProductCategory';
 import ProductSelect from './ProductSelect';
 import './ProductInfo.scss';
 
-class ProductInfo extends Component {
+export default class ProductInfo extends Component {
   stringToHtml = str => {
     const doc = new DOMParser().parseFromString(str, 'text/html');
     const htmlArray = [...doc.body.children].map(
@@ -54,8 +54,6 @@ class ProductInfo extends Component {
     );
   }
 }
-
-export default ProductInfo;
 
 const INFOMATION_CONTEXT = `
 <div>hello@nonfiction.kr</div> 
