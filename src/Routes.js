@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Main from './pages/Main/Main';
 import Login from './pages/Login/Login';
 import Join from './pages/Join/Join';
+import Nav from './components/Nav/Nav';
+import Footer from './components/Footer/Footer';
 import Product from './pages/Product/Product';
 import ProductDetail from './pages/ProductDetail/ProductDetail';
 import OrderBasket from './pages/OrderBasket/OrderBasket';
