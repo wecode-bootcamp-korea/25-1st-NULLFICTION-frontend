@@ -6,20 +6,20 @@ export default class ProductDescription extends Component {
     const { name, sizes, collection, detailDescriptionList } = this.props;
 
     return (
-      <div className="productDescription">
-        <span className="name header">{name}</span>
-        <div className="capacity header">
+      <div className='productDescription'>
+        <span className='name header'>{name}</span>
+        <div className='capacity header'>
           {sizes.map((size, idx) => (
             <span key={idx}>{size}</span>
           ))}
         </div>
-        <span className="collection header">{collection}</span>
-        <div className="detail">
+        <span className='collection header'>{collection}</span>
+        <div className='detail'>
           {detailDescriptionList.map((detailDescription, idx) => (
             <p key={idx}>{detailDescription}</p>
           ))}
         </div>
-        <div className="etc">
+        <div className='etc'>
           <p>
             * 선물용으로 구매하시는 분들을 위해 쇼핑백을 별도 판매하고 있습니다.
             ACC 메뉴에서 구매하실 수 있습니다.

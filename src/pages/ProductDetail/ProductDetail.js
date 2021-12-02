@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ProductImage from './components/ProductImage';
 import ProductInfo from './components/ProductInfo';
 import './ProductDetail.scss';
-import { BASE_URL } from './config';
+import { API } from 'config';
 
 export default class ProductDetail extends Component {
   constructor() {
@@ -25,30 +25,30 @@ export default class ProductDetail extends Component {
   }
 
   componentDidMount() {
-    const { id } = this.props.match.params;
-    fetch(`${BASE_URL}/products`)
+    fetch(API.products)
       .then(res => res.json())
-      .then(({ result: data }) => {
-        if (data) this.setState({ productInfo: data });
-      });
+      .then(({ result: productInfo }) => {
+        this.setState({ productInfo });
+      })
+      .catch(error => console.log(error));
   }
 
   render() {
     const { productInfo } = this.state;
 
     return (
-      <main className="productDetail">
-        <div className="path">Shop All {`>`}</div>
-        <div className="wrapper">
-          <div className="productImageWrapper">
+      <main className='productDetail'>
+        <div className='path'>Shop All {`>`}</div>
+        <div className='wrapper'>
+          <div className='productImageWrapper'>
             <ProductImage imageList={productInfo.image} />
-            <div className="gift">
+            <div className='gift'>
               <span>무료 선물 포장 서비스 </span>
               <span>액세서리류 단품 구매시 혜택</span>
               <span>적용 제외 네이버 페이 구매시 혜택 적용 제외</span>
             </div>
           </div>
-          <div className="productInfoWrapper">
+          <div className='productInfoWrapper'>
             <ProductInfo {...productInfo} />
           </div>
         </div>

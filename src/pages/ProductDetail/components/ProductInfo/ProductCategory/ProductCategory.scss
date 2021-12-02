@@ -24,7 +24,6 @@
       }
     }
 
-    // 동적으로 max-heigth를 설정한다면 훨씬 매끄러울 것.
     &.focus {
       max-height: 100vh;
       transition: max-height 0.9s ease-out;

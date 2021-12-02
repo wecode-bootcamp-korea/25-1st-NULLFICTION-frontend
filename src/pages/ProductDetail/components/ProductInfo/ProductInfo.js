@@ -28,7 +28,7 @@ export default class ProductInfo extends Component {
     } = this.props;
 
     return (
-      <div className="productInfo">
+      <div className='productInfo'>
         <ProductDescription
           name={name}
           sizes={[
@@ -41,12 +41,12 @@ export default class ProductInfo extends Component {
           detailDescriptionList={this.stringToHtml(detail_description)}
         />
         <ProductCategory
-          name="scent"
+          name='scent'
           contextList={this.stringToHtml(scent_description)}
         />
-        <ProductCategory name="ingredient" contextList={[ingredient]} />
+        <ProductCategory name='ingredient' contextList={[ingredient]} />
         <ProductCategory
-          name="infomation"
+          name='infomation'
           contextList={this.stringToHtml(INFOMATION_CONTEXT)}
         />
         <ProductSelect id={id} />
