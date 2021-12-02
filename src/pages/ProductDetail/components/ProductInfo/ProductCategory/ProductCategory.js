@@ -19,17 +19,17 @@ export default class ProductCategory extends Component {
     const { name, contextList } = this.props;
 
     return (
-      <div className="productCategory">
+      <div className='productCategory'>
         <div
           className={`${focus === name && 'focus'} category`}
           name={name}
           onClick={() => this.setFocusCategory(name)}
         >
-          <div className="header">
+          <div className='header'>
             <span>{name}</span>
             <span>{focus === name ? '-' : '+'}</span>
           </div>
-          <div className="context">
+          <div className='context'>
             {contextList.map((context, idx) => (
               <div
                 className={`${name === 'infomation' && 'contant'}`}

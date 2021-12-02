@@ -3,5 +3,6 @@
   "endOfLine": "lf",
   "arrowParens": "avoid",
   "singleQuote": true,
+  "jsxSingleQuote": true,
   "semi": true
 }

@@ -6,14 +6,14 @@ $imageSize: 500px;
     justify-content: center;
     align-items: center;
 
-    .imagesWrapper {
+    .imageContainer {
       margin: 0 10px;
       width: $imageSize;
       height: $imageSize;
       overflow: hidden;
       cursor: grab;
 
-      .imageContainer {
+      .imageWrapper {
         transition: transform 0.5s linear;
       }
 
