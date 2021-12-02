@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import Product from './Product/Product';
+import Product from './Product';
+import { API, userToken } from 'config';
+import { defaultShipping } from './config';
 import './Cart.scss';
 
 class Cart extends Component {
@@ -11,11 +13,9 @@ class Cart extends Component {
   }
 
   componentDidMount() {
-    //  fetch 필요
-    fetch('http://10.58.0.75:8000/cart', {
+    fetch(API.cart, {
       headers: {
-        Authorization:
-          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6NH0.y2j5H_mbt1TBJdsiatUoH45sABlaALeyBO06EnnbR4c',
+        Authorization: userToken,
       },
     })
       .then(res => res.json())
@@ -25,7 +25,8 @@ class Cart extends Component {
             result: data.result,
           });
         }
-      });
+      })
+      .catch(err => console.log(err));
   }
 
   setCount = (e, id) => {
@@ -41,16 +42,15 @@ class Cart extends Component {
     const nextCart = result.map(item => {
       if (item.cart_id !== id) return item;
       else {
-        fetch(`http://10.58.0.75:8000/cart?id=${id}`, {
+        fetch(API(id), {
           method: 'PATCH',
           headers: {
-            Authorization:
-              'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6NH0.y2j5H_mbt1TBJdsiatUoH45sABlaALeyBO06EnnbR4c',
+            Authorization: userToken,
           },
           body: JSON.stringify({
             quantity: item.quantity + Number(value),
           }),
-        });
+        }).catch(err => console.log(err));
         return { ...item, quantity: item.quantity + Number(value) };
       }
     });
@@ -60,15 +60,15 @@ class Cart extends Component {
   removeProduct = id => {
     const { result } = this.state;
 
-    fetch(`http://10.58.0.75:8000/cart?id=${id}`, {
+    fetch(API(id), {
       method: 'DELETE',
       headers: {
-        Authorization:
-          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6NH0.y2j5H_mbt1TBJdsiatUoH45sABlaALeyBO06EnnbR4c',
+        Authorization: userToken,
       },
-    });
+    }).catch(err => console.log(err));
 
     const nextCart = result.filter(product => product.cart_id !== id);
+
     this.setState({
       result: nextCart,
     });
@@ -77,7 +77,9 @@ class Cart extends Component {
   totalPrice = () => {
     const { result } = this.state;
     let total = 0;
-    result.forEach(item => (total += item.price * item.quantity + 2500));
+    result.forEach(
+      item => (total += item.price * item.quantity + defaultShipping)
+    );
     return total;
   };
 
@@ -85,9 +87,9 @@ class Cart extends Component {
     const { result } = this.state;
 
     return (
-      <section className="cart">
+      <section className='cart'>
         <span>Cart</span>
-        <ul className="productList">
+        <ul className='productList'>
           {result.length !== 0 ? (
             result.map((product, idx) => (
               <Product
@@ -98,23 +100,28 @@ class Cart extends Component {
               />
             ))
           ) : (
-            <p className="emptyMessage">{EMPTY_MESSAGE}</p>
+            <p className='emptyMessage'>{EMPTY_MESSAGE}</p>
           )}
         </ul>
-        <ul className="cartInfo">
-          <li className="subTotal">
+        <ul className='cartInfo'>
+          <li className='subTotal'>
             <label>Subtotal</label>
             <span>{this.totalPrice().toLocaleString()} KRW</span>
           </li>
-          <li className="shipping">
+          <li className='shipping'>
             <label>Shipping</label>
-            <span>{(2500).toLocaleString()} KRW</span>
+            <span>{defaultShipping.toLocaleString()} KRW</span>
           </li>
-          <li className="total">
+          <li className='total'>
             <label>Total</label>
-            <span>{(this.totalPrice() + 2500).toLocaleString()} KRW</span>
+            <span>
+              {`${(this.totalPrice()
+                ? this.totalPrice() + defaultShipping
+                : 0
+              ).toLocaleString()} KRW`}
+            </span>
           </li>
-          <button className="checkout">PROCEED TO CHECKOUT</button>
+          <button className='checkout'>PROCEED TO CHECKOUT</button>
         </ul>
       </section>
     );
