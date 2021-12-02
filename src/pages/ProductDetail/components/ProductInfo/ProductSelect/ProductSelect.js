@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router';
 import ProductOption from './ProductOption';
 import Popup from 'components/Popup/Popup';
-import { API } from 'config';
+import { API, userToken } from 'config';
 import './ProductSelect.scss';
 
 class ProductSelect extends Component {
@@ -42,7 +42,7 @@ class ProductSelect extends Component {
               fetch(API.cart, {
                 method: 'POST',
                 headers: {
-                  Authorization: localStorage.getItem('Authorization'),
+                  Authorization: userToken,
                 },
                 body: JSON.stringify({
                   product_id: id,
