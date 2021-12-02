@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './ProductCategory.scss';
 
-class ProductCategory extends Component {
+export default class ProductCategory extends Component {
   constructor() {
     super();
     this.state = {
@@ -44,5 +44,3 @@ class ProductCategory extends Component {
     );
   }
 }
-
-export default ProductCategory;

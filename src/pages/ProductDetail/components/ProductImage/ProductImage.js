@@ -4,7 +4,7 @@ import './ProductImage.scss';
 const IMAGE_WIDTH = 550;
 const MIN_GAP = IMAGE_WIDTH * 0.1; // 1/10 만큼 이동하면 다음 이미지로
 
-class ProductImage extends Component {
+export default class ProductImage extends Component {
   constructor() {
     super();
     this.state = {
@@ -22,6 +22,8 @@ class ProductImage extends Component {
     };
     this.imgDomRef = React.createRef();
   }
+
+  posToTranslateX = value => `translateX(${value}px)`;
 
   dragStart = e => {
     e.preventDefault();
@@ -73,14 +75,14 @@ class ProductImage extends Component {
     const finalPosX = originPosX + movement;
     this.dragPosRef.current.originPosX = finalPosX;
     this.imgDomRef.current.style.transform = movement
-      ? `translateX(${finalPosX}px)`
-      : `translateX(${finalPosX + (nextPosX - startPosX)}px)`;
+      ? this.posToTranslateX(finalPosX)
+      : this.posToTranslateX(finalPosX + (nextPosX - startPosX));
 
     setTimeout(() => (this.isDraging.current = false), 500);
   };
 
   resetImagePos = originPosX =>
-    (this.imgDomRef.current.style.transform = `translateX(${originPosX}px)`);
+    (this.imgDomRef.current.style.transform = this.posToTranslateX(originPosX));
 
   changeFocusIdx = () =>
     this.setState({
@@ -153,5 +155,3 @@ class ProductImage extends Component {
     );
   }
 }
-
-export default ProductImage;
